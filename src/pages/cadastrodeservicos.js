@@ -1,7 +1,7 @@
-import './App.css';
-import Footer from './components/footer/Footer';
-import Navbar from './components/navbar/navbar';
-import PageHeader from './components/page-header/PageHeader';
+import '../App.css';
+import Footer from '../components/footer/Footer';
+import Navbar from '../components/navbar/navbar';
+import PageHeader from '../components/page-header/PageHeader';
 import axios from 'axios';
 import { Component } from 'react';
 
