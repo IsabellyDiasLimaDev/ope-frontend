@@ -23,21 +23,17 @@ class CadastroDeMateriais extends Component {
     handleSubmit = async e => {
         e.preventDefault();
 
-        const data = new FormData();
+        const json = {'preco':  parseFloat(this.state.preco),
+        'tipo': this.state.tipo,
+        'categoria': this.state.categoria,
+        'quantidade_disponivel': parseInt(this.state.quantidade_disponivel),
+        'descricao': this.state.descricao,
+        'cor': this.state.cor}
 
-        data.append('preco', this.state.preco);
-        data.append('tipo', this.state.tipo);
-        data.append('categoria', this.state.categoria);
-        data.append('quantidade_disponivel', this.state.quantidade_disponivel);
-        data.append('descricao', this.state.descricao);
-        data.append('cor', this.state.cor);
+        console.log(json)
 
-        axios({
-            url: 'http://localhost:8081/materiais',
-            method: 'post',
-            data: data,
-            headers: {'Access-Control-Allow-Origin': '*'}
-        }).then((response) => {
+        axios.post('http://localhost:8081/materiais', json)
+        .then((response) => {
             console.log(response);
         });
 
