@@ -6,28 +6,16 @@ import axios from 'axios';
 import { Component } from 'react';
 
 
-const apiClient = axios.create({
-    baseURL: 'http://localhost:5000',
-    baseURL: process.env.DATABASE_URL,
-    withCredentials: false,
-    headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-    },
-});
-
-
-class App extends Component {
+class CadastroDeServicos extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            preco: 0,
-            cor: '',
-            tipo: '',
-            categoria: '',
-            quantidade_disponivel: 0,
+            valor_mao_de_obra: 0.0,
+            valor_total: 0.0,
             descricao: '',
+            dt_inicial: '',
+            dt_final: '',
             materiais: []
         }
 
@@ -42,7 +30,20 @@ class App extends Component {
     handleSubmit = async e => {
         e.preventDefault();
 
-        const data = new FormData();
+        const json = {'valor_mao_de_obra': parseFloat(this.state.valor_mao_de_obra),
+        'valor_total': parseFloat(this.state.valor_total),
+        'descricao': this.state.descricao,
+        'dt_inicial': this.state.dt_inicial,
+        'dt_final': this.state.dt_final,
+        'materiais': this.state.materiais}
+
+        console.log(json)
+
+        axios.post('http://localhost:8081/servicos', json)
+        .then((response) => {
+            console.log(response);
+        });
+
     }
 
     adicionarMaterial = async e => {
@@ -62,12 +63,7 @@ class App extends Component {
         console.log(this.state.materiais)
     }
 
-
-        
-
     render() {
-        let materiais = this.state.materiais;
-        materiais = materiais.map((material) => <li classname="list-group-item">{material.preco}</li>);
         return (
             <section>
                 <Navbar />
@@ -89,45 +85,10 @@ class App extends Component {
                         </div>
 
 
-                        <form onSubmit={this.adicionarMaterial.bind(this)} method="post">
-                            <div class="form-row col-12">
-                                <div class="col-4">
-                                    <input onChange={this.handleChange} type="text" class="form-control" name="preco" id="preco" placeholder="Preço" />
-                                </div>
-                                <div class="col-4">
-                                    <input onChange={this.handleChange} type="text" class="form-control" name="cor" id="cor" placeholder="Cor" />
-                                </div>
-                                <div class="col-4">
-                                    <input onChange={this.handleChange} type="text" class="form-control" name="cor" id="tipo" placeholder="Tipo" />
-                                </div>
-                                <div class="col-4">
-                                    <input onChange={this.handleChange} type="text" class="form-control" name="categoria" id="categoria" placeholder="Categoria" />
-                                </div>
-                                <div class="col-4">
-                                    <input onChange={this.handleChange} type="text" class="form-control " name="quantidade_disponivel" id="quantidade_disponivel" placeholder="Quantidade Disponível" />
-                                </div>
-                                <div class="col-4">
-                                    <input onChange={this.handleChange} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
-                                </div>
-
-                                <button type="submit" class="btn btn-primary butaum">Adicionar Material</button>
-                            </div>
-                            <div>
-                            </div>
-                        </form>
-
-                        
-            
-
-                        <ul classname="list-group">
-                            {materiais}
-                        </ul>
-
-
                         <form onSubmit={this.handleSubmit.bind(this)} method="post">
                             <div class="form-row col-12">
                                 <div class="col-4">
-                                    <input onChange={this.handleChange} type="text" class="form-control" name="dt_inicial" id="dt_inicial" placeholder="Data Inicial" />
+                                    <input onChange={this.handleChange} type="date" class="form-control" name="dt_inicial" id="dt_inicial" placeholder="Data Inicial" />
                                 </div>
                                 <div class="col-4">
                                     <input onChange={this.handleChange} type="text" class="form-control" name="auxiliares" id="auxiliares" placeholder="Auxiliares" />
@@ -136,7 +97,7 @@ class App extends Component {
                                     <input onChange={this.handleChange} type="number" class="form-control numero" name="preco" id="preco" placeholder="Preço" />
                                 </div>
                                 <div class="col-4">
-                                    <input onChange={this.handleChange} type="text" class="form-control" name="dt_final" id="dt_final" placeholder="Data Final" />
+                                    <input onChange={this.handleChange} type="date" class="form-control" name="dt_final" id="dt_final" placeholder="Data Final" />
                                 </div>
                                 <div class="col-4">
                                     <input onChange={this.handleChange} type="text" class="form-control" name="valor_mao_de_obra" id="valor_mao_de_obra" placeholder="Valor Mão de Obra" />
@@ -144,32 +105,11 @@ class App extends Component {
                                 <div class="col-4">
                                     <input onChange={this.handleChange} type="text" class="form-control" name="valor_total" id="valor_total" placeholder="Valor Total" />
                                 </div>
-                            </div>
-                        </form>
+                                <div class="form-row col-9">
 
-                        <form action="{{ url_for('calcular_valor_total') }}" method="post">
-                            <div class="form-row col-12">
-                                <div class="col-4">
-                                    <input onChange={this.handleChange} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
+                                    <button type="submit" class="btn btn-primary butaozinho">Cadastrar serviço</button>
+
                                 </div>
-                                <div class="col-4">
-                                    <input onChange={this.handleChange} type="number" class="form-control" name="valormaodeobra" id="valormaodeobra" placeholder="VMO" />
-                                </div>
-                            </div>
-                            <div>
-
-                            </div>
-                        </form>
-
-
-                        <form action="{{ url_for('servico') }}" method="post">
-                            <div class="form-row col-9">
-
-                                <button type="submit" class="btn btn-primary butaozinho">Cadastrar servico</button>
-
-                            </div>
-                            <div>
-
                             </div>
                         </form>
                     </div>
@@ -180,4 +120,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default CadastroDeServicos;
