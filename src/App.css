@@ -1,3 +1,5 @@
+
+
 html *{
   -webkit-font-smoothing: antialiased;
 }
@@ -622,7 +624,11 @@ input[type=text]:placeholder, input[type=text]:placeholder {
   color: #040505 !important;
 }
 
-.nav-link :hover{
+.dropdown-menu:hover{
+  color: #c35e00 !important;
+}
+
+.dropdown-menu{
   color: #c35e00 !important;
 }
 

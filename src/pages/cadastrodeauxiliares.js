@@ -18,7 +18,7 @@ function App() {
                                     <div class="avatar">
                                     </div>
                                     <div class="name">
-                                        <h3 class="titleservices">Materiais</h3>
+                                        <h3 class="titleservices">Auxiliares</h3>
                                     </div>
                                 </div>
                             </div>
@@ -30,13 +30,6 @@ function App() {
                     <div class="form-row col-9">
                         <div class="col-4">
                             <input type="number" class="form-control" name="preco" id="preco" placeholder="Preço" />
-                        </div>
-                        <div class="dropdown show col-4">
-                            <div class="dropdown show col-4">
-                                <select class="form-control form-control-lg">
-                                    <option>Fornecedor</option>
-                                </select>
-                            </div>
                         </div>
                         <div class="col-4">
                             <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />

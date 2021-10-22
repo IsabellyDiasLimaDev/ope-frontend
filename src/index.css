@@ -243,7 +243,7 @@ img.rounded {
 
 /*###############################################################Botao#################################################################*/
 
-.btn-primary.custom-file-control:before, .btn.btn-primary{
+.btn-primary.custom-file-control:before, .btn.btn-primary, .dropdown-menu{
     color:#ff5700;
     background-color: rgb(247, 247, 247);
     box-shadow: 2px 3px #88888867;
@@ -251,14 +251,14 @@ img.rounded {
 }
 
 
-.btn-primary:hover, .custom-file-control:before, .btn.btn-primary:hover{
+.btn-primary:hover, .custom-file-control:before, .btn.btn-primary:hover, .dropdown-menu:hover{
     color: #FFF;
-    background-color: #ff5700;
+    background-color: #ff5700 !important;
 }
 
-.btn-primary:active,.custom-file-control:active, .btn.btn-primary:active{
+.btn-primary:active,.custom-file-control:active, .btn.btn-primary:active, .dropdown-menu:active{
     color: #FFF;
-    background-color: #c04000;
+    background-color: #c04000 !important;
 }
 
 

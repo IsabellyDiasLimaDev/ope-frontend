@@ -111,7 +111,6 @@ class App extends Component {
                                 </div>
 
                                 <button type="submit" class="btn btn-primary butaum">Adicionar Material</button>
-                                
                             </div>
                             <div>
                             </div>
