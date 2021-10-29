@@ -1,5 +1,19 @@
 
 
+*{
+  margin: 0;
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+
 html *{
   -webkit-font-smoothing: antialiased;
 }
