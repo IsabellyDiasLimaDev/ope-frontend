@@ -10,23 +10,11 @@ function App() {
 
 
             <div class="main main-raised">
-                <div class="profile-content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6 ml-auto mr-auto">
-                                <div class="profile">
-                                    <div class="avatar">
-                                    </div>
-                                    <div class="name">
-                                        <h3 class="titleservices">Prestadores</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="name">
+                    <h3 class="titleservices">Prestadores</h3>
                 </div>
 
-                <form action="{{ url_for() }}" method="post">
+                <form class="formu" action="{{ url_for() }}" method="post">
                     <div class="form-row col-9">
                         <div class="col-4">
                             <input type="number" class="form-control" name="preco" id="preco" placeholder="Preço" />

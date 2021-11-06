@@ -10,41 +10,35 @@ function App() {
 
 
             <div class="main main-raised">
-                <div class="profile-content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6 ml-auto mr-auto">
-                                <div class="profile">
-                                    <div class="avatar">
-                                    </div>
-                                    <div class="name">
-                                        <h3 class="titleservices">Materiais</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+                <div class="profile">
+                    <div class="avatar">
+                    </div>
+                    <div class="name">
+                        <h3 class="titleservices">Materiais</h3>
                     </div>
                 </div>
 
-                <form action="{{ url_for() }}" method="post">
-                    <div class="form-row col-9">
+
+                <form class="formu" action="{{ url_for() }}" method="post">
+                    <div class="form-row formu col-9">
                         <div class="col-4">
                             <input type="number" class="form-control" name="preco" id="preco" placeholder="Preço" />
                         </div>
-                        <div class="dropdown show col-4">
-                            <div class="dropdown show col-4">
+                        <div class="dropdown formu col-2">
+                            <div class="dropdown  col-10">
                                 <select class="form-control form-control-lg">
                                     <option>Fornecedor</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 formu">
                             <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 ">
                             <input type="text" class="form-control" name="tipo" id="tipo" placeholder="Tipo" />
                         </div>
-                        <button type="submit" class="btn btn-primary">Adicionar Material</button>
+                        <button type="submit formu" class="btn btn-primary">Adicionar Material</button>
                     </div>
 
                     <div>

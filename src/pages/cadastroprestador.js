@@ -63,7 +63,7 @@ class App extends Component {
     }
 
 
-        
+
 
     render() {
         let materiais = this.state.materiais;
@@ -74,18 +74,8 @@ class App extends Component {
                 <PageHeader />
                 <div class="main main-raised">
                     <div class="profile-content">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-7 ml-auto mr-auto">
-                                    <div class="profile">
-                                        <div class="avatar">
-                                        </div>
-                                        <div class="name">
-                                            <h3 class="titleservices">Cadastro de Serviços </h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="name">
+                            <h3 class="titleservices">Cadastro de Serviços </h3>
                         </div>
 
 
@@ -116,8 +106,8 @@ class App extends Component {
                             </div>
                         </form>
 
-                        
-            
+
+
 
                         <ul classname="list-group">
                             {materiais}

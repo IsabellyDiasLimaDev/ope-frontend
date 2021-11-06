@@ -63,7 +63,7 @@ class App extends Component {
     }
 
 
-        
+
 
     render() {
         let materiais = this.state.materiais;
@@ -74,23 +74,13 @@ class App extends Component {
                 <PageHeader />
                 <div class="main main-raised">
                     <div class="profile-content">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-7 ml-auto mr-auto">
-                                    <div class="profile">
-                                        <div class="avatar">
-                                        </div>
-                                        <div class="name">
-                                            <h3 class="titleservices">Cadastro de Serviços </h3>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="name">
+                                <h3 class="titleservices">Cadastro de Serviços </h3>
                             </div>
-                        </div>
 
 
-                        <form onSubmit={this.adicionarMaterial.bind(this)} method="post">
-                            <div class="form-row col-12">
+                        <form class="formu" onSubmit={this.adicionarMaterial.bind(this)} method="post">
+                            <div class="form-row  col-5">
                                 <div class="col-4">
                                     <input onChange={this.handleChange} type="text" class="form-control" name="preco" id="preco" placeholder="Preço" />
                                 </div>
@@ -110,23 +100,23 @@ class App extends Component {
                                     <input onChange={this.handleChange} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
                                 </div>
 
-                                <button type="submit" class="btn btn-primary butaum">Adicionar Material</button>
-                                
+                                <button type="submit" class="btn btn-primary">Adicionar Material</button>
+
                             </div>
                             <div>
                             </div>
                         </form>
 
-                        
-            
+
+
 
                         <ul classname="list-group">
                             {materiais}
                         </ul>
 
 
-                        <form onSubmit={this.handleSubmit.bind(this)} method="post">
-                            <div class="form-row col-12">
+                        <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">
+                            <div class="form-row col-5">
                                 <div class="col-4">
                                     <input onChange={this.handleChange} type="text" class="form-control" name="dt_inicial" id="dt_inicial" placeholder="Data Inicial" />
                                 </div>
@@ -148,8 +138,8 @@ class App extends Component {
                             </div>
                         </form>
 
-                        <form action="{{ url_for('calcular_valor_total') }}" method="post">
-                            <div class="form-row col-12">
+                        <form class="formu" action="{{ url_for('calcular_valor_total') }}" method="post">
+                            <div class="form-row col-5">
                                 <div class="col-4">
                                     <input onChange={this.handleChange} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
                                 </div>
