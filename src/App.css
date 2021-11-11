@@ -370,7 +370,6 @@ footer p a{
 .form-row{
   margin: 100px !important;
   display: flex !important;
-  flex-wrap: nowrap !important;
   align-items: center !important;
   margin-right: -17px !important;
   margin-left: -5px;
@@ -468,33 +467,33 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   transform: scale(0.95);
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=number] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
-  padding: 15px 32px;
+  padding: 16px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 12px;
   margin: 5px;
-  width: 60%;
-  border: 2px solid #f6f6f6;
+  width: 80%;
+  border: 4px solid #f6f6f6;
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -ms-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
-  -webkit-border-radius: 5px 5px 5px 5px !important;
+  -webkit-border-radius: 6px 6px 5px 5px !important;
   border-radius: 5px 5px 5px 5px;
 }
 
-input[type=text]:focus, input[type=password]:focus {
+input[type=text]:focus, input[type=password]:focus, input[type=number]:focus {
   background-color: #fff;
   border-bottom: 2px solid #ff5700 !important;
 }
 
-input[type=text]:placeholder, input[type=text]:placeholder {
+input[type=text]:placeholder, input[type=text]:placeholder, input[type=number]:placeholder {
   color: #cccccc;
 }
 
@@ -604,8 +603,7 @@ input[type=text]:placeholder, input[type=text]:placeholder {
 }
 
 
-.butaozinho{
-  margin-left: 335px;
+.alingitens{
   margin-bottom: 100px;
 }
 
@@ -629,3 +627,4 @@ input[type=text]:placeholder, input[type=text]:placeholder {
 .formu{
   margin: 20px;
 }
+

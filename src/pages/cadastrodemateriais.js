@@ -22,7 +22,7 @@ function App() {
 
                 <form class="formu" action="{{ url_for() }}" method="post">
                     <div class="form-row formu col-9">
-                        <div class="col-4">
+                        <div class="col-2">
                             <input type="number" class="form-control" name="preco" id="preco" placeholder="Preço" />
                         </div>
                         <div class="dropdown formu col-2">
@@ -35,10 +35,12 @@ function App() {
                         <div class="col-4 formu">
                             <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
                         </div>
-                        <div class="col-4 ">
+                        <div class="col-3 ">
                             <input type="text" class="form-control" name="tipo" id="tipo" placeholder="Tipo" />
                         </div>
+                        <div class="col-2 ">
                         <button type="submit formu" class="btn btn-primary">Adicionar Material</button>
+                        </div>
                     </div>
 
                     <div>

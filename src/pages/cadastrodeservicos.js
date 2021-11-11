@@ -74,29 +74,24 @@ class App extends Component {
                 <PageHeader />
                 <div class="main main-raised">
                     <div class="profile-content">
-                            <div class="name">
-                                <h3 class="titleservices">Cadastro de Serviços </h3>
-                            </div>
+                        <div class="name">
+                            <h3 class="titleservices">Cadastro de Serviços </h3>
+                        </div>
 
 
                         <form class="formu" onSubmit={this.adicionarMaterial.bind(this)} method="post">
-                            <div class="form-row  col-5">
-                                <div class="col-4">
-                                    <input onChange={this.handleChange} type="text" class="form-control" name="preco" id="preco" placeholder="Preço" />
-                                </div>
-                                <div class="col-4">
-                                    <input onChange={this.handleChange} type="text" class="form-control" name="cor" id="cor" placeholder="Cor" />
-                                </div>
-                                <div class="col-4">
+                            <div class="form-row  col-10">
+
+                                <div class="col-3">
                                     <input onChange={this.handleChange} type="text" class="form-control" name="cor" id="tipo" placeholder="Tipo" />
                                 </div>
-                                <div class="col-4">
+                                <div class="col-3">
                                     <input onChange={this.handleChange} type="text" class="form-control" name="categoria" id="categoria" placeholder="Categoria" />
                                 </div>
-                                <div class="col-4">
+                                <div class="col-3">
                                     <input onChange={this.handleChange} type="text" class="form-control " name="quantidade_disponivel" id="quantidade_disponivel" placeholder="Quantidade Disponível" />
                                 </div>
-                                <div class="col-4">
+                                <div class="col-3">
                                     <input onChange={this.handleChange} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
                                 </div>
 
@@ -116,34 +111,36 @@ class App extends Component {
 
 
                         <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">
-                            <div class="form-row col-5">
-                                <div class="col-4">
+                            <div class="form-row col-10">
+                                <div class="col-3">
                                     <input onChange={this.handleChange} type="text" class="form-control" name="dt_inicial" id="dt_inicial" placeholder="Data Inicial" />
                                 </div>
-                                <div class="col-4">
+                                <div class="col-3">
                                     <input onChange={this.handleChange} type="text" class="form-control" name="auxiliares" id="auxiliares" placeholder="Auxiliares" />
                                 </div>
-                                <div class="col-4">
+                                <div class="col-2">
                                     <input onChange={this.handleChange} type="number" class="form-control numero" name="preco" id="preco" placeholder="Preço" />
                                 </div>
-                                <div class="col-4">
+                                <div class="col-3">
                                     <input onChange={this.handleChange} type="text" class="form-control" name="dt_final" id="dt_final" placeholder="Data Final" />
                                 </div>
-                                <div class="col-4">
+                                <div class="col-2">
                                     <input onChange={this.handleChange} type="text" class="form-control" name="valor_mao_de_obra" id="valor_mao_de_obra" placeholder="Valor Mão de Obra" />
                                 </div>
-                                <div class="col-4">
-                                    <input onChange={this.handleChange} type="text" class="form-control" name="valor_total" id="valor_total" placeholder="Valor Total" />
-                                </div>
+
                             </div>
                         </form>
 
                         <form class="formu" action="{{ url_for('calcular_valor_total') }}" method="post">
-                            <div class="form-row col-5">
-                                <div class="col-4">
+                            <div class="form-row col-10">
+                                <div class="col-3">
+                                    <input onChange={this.handleChange} type="text" class="form-control" name="valor_total" id="valor_total" placeholder="Valor Total" />
+                                </div>
+                                <div class="col-3">
                                     <input onChange={this.handleChange} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
                                 </div>
-                                <div class="col-4">
+
+                                <div class="col-3">
                                     <input onChange={this.handleChange} type="number" class="form-control" name="valormaodeobra" id="valormaodeobra" placeholder="VMO" />
                                 </div>
                             </div>
@@ -154,9 +151,9 @@ class App extends Component {
 
 
                         <form action="{{ url_for('servico') }}" method="post">
-                            <div class="form-row col-9">
+                            <div class="form-row col-10">
 
-                                <button type="submit" class="btn btn-primary butaozinho">Cadastrar servico</button>
+                                <button type="submit" class="btn btn-primary alingitens">Cadastrar servico</button>
 
                             </div>
                             <div>
