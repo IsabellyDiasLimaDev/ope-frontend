@@ -32,7 +32,7 @@ class cadastroDeAuxiliares extends React.Component {
             telefone: this.state.telefone,
             nome: this.state.nome,
             tipo_servico: this.state.tipo_servico,
-            disponbibilidade: true,
+            disponbibilidade: this.state.disponbibilidade === 'sim' ? true : false,
             email: this.state.email
         }
 
@@ -87,10 +87,10 @@ class cadastroDeAuxiliares extends React.Component {
                         
                         <div class="form-row dropdown col-14">
                                 <div class="dropdown col-3">
-                                    <select class="form-control form-control-lg ">
+                                    <select onChange={this.handleChange}  id="disponbibilidade" value={this.state.value} class="form-control form-control-lg ">
                                         <option>Disponibilidade</option>
-                                        <option>Sim</option>
-                                        <option>Não</option>
+                                        <option value="sim">Sim</option>
+                                        <option value="não">Não</option>
                                     </select>
                                 </div>
                             </div>
