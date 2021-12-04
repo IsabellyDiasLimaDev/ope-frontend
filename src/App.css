@@ -626,4 +626,12 @@ input[type=text]:placeholder, input[type=text]:placeholder, input[type=number]:p
 .formu{
   margin: 20px;
 }
+.dropdown{
+  text-align: center;
+  font-size: 12px;
+  margin-left: -150px;
+  align-items: center;
+
+}
+
 

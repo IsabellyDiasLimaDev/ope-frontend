@@ -63,18 +63,18 @@ class cadastroDeAuxiliares extends React.Component {
                     </div>
 
                     <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">
-                        <div class="form-row col-10">
+                        <div class="form-row col-14">
 
                             <div class="col-3">
                                 <input onChange={this.handleChange} type="text" class="form-control" name="nome" id="nome" placeholder="Nome" />
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-3">
                                 <input onChange={this.handleChange} type="text" class="form-control" name="tipo_servico" id="tipo_servico" placeholder="Tipo de serviço" />
                             </div>
 
 
-                            <div class="col-4">
+                            <div class="col-3">
                                 <input onChange={this.handleChange} type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" />
                             </div>
 
@@ -83,46 +83,25 @@ class cadastroDeAuxiliares extends React.Component {
                                 <input onChange={this.handleChange} type="text" class="form-control" name="email" id="email" placeholder="E-mail" />
                             </div>
 
-                            <div class="col-5">
-
-                                <div class="dropdown formu col-4">
-                                    <div class="dropdown  col-3">
-                                        <select class="form-control form-control-lg">
-                                            <option>Disponibilidade</option>
-                                            <option>Sim</option>
-                                            <option>Não</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-
-                            </div>
                         </div>
-
-                        <button type="submit" class="btn btn-primary">Adicionar Auxiliar</button>
-
-                    </form>
-
-                    {/* <form class="formu" action="{{ url_for() }}" method="post">
-                        <div class="form-row col-9">
-    
-                            
-    
-                            <div class="dropdown formu col-4">
-                                <div class="dropdown  col-11">
-                                    <select class="form-control form-control-lg">
+                        
+                        <div class="form-row dropdown col-14">
+                                <div class="dropdown col-3">
+                                    <select class="form-control form-control-lg ">
                                         <option>Disponibilidade</option>
                                         <option>Sim</option>
                                         <option>Não</option>
                                     </select>
                                 </div>
                             </div>
-    
-                            
-                        </div>
-    
-                    </form> */}
 
+                        <div class="form-row col-9">
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                        </div>
+
+                    </form>
+
+                   
                     <form>
                         <div class="form-row col-9">
 
