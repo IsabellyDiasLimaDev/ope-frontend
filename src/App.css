@@ -34,7 +34,7 @@ margin-left: 140px;
 .h6, h6 {
   font-size: .75rem !important;
   font-weight: 500;
-  font-family: Roboto,Helvetica,Arial,sans-serif;
+  font-family:"Century Gothic", CenturyGothic, AppleGothic, sans-serif;
   line-height: 1.5em;
   text-transform: uppercase;
 }
@@ -136,6 +136,7 @@ a .material-icons {
 }
 
 .titleservices {
+font-family: CenturyGothic, 'Century Gothic';
 font-size: 45px;
 margin-top: 20px;
 margin-bottom: 60px;
@@ -269,8 +270,6 @@ img.rounded {
 
 
 
-
-
 .btn {
 
   float: center;
@@ -378,7 +377,7 @@ footer p a{
 
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
   height: 100%;
   background-color: #0d0d0d;
 
