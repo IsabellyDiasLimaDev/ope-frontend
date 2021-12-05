@@ -20,7 +20,7 @@ export default function routes() {
             <Route path="/servicos" component={cadastrodeservicos}/>
             <Route path="/auxiliares" component={cadastrodeauxiliares}/>
             <Route path="/prestador" component={cadastrodeprestador}/>
-            <Route path="/login" component={login}/>
+            <Route path="/" exact={true} component={login}/>
         </Switch>
     );
 
