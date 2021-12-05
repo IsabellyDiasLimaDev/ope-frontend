@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
 
 *{
@@ -5,7 +6,8 @@
   border: 0;
   padding: 0;
   box-sizing: border-box;
-}
+  font-family: 'Open Sans', sans-serif;
+  }
 
 body{
   align-items: center;
@@ -136,7 +138,6 @@ a .material-icons {
 }
 
 .titleservices {
-font-family: CenturyGothic, 'Century Gothic';
 font-size: 45px;
 margin-top: 20px;
 margin-bottom: 60px;
@@ -625,13 +626,61 @@ input[type=text]:placeholder, input[type=text]:placeholder, input[type=number]:p
 
 .formu{
   margin: 20px;
+  padding-right: 50px;
 }
 .dropdown{
   text-align: center;
   font-size: 12px;
-  margin-left: -150px;
+  padding: 20px;
   align-items: center;
 
 }
 
+.moldura {
+  margin-left: 30px;
+  margin-right: 50px;
+}
 
+.moldura-log-head {
+  padding: 20px;
+  }
+
+.moldura-botao {
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.usuario-login{
+  padding: 10px;
+  font-weight: bold;
+  margin: 0px;
+  }
+
+.password-login{
+  padding: 10px;
+  font-weight: bold;
+  }
+
+input.digita-usuario {
+  box-sizing: content-box;
+  margin: 0px;
+}
+
+input.digita-password {
+  box-sizing: content-box;
+  margin: 0px;
+}
+
+
+.container-body-login{
+  background-color:white;
+}
+
+.welcome-login{
+  text-align: center;
+  font-size: x-large;
+  font-weight: bolder;
+}

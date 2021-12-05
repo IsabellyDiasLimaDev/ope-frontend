@@ -7,6 +7,7 @@ import cadastrodeprestador from '../pages/cadastrodeprestador';
 import cadastrodeempresa from '../pages/cadastrodeempresa';
 import cadastrodefornecedor from '../pages/cadastrodefornecedor';
 import cadastrocliente from '../pages/cadastrocliente'
+import login from  '../pages/login'
 
 export default function routes() {
 
@@ -19,6 +20,7 @@ export default function routes() {
             <Route path="/servicos" component={cadastrodeservicos}/>
             <Route path="/auxiliares" component={cadastrodeauxiliares}/>
             <Route path="/prestador" component={cadastrodeprestador}/>
+            <Route path="/login" component={login}/>
         </Switch>
     );
 

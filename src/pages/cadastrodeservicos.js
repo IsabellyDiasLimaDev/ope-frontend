@@ -89,10 +89,10 @@ class App extends Component {
                                     <input onChange={this.handleChange} type="text" class="form-control" name="categoria" id="categoria" placeholder="Categoria" />
                                 </div>
                                 <div class="col-3">
-                                    <input onChange={this.handleChange} type="text" class="form-control " name="quantidade_disponivel" id="quantidade_disponivel" placeholder="Quantidade Disponível" />
+                                    <input onChange={this.handleChange} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
                                 </div>
                                 <div class="col-3">
-                                    <input onChange={this.handleChange} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
+                                    <input onChange={this.handleChange} type="text" class="form-control " name="quantidade_disponivel" id="quantidade_disponivel" placeholder="Quantidade Disponível" />
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Adicionar Material</button>
@@ -113,19 +113,19 @@ class App extends Component {
                         <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">
                             <div class="form-row col-10">
                                 <div class="col-3">
-                                    <input onChange={this.handleChange} type="text" class="form-control" name="dt_inicial" id="dt_inicial" placeholder="Data Inicial" />
-                                </div>
-                                <div class="col-3">
                                     <input onChange={this.handleChange} type="text" class="form-control" name="auxiliares" id="auxiliares" placeholder="Auxiliares" />
                                 </div>
                                 <div class="col-2">
-                                    <input onChange={this.handleChange} type="number" class="form-control numero" name="preco" id="preco" placeholder="Preço" />
+                                    <input onChange={this.handleChange} type="text" class="form-control" name="valor_mao_de_obra" id="valor_mao_de_obra" placeholder="Valor Mão de Obra" />
+                                </div>
+                                <div class="col-3">
+                                    <input onChange={this.handleChange} type="text" class="form-control" name="dt_inicial" id="dt_inicial" placeholder="Data Inicial" />
                                 </div>
                                 <div class="col-3">
                                     <input onChange={this.handleChange} type="text" class="form-control" name="dt_final" id="dt_final" placeholder="Data Final" />
                                 </div>
                                 <div class="col-2">
-                                    <input onChange={this.handleChange} type="text" class="form-control" name="valor_mao_de_obra" id="valor_mao_de_obra" placeholder="Valor Mão de Obra" />
+                                    <input onChange={this.handleChange} type="number" class="form-control numero" name="preco" id="preco" placeholder="Preço" />
                                 </div>
 
                             </div>
@@ -134,18 +134,12 @@ class App extends Component {
                         <form class="formu" action="{{ url_for('calcular_valor_total') }}" method="post">
                             <div class="form-row col-10">
                                 <div class="col-3">
-                                    <input onChange={this.handleChange} type="text" class="form-control" name="valor_total" id="valor_total" placeholder="Valor Total" />
-                                </div>
-                                <div class="col-3">
                                     <input onChange={this.handleChange} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
                                 </div>
 
                                 <div class="col-3">
-                                    <input onChange={this.handleChange} type="number" class="form-control" name="valormaodeobra" id="valormaodeobra" placeholder="VMO" />
+                                    <input onChange={this.handleChange} type="text" class="form-control" name="valor_total" id="valor_total" placeholder="Valor Total" />
                                 </div>
-                            </div>
-                            <div>
-
                             </div>
                         </form>
 
@@ -153,7 +147,7 @@ class App extends Component {
                         <form action="{{ url_for('servico') }}" method="post">
                             <div class="form-row col-10">
 
-                                <button type="submit" class="btn btn-primary alingitens">Cadastrar servico</button>
+                                <button type="submit" class="btn btn-primary">Cadastrar Serviço</button>
 
                             </div>
                             <div>
