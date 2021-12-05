@@ -3,7 +3,6 @@ import '../App.css';
 import Footer from '../components/footer/Footer';
 import Navbar from '../components/navbar/navbar';
 import PageHeader from '../components/page-header/PageHeader';
-
 import axios from 'axios';
 class cadastroDeAuxiliares extends React.Component {
 
@@ -47,6 +46,8 @@ class cadastroDeAuxiliares extends React.Component {
 
     }
 
+   
+
 
     render() {
         return (
@@ -61,16 +62,17 @@ class cadastroDeAuxiliares extends React.Component {
                     <div class="name">
                         <h3 class="titleservices">Auxiliares</h3>
                     </div>
+                    
 
                     <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">
                         <div class="form-row col-14">
 
                             <div class="col-3">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="nome" id="nome" placeholder="Nome" />
+                                <input onChange={this.handleChange} type="text" class="form-control" name="nome" id="nome" placeholder="Nome" required/>
                             </div>
 
                             <div class="col-3">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="tipo_servico" id="tipo_servico" placeholder="Tipo de serviço" />
+                                <input onChange={this.handleChange} type="text" class="form-control" name="tipo_servico" id="tipo_servico" placeholder="Tipo de serviço" required/>
                             </div>
 
 
@@ -80,7 +82,7 @@ class cadastroDeAuxiliares extends React.Component {
 
 
                             <div class="col-3">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="email" id="email" placeholder="E-mail" />
+                                <input onChange={this.handleChange} type="text" class="form-control" name="email" id="email" placeholder="E-mail" required/>
                             </div>
 
                         </div>
