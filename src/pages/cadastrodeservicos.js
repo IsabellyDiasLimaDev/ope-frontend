@@ -17,7 +17,7 @@ const apiClient = axios.create({
 });
 
 
-class App extends Component {
+class CadastroDeServico extends Component {
 
     constructor(props) {
         super(props);
@@ -162,4 +162,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default CadastroDeServico;

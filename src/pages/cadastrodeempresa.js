@@ -20,7 +20,7 @@ function App() {
                     <div class="form-row col-21">
 
                         <div class="col-20">
-                            <input type="text" class="form-control" name="email" id="auxnome" placeholder="E-mail" />
+                            <input type="text" class="form-control" name="Endereco" id="auxnome" placeholder="Endereço" />
                         </div>
 
                         <div class="col-20">
