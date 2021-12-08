@@ -17,6 +17,7 @@ class cadastroDemateriais extends React.Component {
             categoria: '',
             tipo: '',
             cor: '',
+            fornecedores: []
         }
 
     }
@@ -36,7 +37,7 @@ class cadastroDemateriais extends React.Component {
             quantidade_disponivel: this.state.quantidade_disponivel,
             categoria: this.state.categoria,
             cor: this.state.cor,
-            
+
         }
 
         axios({
@@ -50,8 +51,39 @@ class cadastroDemateriais extends React.Component {
 
     }
 
+    adicionarFornecedor = e => {
+
+    }
+
+    renderTable() {
+        const fornecedores = this.getFornecedor()
+        console.log(typeof(fornecedores))
+        // fornecedores.map((fornecedor, index) => {
+        //     const { id, nome, email, telefone } = fornecedor
+        //     console.log(fornecedor)
+        //     // return (
+        //     //     <tr key={id}>
+        //     //         <td>{nome}</td>
+        //     //     </tr>
+        //     // )
+        // })
+    }
+
+
+    async getFornecedor() {
+        try {
+            const response = await axios.get('http://localhost:8081/fornecedores');
+            console.log(response.data)
+            return response.data
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     render() {
+
+
+
         return (
             <section>
                 <Navbar />
@@ -105,16 +137,14 @@ class cadastroDemateriais extends React.Component {
                             <button type="submit" class="btn btn-primary">Cadastrar Materiais</button>
                         </div>
 
-{/*                        <div>
-                            <ul>
-                                <li>preco</li>
-                                <li>descricao</li>
-                                <li>tipo</li>
-                            </ul>
-                        </div> */}
+                        {/* <table id='students'>
+                            <tbody>
+                                {this.renderTable()}
+                            </tbody>
+                        </table> */}
 
                     </form>
-
+                    <button onClick={this.renderTable()}>teste</button>
                 </div>
 
                 <Footer />
