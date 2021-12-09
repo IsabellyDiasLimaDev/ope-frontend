@@ -21,6 +21,7 @@ class cadastroDemateriais extends React.Component {
             fornecedoresRender: []
         }
         this.getFornecedor = this.getFornecedor.bind(this)
+        this.adicionarFornecedor = this.adicionarFornecedor.bind(this)
 
     }
 
@@ -39,6 +40,7 @@ class cadastroDemateriais extends React.Component {
             quantidade_disponivel: this.state.quantidade_disponivel,
             categoria: this.state.categoria,
             cor: this.state.cor,
+            fornecedores: this.state.fornecedores
 
         }
 
@@ -51,6 +53,12 @@ class cadastroDemateriais extends React.Component {
         })
 
 
+    }
+
+    adicionarFornecedor(fornecedor)  {
+        this.setState(prevState => ({
+            fornecedores: [...prevState.fornecedores, fornecedor]
+        }));
     }
 
     async getFornecedor() {
@@ -68,10 +76,6 @@ class cadastroDemateriais extends React.Component {
     async componentDidMount() {
         this.getFornecedor()
     }
-
-    // async componentDidUpdate(){
-    //     this.renderTable()
-    // }
 
 
     render() {
@@ -144,12 +148,14 @@ class cadastroDemateriais extends React.Component {
                         <tbody>
                             {this.state.fornecedoresRender.map((fornecedor, index) => {
                                 const { id, nome, email, telefone } = fornecedor
+                                console.log(fornecedor)
                                 return (
                                     <tr key={id}>
                                         <td>{id}</td>
                                         <td>{nome}</td>
                                         <td>{telefone}</td>
                                         <td>{email}</td>
+                                        <td><button onClick={this.adicionarFornecedor.bind(this, fornecedor)}>Adicionar</button></td>
                                     </tr>
                                 )
                             })}
