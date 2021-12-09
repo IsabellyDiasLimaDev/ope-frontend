@@ -25,7 +25,7 @@ class Login extends React.Component {
         e.preventDefault();
 
         if (this.state.usuario === 'admin' && this.state.senha === '1234') {
-            this.props.history.push('/servicos')
+            this.props.history.push('/inicio')
         }
         else{
             alert('Usuário e/ou Senha incorretos, tente novamente.')

@@ -17,8 +17,10 @@ class cadastroDemateriais extends React.Component {
             categoria: '',
             tipo: '',
             cor: '',
-            fornecedores: []
+            fornecedores: [],
+            fornecedoresRender: []
         }
+        this.getFornecedor = this.getFornecedor.bind(this)
 
     }
 
@@ -51,34 +53,26 @@ class cadastroDemateriais extends React.Component {
 
     }
 
-    adicionarFornecedor = e => {
-
-    }
-
-    renderTable() {
-        const fornecedores = this.getFornecedor()
-        console.log(typeof(fornecedores))
-        // fornecedores.map((fornecedor, index) => {
-        //     const { id, nome, email, telefone } = fornecedor
-        //     console.log(fornecedor)
-        //     // return (
-        //     //     <tr key={id}>
-        //     //         <td>{nome}</td>
-        //     //     </tr>
-        //     // )
-        // })
-    }
-
-
     async getFornecedor() {
         try {
-            const response = await axios.get('http://localhost:8081/fornecedores');
-            console.log(response.data)
-            return response.data
+            await axios.get('http://localhost:8081/fornecedores').then((response) => {
+                console.log("teste", response.data)
+                this.setState({ fornecedoresRender: response.data })
+            });
+
         } catch (error) {
             console.error(error);
         }
     }
+
+    async componentDidMount() {
+        this.getFornecedor()
+    }
+
+    // async componentDidUpdate(){
+    //     this.renderTable()
+    // }
+
 
     render() {
 
@@ -137,14 +131,30 @@ class cadastroDemateriais extends React.Component {
                             <button type="submit" class="btn btn-primary">Cadastrar Materiais</button>
                         </div>
 
-                        {/* <table id='students'>
-                            <tbody>
-                                {this.renderTable()}
-                            </tbody>
-                        </table> */}
-
                     </form>
-                    <button onClick={this.renderTable()}>teste</button>
+                    <table className="table col-9">
+                        <thead>
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">nome</th>
+                                <th scope="col">telefone</th>
+                                <th scope="col">email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.state.fornecedoresRender.map((fornecedor, index) => {
+                                const { id, nome, email, telefone } = fornecedor
+                                return (
+                                    <tr key={id}>
+                                        <td>{id}</td>
+                                        <td>{nome}</td>
+                                        <td>{telefone}</td>
+                                        <td>{email}</td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
                 </div>
 
                 <Footer />
