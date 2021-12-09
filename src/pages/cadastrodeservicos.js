@@ -132,7 +132,7 @@ class CadastroDeServico extends Component {
                         </form>
 
                         <form class="formu" action="{{ url_for('calcular_valor_total') }}" method="post">
-                            <div class="form-row col-10">
+                            <div class="form-row col-11">
                                 <div class="col-3">
                                     <input onChange={this.handleChange} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
                                 </div>

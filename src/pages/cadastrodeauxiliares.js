@@ -87,8 +87,8 @@ class cadastroDeAuxiliares extends React.Component {
 
                         </div>
 
-                        <div class="form-row dropdown col-14">
-                            <div class="dropdown col-4">
+                        <div class="form-row dropdown col-10">
+                            <div class="dropdown col-5">
                                 <select onChange={this.handleChange} id="disponbibilidade" value={this.state.value} class="form-control form-control-lg ">
                                     <option>Disponibilidade</option>
                                     <option value="sim">Sim</option>
