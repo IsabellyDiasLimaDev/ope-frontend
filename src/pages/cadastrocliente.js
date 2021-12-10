@@ -32,6 +32,8 @@ class cadastroDeClientes extends React.Component {
 
     handleSubmit = async e => {
 
+        e.preventDefault()
+
         let cliente = {
             tipo_cliente: this.state.tipo_cliente,
             email: this.state.email,
