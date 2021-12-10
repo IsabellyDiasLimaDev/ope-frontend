@@ -44,6 +44,7 @@ class ListarOrcamento extends Component {
                     <div class="profile-content">
                         <div class="name">
                             <h3 class="titleservices">Orçamentos </h3>
+                            <button href="/orcamento" ><i class="material-icons">keyboard_return</i></button>
                         </div>
 
                         <table className="table col-9">
