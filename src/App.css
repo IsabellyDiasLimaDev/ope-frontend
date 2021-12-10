@@ -249,7 +249,7 @@ img.rounded {
 
 /*############################################################### Botao #################################################################*/
 
-.btn-primary.custom-file-control:before, .btn.btn-primary{
+.btn-primary.custom-file-control:before, .btn.btn-primary, .button{
   color:#ff5700 ;
   background-color: rgb(247, 247, 247);
   box-shadow: 2px 3px #88888867;
@@ -259,13 +259,13 @@ img.rounded {
 }
 
 
-.btn-primary:hover, .custom-file-control:before, .btn.btn-primary:hover{
+.btn-primary:hover, .custom-file-control:before, .btn.btn-primary:hover, .button:hover{
   color: #FFF;
   background-color: #ff5700 ;
   border-color: #ff55006c;
 }
 
-.btn-primary:active,.custom-file-control:active, .btn.btn-primary:active{
+.btn-primary:active,.custom-file-control:active, .btn.btn-primary:active, .button:active{
   color: #FFF;
   background-color: #c04000;
 }
@@ -303,7 +303,7 @@ img.rounded {
   line-height: 41px;
 }
 
-.btn.btn-just-icon fa{
+.btn.btn-just-icon{
   margin-top: 0;
   position: absolute;
   width: 100%;
@@ -456,11 +456,11 @@ input[type=number]{
 
 
 
-input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover, button:hover{
   background-color: #c54403 !important;
 }
 
-input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+input[type=button]:active, input[type=submit]:active, input[type=reset]:active, button:active  {
   -moz-transform: scale(0.95);
   -webkit-transform: scale(0.95);
   -o-transform: scale(0.95);
@@ -468,7 +468,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   transform: scale(0.95);
 }
 
-input[type=text], input[type=password], input[type=number] {
+input[type=text], input[type=password], input[type=number], button{
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
@@ -718,7 +718,7 @@ li{
 }
 
 .avatar{
-  margin-left: 550px;
+  margin-left: 540px;
   width: 230px;
 }
 
@@ -726,4 +726,22 @@ li{
   width: auto !important;
 }
 
+
+#quantidade_material{
+  width: 165px !important;
+}
+
+.table{
+  margin: 10px !important;
+  background-color: rgba(37, 37, 37, 0.034) !important;
+  margin-left: 0px !important;
+  border-color: rgba(37, 37, 37, 0.219) ;
+  text-align: center;
+  
+}
+
+.butao{
+  max-width: 60px !important;
+  float: center;
+}
 

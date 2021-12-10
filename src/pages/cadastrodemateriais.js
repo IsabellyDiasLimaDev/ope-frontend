@@ -64,7 +64,6 @@ class cadastroDemateriais extends React.Component {
     async getFornecedor() {
         try {
             await axios.get('http://localhost:8081/fornecedores').then((response) => {
-                console.log("teste", response.data)
                 this.setState({ fornecedoresRender: response.data })
             });
 
