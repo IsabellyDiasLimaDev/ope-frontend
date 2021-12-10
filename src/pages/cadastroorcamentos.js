@@ -14,10 +14,9 @@ class CadastroDeOrcamento extends Component {
         this.state = {   
             observacoes: '',
             valor_total: 0,
-            cliente_id: '',
             servicosRender: [],
             clientesRender: [],
-            clientes: [],
+            cliente: {},
             servicos: []
         }
 
@@ -31,42 +30,39 @@ class CadastroDeOrcamento extends Component {
 
 
     handleSubmit = async e => {
-        e.preventDefault();
 
-        const data = new FormData();
-    }
-
-    adicionarOrcamento = async e => {
-        e.preventDefault();
+        e.preventDefault()
 
         let orcamento = {
-            preco: this.state.preco,
             observacoes: this.state.observacoes,
             valor_total:this.state.valor_total,
-            cliente_id: this.state.cliente_id
-    
+            cliente: this.state.cliente,
+            servicos: this.state.servicos
         }
 
-        this.setState({ orcamento: this.state.orcamento.push(orcamento) })
-
-        console.log(this.state.orcamento)
+        axios({
+            method: 'post',
+            url: 'http://localhost:8081/orcamentos',
+            data: orcamento
+        }).then(function (response) {
+            console.log(response.data)
+        })
     }
 
     adicionarCliente(cliente)  {
-        this.setState(prevState => ({
-            clientes: [...prevState.clientes, cliente]
-        }));
+        this.setState({cliente: cliente});
     }
 
-    adicionarServico(servico)  {
+    adicionarServico(servico, valor_total)  {
         this.setState(prevState => ({
             servicos: [...prevState.servicos, servico]
         }));
+        this.setState({valor_total: this.state.valor_total + parseInt(valor_total)})
     }
 
     async getServico() {
         try {
-            await axios.get('http://localhost:8081/servicos').then((response) => {
+            await axios.get('http://localhost:8081/servicos/semmaterial').then((response) => {
                 this.setState({ servicosRender: response.data })
             });
 
@@ -112,19 +108,21 @@ class CadastroDeOrcamento extends Component {
                                     <th scope="col">Data Inicial</th>
                                     <th scope="col">Data Final</th>
                                     <th scope="col">Descrição</th>
+                                    <th scope="col">valor total</th>
  
                                 </tr>
                             </thead>
                             <tbody>
                                 {this.state.servicosRender.map((servico, index) => {
-                                    const { valor_mao_de_obra, data_inicial, data_final, descricao } = servico
+                                    const { valor_mao_de_obra, data_inicial, data_final, descricao, valor_total, materiais } = servico
                                     return (
                                         <tr key={index}>
                                             <td>{valor_mao_de_obra}</td>
                                             <td>{data_final}</td>
                                             <td>{data_inicial}</td>
                                             <td>{descricao}</td>
-                                            <td><button type="submit" class="btn btn-primary butao" onClick={this.adicionarServico.bind(this)}><i class="material-icons">add_circle</i></button></td>
+                                            <td>{valor_total}</td>
+                                            <td><button type="submit" class="btn btn-primary butao" onClick={this.adicionarServico.bind(this, servico, valor_total)}><i class="material-icons">add_circle</i></button></td>
                                         </tr>
                                     )
                                 })}
@@ -136,7 +134,6 @@ class CadastroDeOrcamento extends Component {
                                 <tr>
                                     <th scope="col">Nome</th>
                                     <th scope="col">E-mail</th>
-                                    <th scope="col">Endereço</th>
                                     <th scope="col">Tipo de Cliente</th>
                                     <th scope="col">CPF/CNPJ</th>
                                     <th scope="col">Telefone</th>
@@ -144,14 +141,15 @@ class CadastroDeOrcamento extends Component {
                             </thead>
                             <tbody>
                                 {this.state.clientesRender.map((cliente, index) => {
-                                    const { nome, email, tipo_cliente, cpf_cnpj } = cliente
+                                    const { nome, email, tipo_cliente, cpf_cnpj, telefone } = cliente
                                     return (
                                         <tr key={index}>
                                             <td>{nome}</td>
                                             <td>{email}</td>
                                             <td>{tipo_cliente}</td>
                                             <td>{cpf_cnpj}</td>
-                                            <td><button type="submit" class="btn btn-primary butao" onClick={this.adicionarcliente.bind(this, cliente)}><i class="material-icons">add_circle</i></button></td>
+                                            <td>{telefone}</td>
+                                            <td><button type="submit" class="btn btn-primary butao" onClick={this.adicionarCliente.bind(this, cliente)}><i class="material-icons">add_circle</i></button></td>
                                         </tr>
                                     )
                                 })}
@@ -166,11 +164,11 @@ class CadastroDeOrcamento extends Component {
                                 <h5 class="col-2"> Valor total:   </h5>
 
                                 <div class="col-6">
-                                    <input readOnly type="text" class="form-control" name="nome" id="preco" placeholder="Valor Total" />
+                                    <input readOnly value={this.state.valor_total} type="text" class="form-control" name="nome" id="preco" placeholder="Valor Total" />
                                 </div>
 
                             <div class="col-6">
-                                <input type="text" class="form-control" name="observacoes" id="observacoes" placeholder="Observações" />
+                                <input type="text" onChange={this.handleChange} class="form-control" name="observacoes" id="observacoes" placeholder="Observações" />
                             </div>
                             </div>
 
