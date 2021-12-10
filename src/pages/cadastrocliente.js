@@ -13,9 +13,14 @@ class cadastroDeClientes extends React.Component {
             tipo_cliente: '',
             email: '',
             nome: '',
-            endereco_id: '',
             cpf_cnpj: '',
-            telefone: ''
+            telefone: '',
+            logradouro: '',
+            numero: '',
+            cep: '',
+            bairro: '',
+            cidade: '',
+            estado: ''
         }
 
     }
@@ -26,15 +31,21 @@ class cadastroDeClientes extends React.Component {
     }
 
     handleSubmit = async e => {
-        e.preventDefault();
 
         let cliente = {
             tipo_cliente: this.state.tipo_cliente,
             email: this.state.email,
             nome: this.state.nome,
-            endereco_id: this.state.endereco_id,
             cpf_cnpj: this.state.cpf_cnpj,
-            telefone: this.state.telefone
+            telefone: this.state.telefone,
+            endereco: {
+                logradouro: this.state.logradouro,
+                numero: this.state.numero,
+                cep: this.state.cep,
+                bairro: this.state.bairro,
+                cidade: this.state.cidade,
+                estado: this.state.estado
+            }
         }
 
         axios({
@@ -68,20 +79,46 @@ class cadastroDeClientes extends React.Component {
                             <div class="col-3">
                                 <input onChange={this.handleChange} type="text" class="form-control" name="nome" id="nome" placeholder="Nome" />
                             </div>
-                            <div class="col-4">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="email" id="email" placeholder="E-mail" />
+
+                            <div class="form-row dropdown col-10">
+                                <div class="dropdown col-5">
+                                    <select onChange={this.handleChange} id="tipo_cliente" value={this.state.value} class="form-control form-control-lg ">
+                                        <option>Tipo Pessoa</option>
+                                        <option value="F">Física</option>
+                                        <option value="J">Jurídica</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="col-4">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="endereco_id" id="endereco_id" placeholder="Endereço" />
-                            </div>
-                            <div class="col-3">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="tipo_cliente" id="tipo_cliente" placeholder="Tipo de Cliente" />
-                            </div>
+
                             <div class="col-3">
                                 <input onChange={this.handleChange} type="text" class="form-control" name="cpf_cnpj" id="cpf_cnpj" placeholder="CPF/CNPJ" />
                             </div>
                             <div class="col-3">
+                                <input onChange={this.handleChange} type="text" class="form-control" name="email" id="email" placeholder="E-mail" />
+                            </div>
+                            <div class="col-3">
                                 <input onChange={this.handleChange} type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" />
+                            </div>
+                        </div>
+
+                        <div class="form-row col-21">
+                            <div class="col-20">
+                                <input onChange={this.handleChange} type="text" class="form-control" name="logradouro" id="logradouro" placeholder="Logradouro" />
+                            </div>
+                            <div class="col-20">
+                                <input onChange={this.handleChange} type="text" class="form-control" name="numero" id="numero" placeholder="Número" />
+                            </div>
+                            <div class="col-20">
+                                <input onChange={this.handleChange} type="text" class="form-control" name="cep" id="cep" placeholder="CEP" />
+                            </div>
+                            <div class="col-20">
+                                <input onChange={this.handleChange} type="text" class="form-control" name="bairro" id="bairro" placeholder="Bairro" />
+                            </div>
+                            <div class="col-20">
+                                <input onChange={this.handleChange} type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade" />
+                            </div>
+                            <div class="col-20">
+                                <input onChange={this.handleChange} type="text" class="form-control" name="estado" id="estado" placeholder="Estado" />
                             </div>
                         </div>
 

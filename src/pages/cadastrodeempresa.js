@@ -10,7 +10,12 @@ class cadastroDeEmpresa extends React.Component {
         super(props);
         this.state = {
             nome_fantasia: '',
-            endereco_id: ''
+            logradouro: '',
+            numero: '',
+            cep: '',
+            bairro: '',
+            cidade: '',
+            estado: ''
         }
 
     }
@@ -21,11 +26,17 @@ class cadastroDeEmpresa extends React.Component {
     }
 
     handleSubmit = async e => {
-        e.preventDefault();
 
         let empresa = {
             nome_fantasia: this.state.nome_fantasia,
-            endereco_id: this.state.endereco_id
+            endereco: {
+                logradouro: this.state.logradouro,
+                numero: this.state.numero,
+                cep: this.state.cep,
+                bairro: this.state.bairro,
+                cidade: this.state.cidade,
+                estado: this.state.estado
+            }
         }
 
         axios({
@@ -57,12 +68,29 @@ class cadastroDeEmpresa extends React.Component {
                             <div class="col-20">
                                 <input onChange={this.handleChange} type="text" class="form-control" name="nome_fantasia" id="nome_fantasia" placeholder="Nome Fantasia" />
                             </div>
+                        </div>
+                        <div class="form-row col-21">
                             <div class="col-20">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="endereco_id" id="endereco_id" placeholder="Endereço" />
+                                <input onChange={this.handleChange} type="text" class="form-control" name="logradouro" id="logradouro" placeholder="Logradouro" />
+                            </div>
+                            <div class="col-20">
+                                <input onChange={this.handleChange} type="text" class="form-control" name="numero" id="numero" placeholder="Número" />
+                            </div>
+                            <div class="col-20">
+                                <input onChange={this.handleChange} type="text" class="form-control" name="cep" id="cep" placeholder="CEP" />
+                            </div>
+                            <div class="col-20">
+                                <input onChange={this.handleChange} type="text" class="form-control" name="bairro" id="bairro" placeholder="Bairro" />
+                            </div>
+                            <div class="col-20">
+                                <input onChange={this.handleChange} type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade" />
+                            </div>
+                            <div class="col-20">
+                                <input onChange={this.handleChange} type="text" class="form-control" name="estado" id="estado" placeholder="Estado" />
                             </div>
                         </div>
 
-                        <div class="form-row col-9">
+                        <div class="form-row col-11">
                             <button type="submit" class="btn btn-primary">Cadastrar Empresa</button>
                         </div>
 
