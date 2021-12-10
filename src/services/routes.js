@@ -6,9 +6,11 @@ import cadastrodeauxiliares from '../pages/cadastrodeauxiliares';
 import cadastroorcamentos from '../pages/cadastroorcamentos';
 import cadastrodeempresa from '../pages/cadastrodeempresa';
 import cadastrodefornecedor from '../pages/cadastrodefornecedor';
-import cadastrocliente from '../pages/cadastrocliente'
-import login from  '../pages/login'
-import telainicial from  '../pages/telainicial'
+import cadastrocliente from '../pages/cadastrocliente';
+import menuorcamento from '../pages/menuorcamento';
+import ListarOrcamento from "../pages/listarorcamento";
+import login from  '../pages/login';
+import telainicial from  '../pages/telainicial';
 
 
 export default function routes() {
@@ -21,7 +23,9 @@ export default function routes() {
             <Route path="/materiais" component={cadastrodemateriais}/>
             <Route path="/servicos" component={cadastrodeservicos}/>
             <Route path="/auxiliares" component={cadastrodeauxiliares}/>
-            <Route path="/orcamento" component={cadastroorcamentos}/>
+            <Route path="/cadastroorcamento" component={cadastroorcamentos}/>
+            <Route path="/listarorcamento" component={ListarOrcamento}/>
+            <Route path="/orcamento" component={menuorcamento}/>
             <Route path="/" exact={true} component={login}/>
             <Route path="/inicio" component={telainicial}/>
 

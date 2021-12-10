@@ -73,10 +73,15 @@ class CadastroDeServico extends Component {
         this.setState({ valor_total: this.state.valor_total + (preco * this.state.quantidade_material) })
     }
 
-    adicionarAuxiliar(auxiliar) {
-        this.setState(prevState => ({
-            auxiliares: [...prevState.auxiliares, auxiliar]
-        }));
+    adicionarAuxiliar(auxiliar, disponibilidade) {
+        if(disponibilidade){
+            this.setState(prevState => ({
+                auxiliares: [...prevState.auxiliares, auxiliar]
+            }));
+        }else{
+            alert('Auxiliar não está disponível')
+        }
+        
     }
 
     async getMateriais() {
@@ -168,7 +173,7 @@ class CadastroDeServico extends Component {
                                             <td>{email}</td>
                                             <td>{tipo_servico}</td>
                                             <td>{disponibilidade === true ? 'sim' : 'não'}</td>
-                                            <td><button type="submit" class="btn btn-primary butao" onClick={this.adicionarAuxiliar.bind(this, auxiliar)}><i class="material-icons">add_circle</i></button></td>
+                                            <td><button type="submit" class="btn btn-primary butao" onClick={this.adicionarAuxiliar.bind(this, auxiliar, disponibilidade)}><i class="material-icons">add_circle</i></button></td>
                                         </tr>
                                     )
                                 })}

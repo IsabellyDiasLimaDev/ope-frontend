@@ -15,7 +15,10 @@ class CadastroDeOrcamento extends Component {
             observacoes: '',
             valor_total: 0,
             cliente_id: '',
-            servicosRender: []
+            servicosRender: [],
+            clientesRender: [],
+            clientes: [],
+            servicos: []
         }
 
 
@@ -49,6 +52,18 @@ class CadastroDeOrcamento extends Component {
         console.log(this.state.orcamento)
     }
 
+    adicionarCliente(cliente)  {
+        this.setState(prevState => ({
+            clientes: [...prevState.clientes, cliente]
+        }));
+    }
+
+    adicionarServico(servico)  {
+        this.setState(prevState => ({
+            servicos: [...prevState.servicos, servico]
+        }));
+    }
+
     async getServico() {
         try {
             await axios.get('http://localhost:8081/servicos').then((response) => {
@@ -59,9 +74,22 @@ class CadastroDeOrcamento extends Component {
             console.error(error);
         }
     }
+    async getCliente() {
+        try {
+            await axios.get('http://localhost:8081/clientes').then((response) => {
+                this.setState({ clientesRender: response.data })
+            });
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
 
-
+    async componentDidMount() {
+        this.getCliente()
+        this.getServico()
+    }
 
 
     render() {
@@ -87,6 +115,20 @@ class CadastroDeOrcamento extends Component {
  
                                 </tr>
                             </thead>
+                            <tbody>
+                                {this.state.servicosRender.map((servico, index) => {
+                                    const { valor_mao_de_obra, data_inicial, data_final, descricao } = servico
+                                    return (
+                                        <tr key={index}>
+                                            <td>{valor_mao_de_obra}</td>
+                                            <td>{data_final}</td>
+                                            <td>{data_inicial}</td>
+                                            <td>{descricao}</td>
+                                            <td><button type="submit" class="btn btn-primary butao" onClick={this.adicionarServico.bind(this)}><i class="material-icons">add_circle</i></button></td>
+                                        </tr>
+                                    )
+                                })}
+                            </tbody>
                             </table>
 
                             <table className="table col-9">
@@ -100,6 +142,20 @@ class CadastroDeOrcamento extends Component {
                                     <th scope="col">Telefone</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                {this.state.clientesRender.map((cliente, index) => {
+                                    const { nome, email, tipo_cliente, cpf_cnpj } = cliente
+                                    return (
+                                        <tr key={index}>
+                                            <td>{nome}</td>
+                                            <td>{email}</td>
+                                            <td>{tipo_cliente}</td>
+                                            <td>{cpf_cnpj}</td>
+                                            <td><button type="submit" class="btn btn-primary butao" onClick={this.adicionarcliente.bind(this, cliente)}><i class="material-icons">add_circle</i></button></td>
+                                        </tr>
+                                    )
+                                })}
+                            </tbody>
                             </table>
 
                         <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">
