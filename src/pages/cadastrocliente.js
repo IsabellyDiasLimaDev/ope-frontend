@@ -76,20 +76,10 @@ class cadastroDeClientes extends React.Component {
                     </div>
 
                     <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">
-                        <div class="form-row col-9">
+                        <div class="form-row col-12">
 
                             <div class="col-3">
                                 <input onChange={this.handleChange} type="text" class="form-control" name="nome" id="nome" placeholder="Nome" />
-                            </div>
-
-                            <div class="form-row dropdown col-10">
-                                <div class="dropdown col-5">
-                                    <select onChange={this.handleChange} id="tipo_cliente" value={this.state.value} class="form-control form-control-lg ">
-                                        <option>Tipo Pessoa</option>
-                                        <option value="F">Física</option>
-                                        <option value="J">Jurídica</option>
-                                    </select>
-                                </div>
                             </div>
 
                             <div class="col-3">
@@ -102,6 +92,16 @@ class cadastroDeClientes extends React.Component {
                                 <input onChange={this.handleChange} type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" />
                             </div>
                         </div>
+
+                        <div class="form-row dropdown ">
+                                <div class="dropdown col-3">
+                                    <select onChange={this.handleChange} id="tipo_cliente" value={this.state.value} class="form-control form-control-lg ">
+                                        <option>Tipo Pessoa</option>
+                                        <option value="F">Física</option>
+                                        <option value="J">Jurídica</option>
+                                    </select>
+                                </div>
+                            </div>
 
                         <div class="form-row col-21">
                             <div class="col-20">
@@ -124,8 +124,8 @@ class cadastroDeClientes extends React.Component {
                             </div>
                         </div>
 
-                        <div class="form-row col-9">
-                            <button type="submit" class="btn btn-primary">Cadastrar cliente</button>
+                        <div class="form-row col-12">
+                            <button type="submit" class="clear btn btn-primary">Cadastrar</button>
 
                         </div>
 

@@ -61,27 +61,32 @@ class CadastroDeServico extends Component {
         })
     }
 
-    adicionarMaterial(material, preco) {
-
-        let material_servico = {
-            material: material,
-            quantidade_material: this.state.quantidade_material
+    adicionarMaterial(material, preco, quantidade_disponivel) {
+        if (this.state.quantidade_material <= quantidade_disponivel) {
+            let material_servico = {
+                material: material,
+                quantidade_material: this.state.quantidade_material
+            }
+            this.setState(prevState => ({
+                material_servico: [...prevState.material_servico, material_servico]
+            }));
+            this.setState({ valor_total: this.state.valor_total + (preco * this.state.quantidade_material) })
         }
-        this.setState(prevState => ({
-            material_servico: [...prevState.material_servico, material_servico]
-        }));
-        this.setState({ valor_total: this.state.valor_total + (preco * this.state.quantidade_material) })
+        else {
+            alert("Quantidade selecionada é maior que a disponível")
+        }
+
     }
 
     adicionarAuxiliar(auxiliar, disponibilidade) {
-        if(disponibilidade){
+        if (disponibilidade) {
             this.setState(prevState => ({
                 auxiliares: [...prevState.auxiliares, auxiliar]
             }));
-        }else{
+        } else {
             alert('Auxiliar não está disponível')
         }
-        
+
     }
 
     async getMateriais() {
@@ -143,15 +148,15 @@ class CadastroDeServico extends Component {
                                 </div>
                             </div>
                             <div class="form-row col-14">
-                        
-                            <button type="submit" class="btn btn-primary">Cadastrar  <i class="material-icons">add_task</i></button>
+
+                                <button type="submit" class="btn btn-primary">Cadastrar  <i class="material-icons">add_task</i></button>
+                                <button onClick={this.handleChangeValor} type="submit" class="btn btn-primary">Atualizar valor <i class="material-icons">autorenew</i></button>
                             </div>
+                           
+        
                         </form>
 
-                        <div class="col-4">
-                                    <button onClick={this.handleChangeValor} type="submit" class="btn btn-primary">Atualizar valor <i class="material-icons">autorenew</i></button>
 
-                                </div>
 
                         <table className="table col-9">
                             <thead>
@@ -206,7 +211,7 @@ class CadastroDeServico extends Component {
                                             <td>{descricao}</td>
                                             <td>{cor}</td>
                                             <td><input onChange={this.handleChange} type="text" class="form-control" name="quantidade_material " id="quantidade_material" placeholder="quantidade" /></td>
-                                            <td><button type="submit" class="btn btn-primary butao" onClick={this.adicionarMaterial.bind(this, material, preco)}><i class="material-icons">add_circle</i></button></td>
+                                            <td><button type="submit" class="btn btn-primary butao" onClick={this.adicionarMaterial.bind(this, material, preco, quantidade_disponivel)}><i class="material-icons">add_circle</i></button></td>
                                         </tr>
                                     )
                                 })}
@@ -223,7 +228,7 @@ class CadastroDeServico extends Component {
                         <form action="{{ url_for('servico') }}" method="post">
                             <div class="form-row col-10">
 
-                                
+
 
                             </div>
                             <div>

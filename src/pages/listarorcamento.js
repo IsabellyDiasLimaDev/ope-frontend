@@ -11,7 +11,7 @@ class ListarOrcamento extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {   
+        this.state = {
             orcamentosRender: []
         }
 
@@ -34,8 +34,8 @@ class ListarOrcamento extends Component {
     }
 
     render() {
-        
-        
+
+
         return (
             <section>
                 <Navbar />
@@ -43,8 +43,10 @@ class ListarOrcamento extends Component {
                 <div class="main main-raised">
                     <div class="profile-content">
                         <div class="name">
+                            <a class="button butaobn col-12" href="/orcamento" role="tab" data-toggle="tab">
+                                <i class="material-icons">keyboard_return</i>
+                            </a>
                             <h3 class="titleservices">Orçamentos </h3>
-                            <button href="/orcamento" ><i class="material-icons">keyboard_return</i></button>
                         </div>
 
                         <table className="table col-9">
@@ -53,24 +55,23 @@ class ListarOrcamento extends Component {
                                     <th scope="col">id</th>
                                     <th scope="col">observacoes</th>
                                     <th scope="col">valor total</th>
-                                    <th scope="col">Descrição</th>
- 
+
                                 </tr>
                             </thead>
                             <tbody>
-                            {this.state.orcamentosRender.map((orcamento, index) => {
-                                const { id, observacoes, valor_total } = orcamento
-                                console.log(orcamento)
-                                return (
-                                    <tr key={id}>
-                                        <td>{id}</td>
-                                        <td>{observacoes}</td>
-                                        <td>{valor_total}</td>
-                                    </tr>
-                                )
-                            })}
-                        </tbody>
-                            </table>
+                                {this.state.orcamentosRender.map((orcamento, index) => {
+                                    const { id, observacoes, valor_total } = orcamento
+                                    console.log(orcamento)
+                                    return (
+                                        <tr class="form " key={id}>
+                                            <td>{id}</td>
+                                            <td>{observacoes}</td>
+                                            <td>{valor_total}</td>
+                                        </tr>
+                                    )
+                                })}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <Footer />

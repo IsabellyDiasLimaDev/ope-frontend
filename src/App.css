@@ -754,3 +754,12 @@ li{
 
   margin-bottom: 150px !important;
 }
+
+.form{
+  width: 1000px !important;
+}
+
+.clear{
+  width: 500px !important;
+  
+}

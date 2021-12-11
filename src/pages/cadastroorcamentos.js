@@ -11,7 +11,7 @@ class CadastroDeOrcamento extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {   
+        this.state = {
             observacoes: '',
             valor_total: 0,
             servicosRender: [],
@@ -35,7 +35,7 @@ class CadastroDeOrcamento extends Component {
 
         let orcamento = {
             observacoes: this.state.observacoes,
-            valor_total:this.state.valor_total,
+            valor_total: this.state.valor_total,
             cliente: this.state.cliente,
             servicos: this.state.servicos
         }
@@ -49,15 +49,15 @@ class CadastroDeOrcamento extends Component {
         })
     }
 
-    adicionarCliente(cliente)  {
-        this.setState({cliente: cliente});
+    adicionarCliente(cliente) {
+        this.setState({ cliente: cliente });
     }
 
-    adicionarServico(servico, valor_total)  {
+    adicionarServico(servico, valor_total) {
         this.setState(prevState => ({
             servicos: [...prevState.servicos, servico]
         }));
-        this.setState({valor_total: this.state.valor_total + parseInt(valor_total)})
+        this.setState({ valor_total: this.state.valor_total + parseInt(valor_total) })
     }
 
     async getServico() {
@@ -89,8 +89,8 @@ class CadastroDeOrcamento extends Component {
 
 
     render() {
-        
-        
+
+
         return (
             <section>
                 <Navbar />
@@ -98,6 +98,9 @@ class CadastroDeOrcamento extends Component {
                 <div class="main main-raised">
                     <div class="profile-content">
                         <div class="name">
+                            <a class="button butaobn col-12" href="/orcamento" role="tab" data-toggle="tab">
+                                <i class="material-icons">keyboard_return</i>
+                            </a>
                             <h3 class="titleservices">Orçamentos </h3>
                         </div>
 
@@ -109,7 +112,7 @@ class CadastroDeOrcamento extends Component {
                                     <th scope="col">Data Final</th>
                                     <th scope="col">Descrição</th>
                                     <th scope="col">valor total</th>
- 
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -127,9 +130,9 @@ class CadastroDeOrcamento extends Component {
                                     )
                                 })}
                             </tbody>
-                            </table>
+                        </table>
 
-                            <table className="table col-9">
+                        <table className="table col-9">
                             <thead>
                                 <tr>
                                     <th scope="col">Nome</th>
@@ -154,10 +157,10 @@ class CadastroDeOrcamento extends Component {
                                     )
                                 })}
                             </tbody>
-                            </table>
+                        </table>
 
                         <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">
-                        
+
 
 
                             <div class="form-row col-16">
@@ -167,13 +170,13 @@ class CadastroDeOrcamento extends Component {
                                     <input readOnly value={this.state.valor_total} type="text" class="form-control" name="nome" id="preco" placeholder="Valor Total" />
                                 </div>
 
-                            <div class="col-6">
-                                <input type="text" onChange={this.handleChange} class="form-control" name="observacoes" id="observacoes" placeholder="Observações" />
-                            </div>
+                                <div class="col-6">
+                                    <input type="text" onChange={this.handleChange} class="form-control" name="observacoes" id="observacoes" placeholder="Observações" />
+                                </div>
                             </div>
 
                             <div class="form-row col-10">
-                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                                <button type="submit" class="btn btn-primary">Cadastrar</button>
                             </div>
 
 
