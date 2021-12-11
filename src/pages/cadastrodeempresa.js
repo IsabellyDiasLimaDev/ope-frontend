@@ -26,6 +26,7 @@ class cadastroDeEmpresa extends React.Component {
     }
 
     handleSubmit = async e => {
+        e.preventDefault();
 
         let empresa = {
             nome_fantasia: this.state.nome_fantasia,
