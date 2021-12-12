@@ -46,7 +46,7 @@ class cadastroDemateriais extends React.Component {
 
         axios({
             method: 'post',
-            url: 'http://localhost:8081/materiais',
+            url: 'https://gerenciador-orcamento-backend.herokuapp.com/materiais',
             data: materiais
         }).then(function (response) {
             console.log(response.data)
@@ -63,7 +63,7 @@ class cadastroDemateriais extends React.Component {
 
     async getFornecedor() {
         try {
-            await axios.get('http://localhost:8081/fornecedores').then((response) => {
+            await axios.get('https://gerenciador-orcamento-backend.herokuapp.com/fornecedores').then((response) => {
                 this.setState({ fornecedoresRender: response.data })
             });
 

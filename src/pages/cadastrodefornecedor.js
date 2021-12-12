@@ -32,7 +32,7 @@ export default class CadastroDeFornecedor extends Component {
 
         axios({
             method: 'post',
-            url: 'http://localhost:8081/fornecedores',
+            url: 'https://gerenciador-orcamento-backend.herokuapp.com/fornecedores',
             data: fornecedor
         }).then(function (response) {
             console.log(response.data)

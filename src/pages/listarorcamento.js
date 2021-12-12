@@ -20,7 +20,7 @@ class ListarOrcamento extends Component {
 
     async getOrcamento() {
         try {
-            await axios.get('http://localhost:8081/orcamentos').then((response) => {
+            await axios.get('https://gerenciador-orcamento-backend.herokuapp.com/orcamentos').then((response) => {
                 this.setState({ orcamentosRender: response.data })
             });
 

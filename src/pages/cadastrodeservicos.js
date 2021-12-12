@@ -54,7 +54,7 @@ class CadastroDeServico extends Component {
 
         axios({
             method: 'post',
-            url: 'http://localhost:8081/servicos',
+            url: 'https://gerenciador-orcamento-backend.herokuapp.com/servicos',
             data: servico
         }).then(function (response) {
             console.log(response.data)
@@ -91,7 +91,7 @@ class CadastroDeServico extends Component {
 
     async getMateriais() {
         try {
-            await axios.get('http://localhost:8081/materiais').then((response) => {
+            await axios.get('https://gerenciador-orcamento-backend.herokuapp.com/materiais').then((response) => {
                 this.setState({ materiaisRender: response.data })
             });
 
@@ -101,7 +101,7 @@ class CadastroDeServico extends Component {
     }
     async getAuxiliares() {
         try {
-            await axios.get('http://localhost:8081/auxiliares').then((response) => {
+            await axios.get('https://gerenciador-orcamento-backend.herokuapp.com/auxiliares').then((response) => {
                 this.setState({ auxiliaresRender: response.data })
             });
 

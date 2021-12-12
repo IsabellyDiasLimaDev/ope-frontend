@@ -13,7 +13,7 @@ class cadastroDeAuxiliares extends React.Component {
             telefone: '',
             nome: '',
             tipo_servico: '',
-            disponbibilidade: '',
+            disponibilidade: '',
             email: ''
         }
 
@@ -31,13 +31,13 @@ class cadastroDeAuxiliares extends React.Component {
             telefone: this.state.telefone,
             nome: this.state.nome,
             tipo_servico: this.state.tipo_servico,
-            disponbibilidade: this.state.disponbibilidade === 'sim' ? true : false,
+            disponibilidade: this.state.disponibilidade === 'sim' ? true : false,
             email: this.state.email
         }
 
         axios({
             method: 'post',
-            url: 'http://localhost:8081/auxiliares',
+            url: 'https://gerenciador-orcamento-backend.herokuapp.com/auxiliares',
             data: auxiliar
         }).then(function (response) {
             console.log(response.data)
@@ -89,7 +89,7 @@ class cadastroDeAuxiliares extends React.Component {
 
                         <div class="form-row dropdown col-10">
                             <div class="dropdown col-5">
-                                <select onChange={this.handleChange} id="disponbibilidade" value={this.state.value} class="form-control form-control-lg ">
+                                <select onChange={this.handleChange} id="disponibilidade" value={this.state.value} class="form-control form-control-lg ">
                                     <option>Disponibilidade</option>
                                     <option value="sim">Sim</option>
                                     <option value="não">Não</option>

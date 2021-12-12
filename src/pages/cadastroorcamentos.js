@@ -42,7 +42,7 @@ class CadastroDeOrcamento extends Component {
 
         axios({
             method: 'post',
-            url: 'http://localhost:8081/orcamentos',
+            url: 'https://gerenciador-orcamento-backend.herokuapp.com/orcamentos',
             data: orcamento
         }).then(function (response) {
             console.log(response.data)
@@ -62,7 +62,7 @@ class CadastroDeOrcamento extends Component {
 
     async getServico() {
         try {
-            await axios.get('http://localhost:8081/servicos/semmaterial').then((response) => {
+            await axios.get('https://gerenciador-orcamento-backend.herokuapp.com/servicos/semmaterial').then((response) => {
                 this.setState({ servicosRender: response.data })
             });
 
@@ -72,7 +72,7 @@ class CadastroDeOrcamento extends Component {
     }
     async getCliente() {
         try {
-            await axios.get('http://localhost:8081/clientes').then((response) => {
+            await axios.get('https://gerenciador-orcamento-backend.herokuapp.com/clientes').then((response) => {
                 this.setState({ clientesRender: response.data })
             });
 

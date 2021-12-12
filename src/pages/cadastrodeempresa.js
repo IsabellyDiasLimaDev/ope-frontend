@@ -41,7 +41,7 @@ class cadastroDeEmpresa extends React.Component {
 
         axios({
             method: 'post',
-            url: 'http://localhost:8081/empresas',
+            url: 'https://gerenciador-orcamento-backend.herokuapp.com/empresas',
             data: empresa
         }).then(function (response) {
             console.log(response.data)

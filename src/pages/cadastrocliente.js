@@ -52,7 +52,7 @@ class cadastroDeClientes extends React.Component {
 
         axios({
             method: 'post',
-            url: 'http://localhost:8081/clientes',
+            url: 'https://gerenciador-orcamento-backend.herokuapp.com/clientes',
             data: cliente
         }).then(function (response) {
             console.log(response.data)
