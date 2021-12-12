@@ -1,56 +1,90 @@
+import axios from 'axios';
+import { Component } from 'react';
 import '../App.css';
 import Footer from '../components/footer/Footer';
 import Navbar from '../components/navbar/navbar';
 import PageHeader from '../components/page-header/PageHeader';
-function App() {
-    return (
-        <section>
-            <Navbar />
-            <PageHeader />
+export default class CadastroDeFornecedor extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            telefone: '',
+            nome: '',
+            email: ''
+        }
+
+    }
+
+    handleChange = e => {
+        this.setState({ [e.target.id]: e.target.value });
+        console.log(this.state)
+    }
+
+    handleSubmit = async e => {
+        e.preventDefault();
+
+        let fornecedor = {
+            telefone: this.state.telefone,
+            nome: this.state.nome,
+            email: this.state.email
+        }
+
+        axios({
+            method: 'post',
+            url: 'https://gerenciador-orcamento-backend.herokuapp.com/fornecedores',
+            data: fornecedor
+        }).then(function (response) {
+            console.log(response.data)
+        })
 
 
-            <div class="main main-raised">
-                <div class="avatar">
-                </div>
-                <div class="name">
-                    <h3 class="titleservices">Fornecedor</h3>
-                </div>
-
-                <form class="formu" action="{{ url_for() }}" method="post">
-                    <div class="form-row col-9">
-
-                        <div class="col-4">
-                            <input type="text" class="form-control" name="email" id="auxnome" placeholder="Nome" />
-                        </div>
-
-                        <div class="col-4">
-                            <input type="text" class="form-control" name="nome" id="preco" placeholder="E-mail" />
-                        </div>
-
-                        <div class="col-4">
-                            <input type="number" class="form-control" name="nome" id="preco" placeholder="Telefone" />
-                        </div>
+    }
 
 
+    render() {
+        return (
+            <section>
+                <Navbar />
+                <PageHeader />
 
+
+                <div class="main main-raised">
+                    <div class="avatar">
+                    </div>
+                    <div class="name">
+                        <h3 class="titleservices">Fornecedor</h3>
                     </div>
 
-                </form>
+                    <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">
+                        <div class="form-row col-14">
+
+                            <div class="col-3">
+                                <input onChange={this.handleChange} type="text" class="form-control" name="nome" id="nome" placeholder="Nome" />
+                            </div>
+
+                            <div class="col-3">
+                                <input onChange={this.handleChange} type="text" class="form-control" name="email" id="email" placeholder="E-mail" />
+                            </div>
+
+                            <div class="col-3">
+                                <input onChange={this.handleChange} type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" />
+                            </div>
+                        </div>
+
+                        <div class="form-row col-14">
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                        </div>
+
+                    </form>
+                </div>
 
 
 
-                <form>
-                    <div class="form-row col-9">
-                        <button type="submit" class="btn btn-primary">Cadastrar Fornecedor</button>
+                    <Footer />
+            </section >
 
-                    </div>
-                </form>
-
-            </div>
-
-            <Footer />
-        </section>
-
-    );
+        );
+    }
 }
-export default App;
+

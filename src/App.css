@@ -60,7 +60,7 @@ a .material-icons {
 }
 
 .profile-page .page-header {
-  height: 200px;
+  height: 100%;
   background-position:center;
 }
 
@@ -164,7 +164,7 @@ font-weight: 1000;
 .profile-page .description {
   margin: 1.071rem auto 0;
   max-width: 600px;
-  color: #999 !important;
+  
   font-weight: 300;
 }
 
@@ -181,6 +181,7 @@ p {
   border-radius: 3px;
   padding: 0 15px;
 }
+
 
 .nav .nav-item {
   margin: 5 2px;
@@ -248,7 +249,7 @@ img.rounded {
 
 /*############################################################### Botao #################################################################*/
 
-.btn-primary.custom-file-control:before, .btn.btn-primary{
+.btn-primary.custom-file-control:before, .btn.btn-primary, .button{
   color:#ff5700 ;
   background-color: rgb(247, 247, 247);
   box-shadow: 2px 3px #88888867;
@@ -258,13 +259,13 @@ img.rounded {
 }
 
 
-.btn-primary:hover, .custom-file-control:before, .btn.btn-primary:hover{
+.btn-primary:hover, .custom-file-control:before, .btn.btn-primary:hover, .button:hover{
   color: #FFF;
   background-color: #ff5700 ;
   border-color: #ff55006c;
 }
 
-.btn-primary:active,.custom-file-control:active, .btn.btn-primary:active{
+.btn-primary:active,.custom-file-control:active, .btn.btn-primary:active, .button:active{
   color: #FFF;
   background-color: #c04000;
 }
@@ -302,7 +303,7 @@ img.rounded {
   line-height: 41px;
 }
 
-.btn.btn-just-icon fa{
+.btn.btn-just-icon{
   margin-top: 0;
   position: absolute;
   width: 100%;
@@ -445,7 +446,7 @@ h2.active {
 }
 
 input[type=text]{
-  max-width: 230px;
+  max-width: 1000px;
 }
 
 input[type=number]{
@@ -455,11 +456,11 @@ input[type=number]{
 
 
 
-input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover, button:hover{
   background-color: #c54403 !important;
 }
 
-input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+input[type=button]:active, input[type=submit]:active, input[type=reset]:active, button:active  {
   -moz-transform: scale(0.95);
   -webkit-transform: scale(0.95);
   -o-transform: scale(0.95);
@@ -467,7 +468,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   transform: scale(0.95);
 }
 
-input[type=text], input[type=password], input[type=number] {
+input[type=text], input[type=password], input[type=number], button{
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
@@ -484,7 +485,7 @@ input[type=text], input[type=password], input[type=number] {
   -ms-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
-  -webkit-border-radius: 6px 6px 5px 5px !important;
+  -webkit-border-radius: 6px 6px 5px 5px ;
   border-radius: 5px 5px 5px 5px;
 }
 
@@ -582,7 +583,7 @@ input[type=text]:placeholder, input[type=text]:placeholder, input[type=number]:p
   width: 0;
   height: 2px;
   background-color: #ff5700 !important;
-  content: "";
+
   transition: width 0.2s;
 }
 
@@ -654,9 +655,9 @@ input[type=text]:placeholder, input[type=text]:placeholder, input[type=number]:p
 }
 
 .usuario-login{
-  padding: 10px;
-  font-weight: bold;
-  margin: 0px;
+  padding: 10px  !important;
+  font-weight: bold  !important;
+  margin: 0px  !important;
   }
 
 .password-login{
@@ -665,8 +666,8 @@ input[type=text]:placeholder, input[type=text]:placeholder, input[type=number]:p
   }
 
 input.digita-usuario {
-  box-sizing: content-box;
-  margin: 0px;
+  box-sizing: content-box !important;
+  margin: 0px !important;
 }
 
 input.digita-password {
@@ -686,7 +687,7 @@ input.digita-password {
 }
 
 ul{
-  /* background: #f1f3f4; */
+  /* background: #f1f3f4;  */
   padding: 20px;
   margin: 35px; 
   border-radius: 20px;
@@ -717,8 +718,48 @@ li{
 }
 
 .avatar{
-  margin-left: 550px;
+  margin-left: 540px;
   width: 230px;
 }
 
+.navbar-light{
+  width: auto !important;
+}
 
+
+#quantidade_material{
+  width: 165px !important;
+}
+
+.table{
+  margin: 10px !important;
+  background-color: rgba(37, 37, 37, 0.034) !important;
+  margin-left: 0px !important;
+  border-color: rgba(37, 37, 37, 0.219) ;
+  text-align: center;
+  
+}
+
+.butao{
+  max-width: 60px !important;
+  float: center;
+}
+
+.orcament{
+  margin-left: 230px !important;
+  margin-right: 350px !important;
+}
+
+.orcamente{
+
+  margin-bottom: 150px !important;
+}
+
+.form{
+  width: 1000px !important;
+}
+
+.clear{
+  width: 500px !important;
+  
+}

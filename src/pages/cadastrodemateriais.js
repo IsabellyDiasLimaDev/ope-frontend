@@ -17,7 +17,11 @@ class cadastroDemateriais extends React.Component {
             categoria: '',
             tipo: '',
             cor: '',
+            fornecedores: [],
+            fornecedoresRender: []
         }
+        this.getFornecedor = this.getFornecedor.bind(this)
+        this.adicionarFornecedor = this.adicionarFornecedor.bind(this)
 
     }
 
@@ -36,12 +40,13 @@ class cadastroDemateriais extends React.Component {
             quantidade_disponivel: this.state.quantidade_disponivel,
             categoria: this.state.categoria,
             cor: this.state.cor,
-            
+            fornecedores: this.state.fornecedores
+
         }
 
         axios({
             method: 'post',
-            url: 'http://localhost:8081/materiais',
+            url: 'https://gerenciador-orcamento-backend.herokuapp.com/materiais',
             data: materiais
         }).then(function (response) {
             console.log(response.data)
@@ -50,8 +55,32 @@ class cadastroDemateriais extends React.Component {
 
     }
 
+    adicionarFornecedor(fornecedor)  {
+        this.setState(prevState => ({
+            fornecedores: [...prevState.fornecedores, fornecedor]
+        }));
+    }
+
+    async getFornecedor() {
+        try {
+            await axios.get('https://gerenciador-orcamento-backend.herokuapp.com/fornecedores').then((response) => {
+                this.setState({ fornecedoresRender: response.data })
+            });
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    async componentDidMount() {
+        this.getFornecedor()
+    }
+
 
     render() {
+
+
+
         return (
             <section>
                 <Navbar />
@@ -105,16 +134,32 @@ class cadastroDemateriais extends React.Component {
                             <button type="submit" class="btn btn-primary">Cadastrar Materiais</button>
                         </div>
 
-{/*                        <div>
-                            <ul>
-                                <li>preco</li>
-                                <li>descricao</li>
-                                <li>tipo</li>
-                            </ul>
-                        </div> */}
-
                     </form>
-
+                    <table className="table col-9">
+                        <thead>
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">nome</th>
+                                <th scope="col">telefone</th>
+                                <th scope="col">email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.state.fornecedoresRender.map((fornecedor, index) => {
+                                const { id, nome, email, telefone } = fornecedor
+                                console.log(fornecedor)
+                                return (
+                                    <tr key={id}>
+                                        <td>{id}</td>
+                                        <td>{nome}</td>
+                                        <td>{telefone}</td>
+                                        <td>{email}</td>
+                                        <td><button onClick={this.adicionarFornecedor.bind(this, fornecedor)}>Adicionar</button></td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
                 </div>
 
                 <Footer />

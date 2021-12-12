@@ -6,30 +6,20 @@ import axios from 'axios';
 import { Component } from 'react';
 
 
-const apiClient = axios.create({
-    baseURL: 'http://localhost:5000',
-    baseURL: process.env.DATABASE_URL,
-    withCredentials: false,
-    headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-    },
-});
 
-
-class CadastroDeServico extends Component {
+class CadastroDeOrcamento extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            preco: 0,
-            cor: '',
-            tipo: '',
-            categoria: '',
-            quantidade_disponivel: 0,
-            descricao: '',
-            materiais: []
+            observacoes: '',
+            valor_total: 0,
+            servicosRender: [],
+            clientesRender: [],
+            cliente: {},
+            servicos: []
         }
+
 
     }
 
@@ -40,34 +30,67 @@ class CadastroDeServico extends Component {
 
 
     handleSubmit = async e => {
-        e.preventDefault();
 
-        const data = new FormData();
-    }
+        e.preventDefault()
 
-    adicionarMaterial = async e => {
-        e.preventDefault();
-
-        let material = {
-            preco: this.state.preco,
-            cor: this.state.cor,
-            tipo: this.state.tipo,
-            categoria: this.state.categoria,
-            quantidade_disponivel: this.state.quantidade_disponivel,
-            descricao: this.state.descricao
+        let orcamento = {
+            observacoes: this.state.observacoes,
+            valor_total: this.state.valor_total,
+            cliente: this.state.cliente,
+            servicos: this.state.servicos
         }
 
-        this.setState({ materiais: this.state.materiais.push(material) })
+        axios({
+            method: 'post',
+            url: 'https://gerenciador-orcamento-backend.herokuapp.com/orcamentos',
+            data: orcamento
+        }).then(function (response) {
+            console.log(response.data)
+        })
+    }
 
-        console.log(this.state.materiais)
+    adicionarCliente(cliente) {
+        this.setState({ cliente: cliente });
+    }
+
+    adicionarServico(servico, valor_total) {
+        this.setState(prevState => ({
+            servicos: [...prevState.servicos, servico]
+        }));
+        this.setState({ valor_total: this.state.valor_total + parseInt(valor_total) })
+    }
+
+    async getServico() {
+        try {
+            await axios.get('https://gerenciador-orcamento-backend.herokuapp.com/servicos/semmaterial').then((response) => {
+                this.setState({ servicosRender: response.data })
+            });
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    async getCliente() {
+        try {
+            await axios.get('https://gerenciador-orcamento-backend.herokuapp.com/clientes').then((response) => {
+                this.setState({ clientesRender: response.data })
+            });
+
+        } catch (error) {
+            console.error(error);
+        }
     }
 
 
+    async componentDidMount() {
+        this.getCliente()
+        this.getServico()
+    }
 
 
     render() {
-        let materiais = this.state.materiais;
-        materiais = materiais.map((material) => <li classname="list-group-item">{material.preco}</li>);
+
+
         return (
             <section>
                 <Navbar />
@@ -75,50 +98,85 @@ class CadastroDeServico extends Component {
                 <div class="main main-raised">
                     <div class="profile-content">
                         <div class="name">
+                            <a class="button butaobn col-12" href="/orcamento" role="tab" data-toggle="tab">
+                                <i class="material-icons">keyboard_return</i>
+                            </a>
                             <h3 class="titleservices">Orçamentos </h3>
                         </div>
 
+                        <table className="table col-9">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Valor Mão de Obra</th>
+                                    <th scope="col">Data Inicial</th>
+                                    <th scope="col">Data Final</th>
+                                    <th scope="col">Descrição</th>
+                                    <th scope="col">valor total</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.state.servicosRender.map((servico, index) => {
+                                    const { valor_mao_de_obra, data_inicial, data_final, descricao, valor_total, materiais } = servico
+                                    return (
+                                        <tr key={index}>
+                                            <td>{valor_mao_de_obra}</td>
+                                            <td>{data_final}</td>
+                                            <td>{data_inicial}</td>
+                                            <td>{descricao}</td>
+                                            <td>{valor_total}</td>
+                                            <td><button type="submit" class="btn btn-primary butao" onClick={this.adicionarServico.bind(this, servico, valor_total)}><i class="material-icons">add_circle</i></button></td>
+                                        </tr>
+                                    )
+                                })}
+                            </tbody>
+                        </table>
+
+                        <table className="table col-9">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">E-mail</th>
+                                    <th scope="col">Tipo de Cliente</th>
+                                    <th scope="col">CPF/CNPJ</th>
+                                    <th scope="col">Telefone</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.state.clientesRender.map((cliente, index) => {
+                                    const { nome, email, tipo_cliente, cpf_cnpj, telefone } = cliente
+                                    return (
+                                        <tr key={index}>
+                                            <td>{nome}</td>
+                                            <td>{email}</td>
+                                            <td>{tipo_cliente}</td>
+                                            <td>{cpf_cnpj}</td>
+                                            <td>{telefone}</td>
+                                            <td><button type="submit" class="btn btn-primary butao" onClick={this.adicionarCliente.bind(this, cliente)}><i class="material-icons">add_circle</i></button></td>
+                                        </tr>
+                                    )
+                                })}
+                            </tbody>
+                        </table>
+
                         <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">
 
-                            <div class="form-row dropdown col-10">
-                                <div class="dropdown col-4">
-                                    <select onChange={this.handleChange} id="disponbibilidade" value={this.state.value} class="form-control form-control-lg ">
-                                        <option>Serviços</option>
-                                        <option value="sim">Sim</option>
-                                        <option value="não">Não</option>
-                                    </select>
+
+
+                            <div class="form-row col-16">
+                                <h5 class="col-2"> Valor total:   </h5>
+
+                                <div class="col-6">
+                                    <input readOnly value={this.state.valor_total} type="text" class="form-control" name="nome" id="preco" placeholder="Valor Total" />
                                 </div>
 
-                                <button type="" class="btn btn-primary">Add</button>
-
-                                <div class="espace dropdown col-4">
-                                    <select onChange={this.handleChange} id="disponbibilidade" value={this.state.value} class="form-control form-control-lg ">
-                                        <option>Clientes</option>
-                                        <option value="sim">Sim</option>
-                                        <option value="não">Não</option>
-                                    </select>
+                                <div class="col-6">
+                                    <input type="text" onChange={this.handleChange} class="form-control" name="observacoes" id="observacoes" placeholder="Observações" />
                                 </div>
-                            </div>
-                            <ul>
-                                <li>beregudego 1</li>
-                                <li>beregudego 2</li>
-                            </ul>
-
-                            <div class="espace2">
-                                <input type="text" class="form-control" name="observacoes" id="observacoes" placeholder="Observações" />
-                            </div>
-
-                            <div class="form-row col-12">
-                                <h4> Valor total:⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</h4>
-
-                                <div class="col-4">
-                                    <input readOnly type="text" class="form-control" name="nome" id="preco" placeholder="Valor Total" />
-                                </div>
-
                             </div>
 
                             <div class="form-row col-10">
-                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                                <button type="submit" class="btn btn-primary">Cadastrar</button>
                             </div>
 
 
@@ -133,4 +191,4 @@ class CadastroDeServico extends Component {
     }
 }
 
-export default CadastroDeServico;
+export default CadastroDeOrcamento;
