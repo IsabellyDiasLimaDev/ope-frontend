@@ -35,7 +35,8 @@ export default class CadastroDeFornecedor extends Component {
             url: 'https://gerenciador-orcamento-backend.herokuapp.com/fornecedores',
             data: fornecedor
         }).then(function (response) {
-            console.log(response.data)
+            alert("Fornecedor cadastrado com sucesso!")
+            window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/inicio'
         })
 
 
