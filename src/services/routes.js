@@ -17,12 +17,12 @@ export default function routes() {
 
     return (
         <Switch>
-            <Route path="/cliente" component={cadastrocliente} />
-            <Route path="/fornecedor" component={cadastrodefornecedor}/>
-            <Route path="/empresa" component={cadastrodeempresa}/>
-            <Route path="/materiais" component={cadastrodemateriais}/>
-            <Route path="/servicos" component={cadastrodeservicos}/>
-            <Route path="/auxiliares" component={cadastrodeauxiliares}/>
+            <Route path="/cliente/:idcliente" component={cadastrocliente} />
+            <Route path="/fornecedor/:idfornecedor" component={cadastrodefornecedor}/>
+            <Route path="/empresa/:idempresa" component={cadastrodeempresa}/>
+            <Route path="/materiais/:idmaterial" component={cadastrodemateriais}/>
+            <Route path="/servicos/:idservico" component={cadastrodeservicos}/>
+            <Route path="/auxiliares/:idauxiliar" component={cadastrodeauxiliares}/>
             <Route path="/cadastroorcamento" component={cadastroorcamentos}/>
             <Route path="/listarorcamento" component={ListarOrcamento}/>
             <Route path="/orcamento" component={menuorcamento}/>

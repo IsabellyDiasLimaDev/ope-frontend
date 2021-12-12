@@ -26,6 +26,7 @@ class CadastroDeServico extends Component {
         this.adicionarAuxiliar = this.adicionarAuxiliar.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleChangeValor = this.handleChangeValor.bind(this)
+        this.editarMaterial = this.editarMaterial.bind(this)
 
     }
 
@@ -57,6 +58,8 @@ class CadastroDeServico extends Component {
             url: 'https://gerenciador-orcamento-backend.herokuapp.com/servicos',
             data: servico
         }).then(function (response) {
+            alert("Serviço cadastrado com sucesso!")
+            window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/inicio'
             console.log(response.data)
         })
     }
@@ -110,6 +113,10 @@ class CadastroDeServico extends Component {
         }
     }
 
+    editarMaterial(){
+
+    }
+
     async componentDidMount() {
         this.getMateriais()
         this.getAuxiliares()
@@ -130,23 +137,25 @@ class CadastroDeServico extends Component {
 
                         <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">
                             <div class="form-row col-12">
-                                <div class="col-2">
+                                <div class="col-3">
                                     <input onChange={this.handleChange} type="text" class="form-control" name="valor_mao_de_obra" id="valor_mao_de_obra" placeholder="Valor Mão de Obra" />
                                 </div>
-                                <div class="col-2">
+                                <div class="col-3">
                                     <input onChange={this.handleChange} type="text" class="form-control" name="dt_inicial" id="dt_inicial" placeholder="Data Inicial" />
                                 </div>
-                                <div class="col-2">
+                                <div class="col-3">
                                     <input onChange={this.handleChange} type="text" class="form-control" name="dt_final" id="dt_final" placeholder="Data Final" />
                                 </div>
-                                <div class="col-2">
+                                <div class="col-3">
                                     <input onChange={this.handleChange} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
                                 </div>
-
-                                <div class="col-2">
-                                    Valor Total: {this.state.valor_total}
-                                </div>
                             </div>
+                            <div class="form-row col-12">
+                                <h5 className='col-2'>Valor total: </h5>
+                                <div className='col-10'>
+                                <input readOnly value={this.state.valor_total} type="text" className="form-control" name="valor_total" id="valor_total" placeholder="Valor Total" />
+                                </div>
+                                </div>                        
                             <div class="form-row col-14">
 
                                 <button type="submit" class="btn btn-primary">Cadastrar  <i class="material-icons">add_task</i></button>
@@ -156,9 +165,9 @@ class CadastroDeServico extends Component {
         
                         </form>
 
+                      
 
-
-                        <table className="table col-9">
+                        <table className="table col-12">
                             <thead>
                                 <tr>
                                     <th scope="col">Nome</th>
@@ -185,7 +194,7 @@ class CadastroDeServico extends Component {
                             </tbody>
                         </table>
 
-                        <table className="table col-9">
+                        <table className="table col-12">
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
@@ -212,6 +221,7 @@ class CadastroDeServico extends Component {
                                             <td>{cor}</td>
                                             <td><input onChange={this.handleChange} type="text" class="form-control" name="quantidade_material " id="quantidade_material" placeholder="quantidade" /></td>
                                             <td><button type="submit" class="btn btn-primary butao" onClick={this.adicionarMaterial.bind(this, material, preco, quantidade_disponivel)}><i class="material-icons">add_circle</i></button></td>
+                                            <td><a class="nav-link nav-link active btn btn-primary butao" href="/materiais/{id}" role="tab" data-toggle="tab"><i class="material-icons">edit</i></a></td>
                                         </tr>
                                     )
                                 })}

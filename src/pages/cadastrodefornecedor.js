@@ -58,19 +58,17 @@ export default class CadastroDeFornecedor extends Component {
                     </div>
 
                     <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">
+
                         <div class="form-row col-14">
+                            <input onChange={this.handleChange} type="text" class="form-control" name="nome" id="nome" placeholder="Nome" />
+                        </div>
 
-                            <div class="col-3">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="nome" id="nome" placeholder="Nome" />
-                            </div>
+                        <div class="form-row col-14">
+                            <input onChange={this.handleChange} type="text" class="form-control" name="email" id="email" placeholder="E-mail" />
+                        </div>
 
-                            <div class="col-3">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="email" id="email" placeholder="E-mail" />
-                            </div>
-
-                            <div class="col-3">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" />
-                            </div>
+                        <div class="form-row col-14">
+                            <input onChange={this.handleChange} type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" />
                         </div>
 
                         <div class="form-row col-14">
@@ -82,7 +80,7 @@ export default class CadastroDeFornecedor extends Component {
 
 
 
-                    <Footer />
+                <Footer />
             </section >
 
         );

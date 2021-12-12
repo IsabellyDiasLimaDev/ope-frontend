@@ -45,6 +45,8 @@ class CadastroDeOrcamento extends Component {
             url: 'https://gerenciador-orcamento-backend.herokuapp.com/orcamentos',
             data: orcamento
         }).then(function (response) {
+            alert("Orçamento cadastrado com sucesso!")
+            window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/inicio'
             console.log(response.data)
         })
     }
@@ -163,19 +165,19 @@ class CadastroDeOrcamento extends Component {
 
 
 
-                            <div class="form-row col-16">
-                                <h5 class="col-2"> Valor total:   </h5>
+                            <div class="form-row col-12">
+                                <h5 class="col-5"> Valor total:</h5>
 
-                                <div class="col-6">
+                                <div class="col-3">
                                     <input readOnly value={this.state.valor_total} type="text" class="form-control" name="nome" id="preco" placeholder="Valor Total" />
                                 </div>
 
-                                <div class="col-6">
+                                <div class="col-3">
                                     <input type="text" onChange={this.handleChange} class="form-control" name="observacoes" id="observacoes" placeholder="Observações" />
                                 </div>
                             </div>
 
-                            <div class="form-row col-10">
+                            <div class="form-row col-12">
                                 <button type="submit" class="btn btn-primary">Cadastrar</button>
                             </div>
 

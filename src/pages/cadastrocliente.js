@@ -22,6 +22,7 @@ class cadastroDeClientes extends React.Component {
             cidade: '',
             estado: ''
         }
+        this.getCliente = this.getCliente.bind(this)
 
     }
 
@@ -40,28 +41,91 @@ class cadastroDeClientes extends React.Component {
             nome: this.state.nome,
             cpf_cnpj: this.state.cpf_cnpj,
             telefone: this.state.telefone,
-            endereco: {
-                logradouro: this.state.logradouro,
-                numero: this.state.numero,
-                cep: this.state.cep,
-                bairro: this.state.bairro,
-                cidade: this.state.cidade,
-                estado: this.state.estado
-            }
+            logradouro: this.state.logradouro,
+            numero: this.state.numero,
+            cep: this.state.cep,
+            bairro: this.state.bairro,
+            cidade: this.state.cidade,
+            estado: this.state.estado
         }
 
-        axios({
-            method: 'post',
-            url: 'https://gerenciador-orcamento-backend.herokuapp.com/clientes',
-            data: cliente
-        }).then(function (response) {
-            console.log(response.data)
-        })
+        const idCliente = this.state === null ? "novo" : this.props.match.params.idcliente;
+        if (idCliente === "novo") {
+            axios({
+                method: 'post',
+                url: 'https://gerenciador-orcamento-backend.herokuapp.com/clientes',
+                data: cliente
+            }).then(function (response) {
+                alert("Cliente cadastrado com sucesso!")
+                window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/inicio'
+                console.log(response.data)
+            })
+        }
+        else {
+            console.log(idCliente)
+            cliente["id"] = parseInt(idCliente)
+            console.log(cliente)
+            axios({
+                method: 'put',
+                url: 'https://gerenciador-orcamento-backend.herokuapp.com/clientes',
+                data: cliente
+            }).then(function (response) {
+                alert("Cliente alterado com sucesso!")
+                window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/inicio'
+            })
+        }
 
 
     }
 
-    render(){
+    async getCliente() {
+        const idCliente = this.state === null ? "novo" : this.props.match.params.idcliente;
+        if (idCliente === "novo") {
+            this.setState({
+                tipo_cliente: '',
+                email: '',
+                nome: '',
+                cpf_cnpj: '',
+                telefone: '',
+                logradouro: '',
+                numero: '',
+                cep: '',
+                bairro: '',
+                cidade: '',
+                estado: '',
+            })
+        } else {
+            try {
+                await axios.get(`https://gerenciador-orcamento-backend.herokuapp.com/clientes/${idCliente}`).then((response) => {
+                    console.log("cliente", response.data)
+                    this.setState({
+                        tipo_cliente: response.data.tipo_cliente,
+                        email: response.data.email,
+                        nome: response.data.nome,
+                        cpf_cnpj: response.data.cpf_cnpj,
+                        telefone: response.data.telefone,
+                        logradouro: response.data.logradouro,
+                        numero: response.data.numero,
+                        cep: response.data.cep,
+                        bairro: response.data.bairro,
+                        cidade: response.data.cidade,
+                        estado: response.data.estado,
+                    })
+                });
+
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    }
+
+    async componentDidMount() {
+        this.getCliente()
+    }
+
+
+
+    render() {
         return (
             <section>
                 <Navbar />
@@ -79,50 +143,53 @@ class cadastroDeClientes extends React.Component {
                         <div class="form-row col-12">
 
                             <div class="col-3">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="nome" id="nome" placeholder="Nome" />
+                                <input onChange={this.handleChange} value={this.state.nome} type="text" class="form-control" name="nome" id="nome" placeholder="Nome" />
                             </div>
 
                             <div class="col-3">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="cpf_cnpj" id="cpf_cnpj" placeholder="CPF/CNPJ" />
+                                <input onChange={this.handleChange} value={this.state.cpf_cnpj} type="text" class="form-control" name="cpf_cnpj" id="cpf_cnpj" placeholder="CPF/CNPJ" />
                             </div>
                             <div class="col-3">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="email" id="email" placeholder="E-mail" />
+                                <input onChange={this.handleChange} value={this.state.email} type="text" class="form-control" name="email" id="email" placeholder="E-mail" />
                             </div>
                             <div class="col-3">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" />
+                                <input onChange={this.handleChange} value={this.state.telefone} type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" />
                             </div>
                         </div>
 
                         <div class="form-row dropdown ">
-                                <div class="dropdown col-3">
-                                    <select onChange={this.handleChange} id="tipo_cliente" value={this.state.value} class="form-control form-control-lg ">
-                                        <option>Tipo Pessoa</option>
-                                        <option value="F">Física</option>
-                                        <option value="J">Jurídica</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                        <div class="form-row col-21">
-                            <div class="col-20">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="logradouro" id="logradouro" placeholder="Logradouro" />
-                            </div>
-                            <div class="col-20">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="numero" id="numero" placeholder="Número" />
-                            </div>
-                            <div class="col-20">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="cep" id="cep" placeholder="CEP" />
-                            </div>
-                            <div class="col-20">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="bairro" id="bairro" placeholder="Bairro" />
-                            </div>
-                            <div class="col-20">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade" />
-                            </div>
-                            <div class="col-20">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="estado" id="estado" placeholder="Estado" />
+                            <div class="dropdown col-12">
+                                <select onChange={this.handleChange} id="tipo_cliente" class="form-control form-control-lg ">
+                                    <option>Tipo Pessoa</option>
+                                    <option value="F" {...(this.state.tipo_cliente === 'F' ? { selected: 'selected' } : {})}>Física</option>
+                                    <option value="J" {...(this.state.tipo_cliente === 'J' ? { selected: 'selected' } : {})}>Jurídica</option>
+                                </select>
                             </div>
                         </div>
+
+                        <div class="form-row col-12">
+                            <div class="col-3">
+                                <input onChange={this.handleChange} value={this.state.logradouro} type="text" class="form-control" name="logradouro" id="logradouro" placeholder="Logradouro" />
+                            </div>
+                            <div class="col-3">
+                                <input onChange={this.handleChange} value={this.state.numero} type="text" class="form-control" name="numero" id="numero" placeholder="Número" />
+                            </div>
+                            <div class="col-3">
+                                <input onChange={this.handleChange} value={this.state.cep} type="text" class="form-control" name="cep" id="cep" placeholder="CEP" />
+                            </div>
+                            <div class="col-3">
+                                <input onChange={this.handleChange} value={this.state.bairro} type="text" class="form-control" name="bairro" id="bairro" placeholder="Bairro" />
+                            </div>
+                        </div>
+                        <div class="form-row col-12">
+                            <div class="col-6">
+                                <input onChange={this.handleChange} value={this.state.cidade} type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade" />
+                            </div>
+                            <div class="col-6">
+                                <input onChange={this.handleChange} value={this.state.estado} type="text" class="form-control" name="estado" id="estado" placeholder="Estado" />
+                            </div>
+                        </div>
+
 
                         <div class="form-row col-12">
                             <button type="submit" class="clear btn btn-primary">Cadastrar</button>

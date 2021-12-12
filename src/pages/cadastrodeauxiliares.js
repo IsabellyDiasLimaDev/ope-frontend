@@ -40,6 +40,8 @@ class cadastroDeAuxiliares extends React.Component {
             url: 'https://gerenciador-orcamento-backend.herokuapp.com/auxiliares',
             data: auxiliar
         }).then(function (response) {
+            alert("Auxiliar cadastrado com sucesso!")
+            window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/inicio'
             console.log(response.data)
         })
 
@@ -65,7 +67,7 @@ class cadastroDeAuxiliares extends React.Component {
                     
 
                     <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">
-                        <div class="form-row col-14">
+                        <div class="form-row col-12">
 
                             <div class="col-3">
                                 <input onChange={this.handleChange} type="text" class="form-control" name="nome" id="nome" placeholder="Nome" required/>
@@ -87,8 +89,8 @@ class cadastroDeAuxiliares extends React.Component {
 
                         </div>
 
-                        <div class="form-row dropdown col-10">
-                            <div class="dropdown col-5">
+                        <div class="form-row dropdown col-12">
+                            <div class="dropdown col-6">
                                 <select onChange={this.handleChange} id="disponibilidade" value={this.state.value} class="form-control form-control-lg ">
                                     <option>Disponibilidade</option>
                                     <option value="sim">Sim</option>
@@ -97,8 +99,8 @@ class cadastroDeAuxiliares extends React.Component {
                             </div>
                         </div>
 
-                        <div class="form-row col-10">
-                            <button type="submit" class="btn btn-primary">Cadastrar Auxiliares</button>
+                        <div class="form-row col-12">
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
                         </div>
 
                     </form>
