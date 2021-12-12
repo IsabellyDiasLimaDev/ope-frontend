@@ -11,17 +11,17 @@ class cadastroDemateriais extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            descricao: '',
-            preco: '',
-            quantidade_disponivel: '',
-            categoria: '',
-            tipo: '',
-            cor: '',
+            descricao: "",
+            preco: 0,
+            quantidade_disponivel: 0,
+            tipo: "",
+            cor: "",
             fornecedores: [],
-            fornecedoresRender: []
+            fornecedoresRender: [],
         }
-        this.getFornecedor = this.getFornecedor.bind(this)
-        this.adicionarFornecedor = this.adicionarFornecedor.bind(this)
+        this.getMaterial = this.getMaterial.bind(this);
+        this.getFornecedor = this.getFornecedor.bind(this);
+        this.adicionarFornecedor = this.adicionarFornecedor.bind(this);
 
     }
 
@@ -43,19 +43,34 @@ class cadastroDemateriais extends React.Component {
             fornecedores: this.state.fornecedores
 
         }
+        const idMaterial = this.state === null ? "novo" : this.props.match.params.idmaterial;
+        if (idMaterial === "novo") {
 
-        axios({
-            method: 'post',
-            url: 'https://gerenciador-orcamento-backend.herokuapp.com/materiais',
-            data: materiais
-        }).then(function (response) {
-            console.log(response.data)
-        })
+            axios({
+                method: 'post',
+                url: 'https://gerenciador-orcamento-backend.herokuapp.com/materiais',
+                data: materiais
+            }).then(function (response) {
+                alert("Material cadastrado com sucesso!")
+                window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/inicio'
+                console.log(response.data)
+            })
 
-
+        }
+        else{
+            materiais["id"] = idMaterial
+            axios({
+                method: 'put',
+                url: 'https://gerenciador-orcamento-backend.herokuapp.com/materiais',
+                data: materiais
+            }).then(function (response) {
+                alert("Material alterado com sucesso!")
+                console.log(response.data)
+            })
+        }
     }
 
-    adicionarFornecedor(fornecedor)  {
+    adicionarFornecedor(fornecedor) {
         this.setState(prevState => ({
             fornecedores: [...prevState.fornecedores, fornecedor]
         }));
@@ -72,8 +87,40 @@ class cadastroDemateriais extends React.Component {
         }
     }
 
+    async getMaterial() {
+        const idMaterial = this.state === null ? "novo" : this.props.match.params.idMaterial;
+        if (idMaterial === "novo") {
+            this.setState({
+                descricao: "",
+                preco: 0,
+                quantidade_disponivel: 0,
+                tipo: "",
+                cor: "",
+                fornecedores: [],
+            })
+        } else {
+            try {
+                await axios.get(`https://gerenciador-orcamento-backend.herokuapp.com/materiais/${idMaterial}`).then((response) => {
+                    this.setState({
+                        descricao: response.data.descricao,
+                        preco: response.data.preco,
+                        quantidade_disponivel: response.data.quantidade_disponivel,
+                        tipo: response.data.tipo,
+                        cor: response.data.cor,
+                        fornecedores: response.data.fornecedores,
+                    })
+                });
+
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    }
+            
+
     async componentDidMount() {
         this.getFornecedor()
+        this.getMaterial()
     }
 
 
@@ -102,19 +149,19 @@ class cadastroDemateriais extends React.Component {
                         <div class="form-row formu col-14">
 
                             <div class="col-3">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="categoria" id="categoria" placeholder="Categoria" />
+                                <input onChange={this.handleChange} value={this.state.categoria} type="text" class="form-control" name="categoria" id="categoria" placeholder="Categoria" />
                             </div>
 
                             <div class="col-3">
-                                <input onChange={this.handleChange} type="number" class="form-control" name="preco" id="preco" placeholder="Preço" />
+                                <input onChange={this.handleChange} value={this.state.preco} type="number" class="form-control" name="preco" id="preco" placeholder="Preço" />
                             </div>
 
                             <div class="col-3">
-                                <input onChange={this.handleChange} type="number" class="form-control" name="quantidade_disponivel" id="quantidade_disponivel" placeholder="Quantidade" />
+                                <input onChange={this.handleChange} value={this.state.quantidade_disponivel} type="number" class="form-control" name="quantidade_disponivel" id="quantidade_disponivel" placeholder="Quantidade" />
                             </div>
 
                             <div class="col-3">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
+                                <input onChange={this.handleChange} value={this.state.descricao} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
                             </div>
 
                         </div>
@@ -122,15 +169,15 @@ class cadastroDemateriais extends React.Component {
                         <div class="form-row dropdown col-12">
 
                             <div class="col-3">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="cor" id="cor" placeholder="Cor" />
+                                <input onChange={this.handleChange} type="text" class="form-control" value={this.state.cor} name="cor" id="cor" placeholder="Cor" />
                             </div>
 
                             <div class="col-3">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="tipo" id="tipo" placeholder="Tipo" />
+                                <input onChange={this.handleChange} type="text" class="form-control" value={this.state.tipo} name="tipo" id="tipo" placeholder="Tipo" />
                             </div>
                         </div>
 
-                        <div class="form-row col-10">
+                        <div class="form-row col-14">
                             <button type="submit" class="btn btn-primary">Cadastrar Materiais</button>
                         </div>
 

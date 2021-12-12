@@ -45,12 +45,14 @@ class cadastroDeEmpresa extends React.Component {
             url: 'https://gerenciador-orcamento-backend.herokuapp.com/empresas',
             data: empresa
         }).then(function (response) {
+            alert("Emprea cadastrada com sucesso!")
+            window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/inicio'
             console.log(response.data)
         })
 
     }
 
-    render(){
+    render() {
         return (
             <section>
                 <Navbar />
@@ -64,35 +66,38 @@ class cadastroDeEmpresa extends React.Component {
                         <h3 class="titleservices">Empresa</h3>
                     </div>
 
-                    <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">
-                        <div class="form-row col-21">
-                            <div class="col-20">
+                    <form onSubmit={this.handleSubmit.bind(this)} method="post">
+                        <div class="form-row col-12">
+                            <div class="col-6">
                                 <input onChange={this.handleChange} type="text" class="form-control" name="nome_fantasia" id="nome_fantasia" placeholder="Nome Fantasia" />
                             </div>
                         </div>
-                        <div class="form-row col-21">
-                            <div class="col-20">
+                        <div class="form-row col-12">
+                            <div class="col-3">
                                 <input onChange={this.handleChange} type="text" class="form-control" name="logradouro" id="logradouro" placeholder="Logradouro" />
                             </div>
-                            <div class="col-20">
+                            <div class="col-3">
                                 <input onChange={this.handleChange} type="text" class="form-control" name="numero" id="numero" placeholder="Número" />
                             </div>
-                            <div class="col-20">
+                            <div class="col-3">
                                 <input onChange={this.handleChange} type="text" class="form-control" name="cep" id="cep" placeholder="CEP" />
                             </div>
-                            <div class="col-20">
+                            <div class="col-3">
                                 <input onChange={this.handleChange} type="text" class="form-control" name="bairro" id="bairro" placeholder="Bairro" />
                             </div>
-                            <div class="col-20">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade" />
-                            </div>
-                            <div class="col-20">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="estado" id="estado" placeholder="Estado" />
-                            </div>
                         </div>
+                            <div class="form-row col-12">
+                                <div class="col-6">
+                                    <input onChange={this.handleChange} type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade" />
+                                </div>
+                                <div class="col-6">
+                                    <input onChange={this.handleChange} type="text" class="form-control" name="estado" id="estado" placeholder="Estado" />
+                                </div>
+                            </div>
+                            
 
-                        <div class="form-row col-11">
-                            <button type="submit" class="btn btn-primary">Cadastrar Empresa</button>
+                        <div class="form-row col-12">
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
                         </div>
 
                     </form>

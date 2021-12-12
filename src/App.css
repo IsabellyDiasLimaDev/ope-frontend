@@ -90,7 +90,7 @@ a .material-icons {
 }
 
 .main-raised {
-  margin: -60px 30px 0;
+  /* margin: -60px 30px 0; */
   border-radius: 6px;
   box-shadow: 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
 }
@@ -117,11 +117,12 @@ a .material-icons {
 }
 
 .img-raised {
-  box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
+  box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 3px 0px 60px rgba(0,0,0,.2);
 }
 
 .rounded-circle {
   border-radius: 50%!important;
+  margin-top: 50px;
 }
 
 .img-fluid, .img-thumbnail {
@@ -250,23 +251,21 @@ img.rounded {
 /*############################################################### Botao #################################################################*/
 
 .btn-primary.custom-file-control:before, .btn.btn-primary, .button{
-  color:#ff5700 ;
-  background-color: rgb(247, 247, 247);
+  color:#ff5700 !important;
+  background-color: rgb(247, 247, 247) !important;
   box-shadow: 2px 3px #88888867;
-  border-color: rgba(173, 173, 173, 0.294);
-
-
+  border-color: rgba(247, 247, 247, 0.294) !important;
 }
 
 
 .btn-primary:hover, .custom-file-control:before, .btn.btn-primary:hover, .button:hover{
-  color: #FFF;
-  background-color: #ff5700 ;
+  color: #FFF !important;
+  background-color: #ff5700 !important;
   border-color: #ff55006c;
 }
 
 .btn-primary:active,.custom-file-control:active, .btn.btn-primary:active, .button:active{
-  color: #FFF;
+  color: #FFF !important;
   background-color: #c04000;
 }
 
@@ -369,11 +368,11 @@ footer p a{
 
 
 .form-row{
-  margin: 100px !important;
+  padding: 15px;
   display: flex !important;
   align-items: center !important;
-  margin-right: -17px !important;
-  margin-left: -5px;
+  /* margin-right: -17px !important; */
+  /* margin-left: -5px; */
   justify-content: center;
 }
 
@@ -381,8 +380,12 @@ footer p a{
 body {
   font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
   height: 100%;
+  width: 100%;
   background-color: #0d0d0d;
 
+}
+#root{
+  width: 100%;
 }
 
 a {
@@ -472,13 +475,12 @@ input[type=text], input[type=password], input[type=number], button{
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
-  padding: 16px 50px;
+  padding: 10px 4px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 12px;
   margin: 3px;
-  width: 80%;
   border: 4px solid #f6f6f6;
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
@@ -626,8 +628,7 @@ input[type=text]:placeholder, input[type=text]:placeholder, input[type=number]:p
 }
 
 .formu{
-  margin: 20px;
-  padding-right: 50px;
+  margin: 0px;
 }
 .dropdown{
   text-align: center;
@@ -637,10 +638,13 @@ input[type=text]:placeholder, input[type=text]:placeholder, input[type=number]:p
 
 }
 
-.moldura {
-  margin-left: 30px;
-  margin-right: 50px;
-}
+/* .moldura {
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: row;
+flex-wrap: wrap;
+} */
 
 .moldura-log-head {
   padding: 20px;
@@ -654,20 +658,10 @@ input[type=text]:placeholder, input[type=text]:placeholder, input[type=number]:p
   justify-content: center;
 }
 
-.usuario-login{
-  padding: 10px  !important;
-  font-weight: bold  !important;
-  margin: 0px  !important;
-  }
-
-.password-login{
-  padding: 10px;
-  font-weight: bold;
-  }
 
 input.digita-usuario {
-  box-sizing: content-box !important;
-  margin: 0px !important;
+  box-sizing: content-box ;
+  margin: 0px;
 }
 
 input.digita-password {
@@ -712,13 +706,8 @@ li{
   margin-top: 15px;
 }
 
-.margem{
-  margin-left: 350px !important;
-  margin-bottom: 150px;
-}
 
 .avatar{
-  margin-left: 540px;
   width: 230px;
 }
 
@@ -743,16 +732,6 @@ li{
 .butao{
   max-width: 60px !important;
   float: center;
-}
-
-.orcament{
-  margin-left: 230px !important;
-  margin-right: 350px !important;
-}
-
-.orcamente{
-
-  margin-bottom: 150px !important;
 }
 
 .form{
