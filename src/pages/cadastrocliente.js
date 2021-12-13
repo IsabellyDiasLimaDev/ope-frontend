@@ -143,8 +143,8 @@ class cadastroDeClientes extends React.Component {
                         <div class="form-row dropdown ">
                             <div class="dropdown col-2">
                             <label for="tipo_cliente">Tipo Pessoa</label>
-                                <select onChange={this.handleChange} id="tipo_cliente" class="form-control form-control-lg ">
-                                    <option>Tipo Pessoa</option>
+                                <select required onChange={this.handleChange} id="tipo_cliente" class="form-control form-control-lg ">
+                                    <option value="">Tipo Pessoa</option>
                                     <option value="F" {...(this.state.tipo_cliente === 'F' ? { selected: 'selected' } : {})}>Física</option>
                                     <option value="J" {...(this.state.tipo_cliente === 'J' ? { selected: 'selected' } : {})}>Jurídica</option>
                                 </select>

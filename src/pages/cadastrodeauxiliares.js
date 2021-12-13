@@ -116,28 +116,28 @@ class cadastroDeAuxiliares extends React.Component {
                     <div class="form-row dropdown col-12">
                         <div class="col-6">
                             <label for="nome">Nome</label>
-                                <input required onChange={this.handleChange} value={this.state.nome} type="text" class="form-control" name="nome" id="nome" placeholder="Nome" required/>
+                                <input required onChange={this.handleChange} value={this.state.nome} type="text" class="form-control" name="nome" id="nome" placeholder="Nome" />
                             </div>
                     </div>
 
                     <div class="form-row dropdown col-12">
                         <div class="col-6">
                                 <label for="tipo_servico">Tipo Serviço</label>
-                                <input required onChange={this.handleChange} value={this.state.tipo_servico} type="text" class="form-control" name="tipo_servico" id="tipo_servico" placeholder="Tipo de serviço" required/>
+                                <input required onChange={this.handleChange} value={this.state.tipo_servico} type="text" class="form-control" name="tipo_servico" id="tipo_servico" placeholder="Tipo de serviço" />
                             </div>
                     </div>
 
                     <div class="form-row dropdown col-12">
                         <div class="col-6">
                                 <label for="telefone">Telefone</label>
-                                <input required onChange={this.handleChange} value={this.state.telefone} type="text" class="form-control" name="telefone" id="telefone"  placeholder="Telefone" />
+                                <input required onChange={this.handleChange} value={this.state.telefone} type="text" class="form-control" name="telefone" id="telefone"  placeholder="Telefone"  />
                             </div>
                     </div>
 
                     <div class="form-row dropdown col-12">
                         <div class="col-6">
                                 <label for="email">E-mail</label>
-                                <input required onChange={this.handleChange} value={this.state.email} type="text" class="form-control" name="email" id="email" placeholder="E-mail" required/>
+                                <input required onChange={this.handleChange} value={this.state.email} type="text" class="form-control" name="email" id="email" placeholder="E-mail" />
                             </div>
                     </div>
 
