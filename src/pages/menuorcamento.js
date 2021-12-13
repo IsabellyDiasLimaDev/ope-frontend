@@ -23,7 +23,7 @@ class MenuOrcamento extends Component {
                         <div class="row form-row col-12">
                                     <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
                                         <li class="nav-item col-6 orcament">
-                                            <a class="nav-link nav-link active" href="/cadastroorcamento" role="tab" data-toggle="tab">
+                                            <a class="nav-link nav-link active" href="/cadastroorcamento/novo" role="tab" data-toggle="tab">
                                                 <i class="material-icons">add_box</i>
                                                 Adicionar
                                             </a>
