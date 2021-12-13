@@ -183,7 +183,7 @@ class CadastroDeOrcamento extends Component {
                             </tbody>
                         </table>
 
-                        <h5 className='form-row col-12'>Adicionar Auxiliar</h5>
+                        <h5 className='form-row col-12'>Adicionar Cliente</h5>
 
                         <table className="table col-9">
                             <thead>
