@@ -26,8 +26,8 @@ class CadastroDeServico extends Component {
         this.adicionarAuxiliar = this.adicionarAuxiliar.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleChangeValor = this.handleChangeValor.bind(this)
-        this.editarMaterial = this.editarMaterial.bind(this)
-
+        // this.editarMaterial = this.editarMaterial.bind(this)
+        this.getServico = this.getServico.bind(this)
     }
 
     handleChange = e => {
@@ -57,11 +57,11 @@ class CadastroDeServico extends Component {
         console.log(servico)
         axios({
             method: 'post',
-            url: 'https://gerenciador-orcamento-backend.herokuapp.com/servicos',
+            url: 'https://gerenciador-orcamento-backend.herokuapp.com/lisarservicos',
             data: servico
         }).then(function (response) {
             alert("Serviço cadastrado com sucesso!")
-            window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/inicio'
+            window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/listarservicos'
             console.log(response.data)
         })
     }
@@ -115,13 +115,43 @@ class CadastroDeServico extends Component {
         }
     }
 
-    editarMaterial(){
+    async getServico() {
+        const idServico = this.state === null ? "novo" : this.props.match.params.idservico;
+        if (idServico === "novo") {
+            this.setState({
+                valor_mao_de_obra: 0,
+                valor_total: 0,
+                descricao: '',
+                data_inicial: '',
+                data_final: '',
+                material_servico: [],
+                auxiliares: [],
+                quantidade_material: 0
+            })
+        } else {
+            try {
+                await axios.get(`https://gerenciador-orcamento-backend.herokuapp.com/servicos/${idServico}`).then((response) => {
+                    this.setState({
+                        valor_mao_de_obra: response.data.valor_mao_de_obra,
+                        valor_total: response.data.valor_total,
+                        descricao: response.data.descricao,
+                        data_inicial: response.data.data_inicial,
+                        data_final: response.data.data_final,
+                        material_servico: response.data.material_servico,
+                        auxiliares: response.data.auxiliares,
+                    })
+                });
 
+            } catch (error) {
+                console.error(error);
+            }
+        }
     }
 
     async componentDidMount() {
         this.getMateriais()
         this.getAuxiliares()
+        this.getServico()
     }
 
 
@@ -140,16 +170,16 @@ class CadastroDeServico extends Component {
                         <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">
                             <div class="form-row col-12">
                                 <div class="col-3">
-                                    <input required onChange={this.handleChange} type="text" class="form-control" name="valor_mao_de_obra" id="valor_mao_de_obra" placeholder="Valor Mão de Obra" />
+                                    <input required onChange={this.handleChange} value={this.state.valor_mao_de_obra} type="text" class="form-control" name="valor_mao_de_obra" id="valor_mao_de_obra" placeholder="Valor Mão de Obra" />
                                 </div>
                                 <div class="col-3">
-                                    <input required onChange={this.handleChange} type="text" class="form-control" name="data_inicial" id="data_inicial" placeholder="Data Inicial" />
+                                    <input required onChange={this.handleChange} value={this.state.data_inicial} type="text" class="form-control" name="data_inicial" id="data_inicial" placeholder="Data Inicial" />
                                 </div>
                                 <div class="col-3">
-                                    <input required onChange={this.handleChange} type="text" class="form-control" name="data_final" id="data_final" placeholder="Data Final" />
+                                    <input required onChange={this.handleChange} value={this.state.data_final} type="text" class="form-control" name="data_final" id="data_final" placeholder="Data Final" />
                                 </div>
                                 <div class="col-3">
-                                    <input required onChange={this.handleChange} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
+                                    <input required onChange={this.handleChange} value={this.state.descricao} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
                                 </div>
                             </div>
                             <div class="form-row col-12">

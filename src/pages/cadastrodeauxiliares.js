@@ -125,7 +125,7 @@ class cadastroDeAuxiliares extends React.Component {
 
 
                             <div class="col-3">
-                                <input required onChange={this.handleChange} value={this.state.telefone} type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" />
+                                <input required onChange={this.handleChange} value={this.state.telefone} type="text" class="form-control" name="telefone" id="telefone"  placeholder="Telefone" />
                             </div>
 
 
@@ -137,7 +137,7 @@ class cadastroDeAuxiliares extends React.Component {
 
                         <div class="form-row dropdown col-12">
                             <div class="dropdown col-6">
-                                <select onChange={this.handleChange} id="disponibilidade" value={this.state.value} class="form-control form-control-lg ">
+                                <select required onChange={this.handleChange} id="disponibilidade" value={this.state.value} class="form-control form-control-lg ">
                                     <option>Disponibilidade</option>
                                     <option value="Sim" {...(this.state.disponibilidade === true ? { selected: 'selected' } : {})} >Sim</option>
                                     <option value="Não" {...(this.state.disponibilidade === false ? { selected: 'selected' } : {})} >Não</option>

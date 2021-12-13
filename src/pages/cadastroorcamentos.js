@@ -52,7 +52,7 @@ class CadastroDeOrcamento extends Component {
                 data: orcamento
             }).then(function (response) {
                 alert("Orçamento cadastrado com sucesso!")
-                window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/inicio'
+                window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/listarservicos'
                 console.log(response.data)
             })
         } else {
@@ -66,7 +66,7 @@ class CadastroDeOrcamento extends Component {
                 data: orcamento
             }).then(function (response) {
                 alert("Orçamento alterado com sucesso!")
-                window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/inicio'
+                window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/listarservicos'
                 console.log(response.data)
             })
         }
