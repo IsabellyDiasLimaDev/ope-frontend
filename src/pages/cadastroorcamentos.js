@@ -216,14 +216,15 @@ class CadastroDeOrcamento extends Component {
 
 
 
-                            <div class="form-row col-12">
-                                <h5 class="col-5"> Valor total:</h5>
+                            <div class="form-row dropdown col-12">
 
                                 <div class="col-3">
-                                    <input readOnly value={this.state.valor_total} type="text" class="form-control" name="nome" id="preco" placeholder="Valor Total" />
+                                <label for="valor_total">Valor Total</label>
+                                    <input readOnly value={this.state.valor_total} type="text" class="form-control" name="valor_total" id="valor_total" placeholder="Valor Total" />
                                 </div>
 
                                 <div class="col-3">
+                                <label for="observacoes">Observações</label>
                                     <input type="text" value={this.state.observacoes} onChange={this.handleChange} class="form-control" name="observacoes" id="observacoes" placeholder="Observações" />
                                 </div>
                             </div>
