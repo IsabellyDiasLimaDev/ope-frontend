@@ -49,12 +49,12 @@ class ListarCliente extends Component {
                         <table className="table col-9">
                             <thead>
                                 <tr>
-                                    <th scope="col">id</th>
-                                    <th scope="col">nome</th>
-                                    <th scope="col">email</th>
-                                    <th scope="col">telefone</th>
-                                    <th scope="col">tipo de cliente</th>
-                                    <th scope="col">alterar</th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">E-mail</th>
+                                    <th scope="col">Telefone</th>
+                                    <th scope="col">Tipo Cliente</th>
+                                    <th scope="col">Alterar</th>
 
                                 </tr>
                             </thead>

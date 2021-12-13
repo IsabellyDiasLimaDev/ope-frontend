@@ -140,53 +140,64 @@ class cadastroDeClientes extends React.Component {
                     </div>
 
                     <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">
-                        <div class="form-row col-12">
-
-                            <div class="col-3">
-                                <input required onChange={this.handleChange} value={this.state.nome} type="text" class="form-control" name="nome" id="nome" placeholder="Nome" />
-                            </div>
-
-                            <div class="col-3">
-                                <input required onChange={this.handleChange} value={this.state.cpf_cnpj} type="text" class="form-control" name="cpf_cnpj" id="cpf_cnpj" placeholder="CPF/CNPJ" />
-                            </div>
-                            <div class="col-3">
-                                <input required onChange={this.handleChange} value={this.state.email} type="text" class="form-control" name="email" id="email" placeholder="E-mail" />
-                            </div>
-                            <div class="col-3">
-                                <input required onChange={this.handleChange} value={this.state.telefone} type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" />
-                            </div>
-                        </div>
-
                         <div class="form-row dropdown ">
-                            <div class="dropdown col-12">
-                                <select onChange={this.handleChange} id="tipo_cliente" class="form-control form-control-lg ">
-                                    <option>Tipo Pessoa</option>
+                            <div class="dropdown col-2">
+                            <label for="tipo_cliente">Tipo Pessoa</label>
+                                <select required onChange={this.handleChange} id="tipo_cliente" class="form-control form-control-lg ">
+                                    <option value="">Tipo Pessoa</option>
                                     <option value="F" {...(this.state.tipo_cliente === 'F' ? { selected: 'selected' } : {})}>Física</option>
                                     <option value="J" {...(this.state.tipo_cliente === 'J' ? { selected: 'selected' } : {})}>Jurídica</option>
                                 </select>
                             </div>
                         </div>
+                        <div class="form-row dropdown col-12">
 
-                        <div class="form-row col-12">
                             <div class="col-3">
+                            <label for="nome">Nome</label>
+                                <input required onChange={this.handleChange} value={this.state.nome} type="text" class="form-control" name="nome" id="nome" placeholder="Nome" />
+                            </div>
+
+                            <div class="col-3">
+                            <label for="cpf_cnpf">CPF/CNPJ</label>
+                                <input required onChange={this.handleChange} value={this.state.cpf_cnpj} type="text" class="form-control" name="cpf_cnpj" id="cpf_cnpj" placeholder="CPF/CNPJ" />
+                            </div>
+                            <div class="col-3">
+                            <label for="email">E-mail</label>
+                                <input required onChange={this.handleChange} value={this.state.email} type="text" class="form-control" name="email" id="email" placeholder="E-mail" />
+                            </div>
+                            <div class="col-3">
+                            <label for="telefone">Telefone</label>
+                                <input required onChange={this.handleChange} value={this.state.telefone} type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" />
+                            </div>
+                        </div>
+
+
+                        <div class="form-row dropdown col-12">
+                            <div class="col">
+                            <label for="logradouro">Logradouro</label>
                                 <input required onChange={this.handleChange} value={this.state.logradouro} type="text" class="form-control" name="logradouro" id="logradouro" placeholder="Logradouro" />
                             </div>
-                            <div class="col-3">
+                            <div class="col">
+                            <label for="numero">Número</label>
                                 <input required onChange={this.handleChange} value={this.state.numero} type="text" class="form-control" name="numero" id="numero" placeholder="Número" />
                             </div>
-                            <div class="col-3">
-                                <input required onChange={this.handleChange} value={this.state.cep} type="text" class="form-control" name="cep" id="cep" placeholder="CEP" />
-                            </div>
-                            <div class="col-3">
+                            <div class="col">
+                            <label for="bairro">Bairro</label>
                                 <input required onChange={this.handleChange} value={this.state.bairro} type="text" class="form-control" name="bairro" id="bairro" placeholder="Bairro" />
                             </div>
                         </div>
-                        <div class="form-row col-12">
-                            <div class="col-6">
+                        <div class="form-row dropdown col-12">
+                            <div class="col">
+                            <label for="cidade">Cidade</label>
                                 <input required onChange={this.handleChange} value={this.state.cidade} type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade" />
                             </div>
-                            <div class="col-6">
+                            <div class="col">
+                            <label for="estado">Estado</label>
                                 <input required onChange={this.handleChange} value={this.state.estado} type="text" class="form-control" name="estado" id="estado" placeholder="Estado" />
+                            </div>
+                            <div class="col">
+                            <label for="cep">CEP</label>
+                                <input required onChange={this.handleChange} value={this.state.cep} type="text" class="form-control" name="cep" id="cep" placeholder="CEP" />
                             </div>
                         </div>
 

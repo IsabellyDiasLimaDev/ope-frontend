@@ -168,26 +168,31 @@ class CadastroDeServico extends Component {
                         </div>
 
                         <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">
-                            <div class="form-row col-12">
-                                <div class="col-3">
+                        <div class="form-row dropdown col-12">
+                                <div class="col">
+                                <label for="valor_mao_de_obra">Valor Mão de Obra</label>
                                     <input required onChange={this.handleChange} value={this.state.valor_mao_de_obra} type="text" class="form-control" name="valor_mao_de_obra" id="valor_mao_de_obra" placeholder="Valor Mão de Obra" />
                                 </div>
-                                <div class="col-3">
+                                <div class="col">
+                                <label for="data_inicial">Data Inicial</label>
                                     <input required onChange={this.handleChange} value={this.state.data_inicial} type="text" class="form-control" name="data_inicial" id="data_inicial" placeholder="Data Inicial" />
                                 </div>
-                                <div class="col-3">
+                                <div class="col">
+                                <label for="data_final">Data Final</label>
                                     <input required onChange={this.handleChange} value={this.state.data_final} type="text" class="form-control" name="data_final" id="data_final" placeholder="Data Final" />
                                 </div>
-                                <div class="col-3">
+                                <div class="col">
+                                <label for="descricao">Descrição</label>
                                     <input required onChange={this.handleChange} value={this.state.descricao} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
                                 </div>
-                            </div>
-                            <div class="form-row col-12">
-                                <h5 className='col-2'>Valor total: </h5>
-                                <div className='col-10'>
+                                <div class="col">
+                                <label for="valor_total">Valor Total</label>
                                 <input readOnly value={this.state.valor_total} type="text" className="form-control" name="valor_total" id="valor_total" placeholder="Valor Total" />
                                 </div>
-                                </div>                        
+                            </div>
+                            <div class="form-row col-6">
+                                
+                                </div>
                             <div class="form-row col-14">
 
                                 <button type="submit" class="btn btn-primary">Cadastrar  <i class="material-icons">add_task</i></button>

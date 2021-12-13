@@ -148,43 +148,48 @@ class cadastroDemateriais extends React.Component {
 
 
                     <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">
-                        <div class="form-row formu col-12">
+                        <div class="form-row dropdown col-12">
 
                             <div class="col-3">
-                                <input required onChange={this.handleChange} value={this.state.categoria} type="text" class="form-control" name="categoria" id="categoria" placeholder="Categoria" />
+                                <label for="categoria">Categoria</label>
+                                <input onChange={this.handleChange} value={this.state.categoria} type="text" class="form-control" name="categoria" id="categoria" placeholder="Categoria" required />
                             </div>
 
                             <div class="col-3">
-                                <input required onChange={this.handleChange} value={this.state.preco} type="number" class="form-control" name="preco" id="preco" placeholder="Preço" />
+                                <label for="preco">Preço</label>
+                                <input onChange={this.handleChange} value={this.state.preco} type="number" class="form-control" name="preco" id="preco" placeholder="Preço" required />
                             </div>
 
                             <div class="col-3">
-                                <input required onChange={this.handleChange} value={this.state.quantidade_disponivel} type="number" class="form-control" name="quantidade_disponivel" id="quantidade_disponivel" placeholder="Quantidade" />
-                            </div>
-
-                            <div class="col-3">
-                                <input required onChange={this.handleChange} value={this.state.descricao} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
+                                <label for="quantidade_disponivel">Qtd Disponivel</label>
+                                <input onChange={this.handleChange} value={this.state.quantidade_disponivel} type="number" class="form-control" name="quantidade_disponivel" id="quantidade_disponivel" placeholder="Quantidade" required />
                             </div>
 
                         </div>
 
                         <div class="form-row dropdown col-12">
 
-                            <div required class="col-3">
-                                <input onChange={this.handleChange} type="text" class="form-control" value={this.state.cor} name="cor" id="cor" placeholder="Cor" />
+                            <div class="col-3">
+                                <label for="cor">Cor</label>
+                                <input onChange={this.handleChange} type="text" class="form-control" value={this.state.cor} name="cor" id="cor" placeholder="Cor" required />
                             </div>
 
-                            <div required class="col-3">
-                                <input onChange={this.handleChange} type="text" class="form-control" value={this.state.tipo} name="tipo" id="tipo" placeholder="Tipo" />
+                            <div class="col-3">
+                                <label for="tipo">Tipo</label>
+                                <input onChange={this.handleChange} type="text" class="form-control" value={this.state.tipo} name="tipo" id="tipo" placeholder="Tipo" required />
                             </div>
+                            <div class="col-3">
+                                <label for="descricao">Descrição</label>
+                                <input onChange={this.handleChange} value={this.state.descricao} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" required/>
+                            </div>
+
                         </div>
 
-                        <div required class="form-row col-12">
+                        <div class="form-row col-12">
                             <button type="submit" class="btn btn-primary">Cadastrar Materiais</button>
                         </div>
 
                     </form>
-                    <h5 className='form-row col-12'>Adicionar Empresa</h5>
                     <table className="table col-12">
                         <thead>
                             <tr>
