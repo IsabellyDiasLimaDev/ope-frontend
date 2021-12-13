@@ -3,7 +3,7 @@ import Footer from '../components/footer/Footer';
 import Navbar from '../components/navbar/navbar';
 import PageHeader from '../components/page-header/PageHeader';
 import axios from 'axios';
-import { Component, useState } from 'react';
+import { Component } from 'react';
 
 
 class CadastroDeServico extends Component {

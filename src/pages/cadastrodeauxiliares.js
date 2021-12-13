@@ -116,11 +116,11 @@ class cadastroDeAuxiliares extends React.Component {
                         <div class="form-row col-12">
 
                             <div class="col-3">
-                                <input required onChange={this.handleChange} value={this.state.nome} type="text" class="form-control" name="nome" id="nome" placeholder="Nome" required/>
+                                <input required onChange={this.handleChange} value={this.state.nome} type="text" class="form-control" name="nome" id="nome" placeholder="Nome"/>
                             </div>
 
                             <div class="col-3">
-                                <input required onChange={this.handleChange} value={this.state.tipo_servico} type="text" class="form-control" name="tipo_servico" id="tipo_servico" placeholder="Tipo de serviço" required/>
+                                <input required onChange={this.handleChange} value={this.state.tipo_servico} type="text" class="form-control" name="tipo_servico" id="tipo_servico" placeholder="Tipo de serviço"/>
                             </div>
 
 
@@ -130,7 +130,7 @@ class cadastroDeAuxiliares extends React.Component {
 
 
                             <div class="col-3">
-                                <input required onChange={this.handleChange} value={this.state.email} type="text" class="form-control" name="email" id="email" placeholder="E-mail" required/>
+                                <input required onChange={this.handleChange} value={this.state.email} type="text" class="form-control" name="email" id="email" placeholder="E-mail"/>
                             </div>
 
                         </div>

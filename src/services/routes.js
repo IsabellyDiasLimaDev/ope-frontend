@@ -7,7 +7,6 @@ import cadastroorcamentos from '../pages/cadastroorcamentos';
 import cadastrodeempresa from '../pages/cadastrodeempresa';
 import cadastrodefornecedor from '../pages/cadastrodefornecedor';
 import cadastrocliente from '../pages/cadastrocliente';
-import menuorcamento from '../pages/menuorcamento';
 import ListarOrcamento from "../pages/listarorcamento";
 import ListarFornecedor from "../pages/listarfornecedor";
 import login from  '../pages/login';

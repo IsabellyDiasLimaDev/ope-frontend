@@ -1,10 +1,9 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import '../App.css';
 import Footer from '../components/footer/Footer';
 import Navbar from '../components/navbar/navlogin';
 import PageHeader from '../components/page-header/PageHeader';
-import axios from 'axios';
 import { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 class TelaInicial extends Component {

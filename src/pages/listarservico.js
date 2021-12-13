@@ -60,7 +60,7 @@ class ListarServico extends Component {
                             </thead>
                             <tbody>
                                 {this.state.servicoRender.map((servico, index) => {
-                                    const { id, valor_mao_de_obra, data_inicial, data_final, descricao, valor_total, materiais } = servico
+                                    const { id, valor_mao_de_obra, data_inicial, data_final, descricao, valor_total } = servico
                                     console.log(servico)
                                     return (
                                         <tr class="form " key={id}>
