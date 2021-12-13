@@ -150,11 +150,10 @@ class CadastroDeOrcamento extends Component {
                 <div class="main main-raised">
                     <div class="profile-content">
                         <div class="name">
-                            <a class="button butaobn col-12" href="/orcamento" role="tab" data-toggle="tab">
-                                <i class="material-icons">keyboard_return</i>
-                            </a>
                             <h3 class="titleservices">Orçamentos </h3>
                         </div>
+
+                        <h5 className='form-row col-12'>Adicionar serviço</h5>
 
                         <table className="table col-9">
                             <thead>
@@ -169,7 +168,7 @@ class CadastroDeOrcamento extends Component {
                             </thead>
                             <tbody>
                                 {this.state.servicosRender.map((servico, index) => {
-                                    const { valor_mao_de_obra, datainicial, datafinal, descricao, valor_total, materiais } = servico
+                                    const { valor_mao_de_obra, datainicial, datafinal, descricao, valor_total } = servico
                                     return (
                                         <tr key={index}>
                                             <td>{valor_mao_de_obra}</td>
@@ -184,12 +183,14 @@ class CadastroDeOrcamento extends Component {
                             </tbody>
                         </table>
 
+                        <h5 className='form-row col-12'>Adicionar Auxiliar</h5>
+
                         <table className="table col-9">
                             <thead>
                                 <tr>
                                     <th scope="col">Nome</th>
                                     <th scope="col">E-mail</th>
-                                    <th scope="col">Tipo de Cliente</th>
+                                    <th scope="col">Tipo Cliente</th>
                                     <th scope="col">CPF/CNPJ</th>
                                     <th scope="col">Telefone</th>
                                 </tr>

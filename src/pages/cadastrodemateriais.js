@@ -169,20 +169,21 @@ class cadastroDemateriais extends React.Component {
 
                         <div class="form-row dropdown col-12">
 
-                            <div class="col-3">
+                            <div required class="col-3">
                                 <input onChange={this.handleChange} type="text" class="form-control" value={this.state.cor} name="cor" id="cor" placeholder="Cor" />
                             </div>
 
-                            <div class="col-3">
+                            <div required class="col-3">
                                 <input onChange={this.handleChange} type="text" class="form-control" value={this.state.tipo} name="tipo" id="tipo" placeholder="Tipo" />
                             </div>
                         </div>
 
-                        <div class="form-row col-12">
+                        <div required class="form-row col-12">
                             <button type="submit" class="btn btn-primary">Cadastrar Materiais</button>
                         </div>
 
                     </form>
+                    <h5 className='form-row col-12'>Adicionar Empresa</h5>
                     <table className="table col-12">
                         <thead>
                             <tr>

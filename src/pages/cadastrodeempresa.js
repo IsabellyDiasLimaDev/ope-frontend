@@ -130,38 +130,38 @@ class cadastroDeEmpresa extends React.Component {
                     <form onSubmit={this.handleSubmit.bind(this)} method="post">
                         <div class="form-row col-12">
                             <div class="col-6">
-                                <input onChange={this.handleChange} value={this.state.nome_fantasia} type="text" class="form-control" name="nome_fantasia" id="nome_fantasia" placeholder="Nome Fantasia" />
+                                <input required onChange={this.handleChange} value={this.state.nome_fantasia} type="text" class="form-control" name="nome_fantasia" id="nome_fantasia" placeholder="Nome Fantasia" />
                             </div>
                         </div>
                         <div class="form-row col-12">
                             <div class="col-3">
-                                <input onChange={this.handleChange} value={this.state.logradouro} type="text" class="form-control" name="logradouro" id="logradouro" placeholder="Logradouro" />
+                                <input required onChange={this.handleChange} value={this.state.logradouro} type="text" class="form-control" name="logradouro" id="logradouro" placeholder="Logradouro" />
                             </div>
                             <div class="col-3">
-                                <input onChange={this.handleChange} value={this.state.numero} type="text" class="form-control" name="numero" id="numero" placeholder="Número" />
+                                <input required onChange={this.handleChange} value={this.state.numero} type="text" class="form-control" name="numero" id="numero" placeholder="Número" />
                             </div>
                             <div class="col-3">
-                                <input onChange={this.handleChange} value={this.state.cep} type="text" class="form-control" name="cep" id="cep" placeholder="CEP" />
+                                <input required onChange={this.handleChange} value={this.state.cep} type="text" class="form-control" name="cep" id="cep" placeholder="CEP" />
                             </div>
                             <div class="col-3">
-                                <input onChange={this.handleChange} value={this.state.bairro} type="text" class="form-control" name="bairro" id="bairro" placeholder="Bairro" />
+                                <input required onChange={this.handleChange} value={this.state.bairro} type="text" class="form-control" name="bairro" id="bairro" placeholder="Bairro" />
                             </div>
                         </div>
                         <div class="form-row col-12">
                             <div class="col-6">
-                                <input onChange={this.handleChange} value={this.state.cidade} type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade" />
+                                <input required onChange={this.handleChange} value={this.state.cidade} type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade" />
                             </div>
                             <div class="col-6">
-                                <input onChange={this.handleChange} value={this.state.estado} type="text" class="form-control" name="estado" id="estado" placeholder="Estado" />
+                                <input required onChange={this.handleChange} value={this.state.estado} type="text" class="form-control" name="estado" id="estado" placeholder="Estado" />
                             </div>
                         </div>
 
                         <div class="form-row col-12">
                             <div class="col-6">
-                                <input onChange={this.handleChange} value={this.state.telefone} type="text" class="form-control" name="telefone" id="telefone" placeholder="Número De telefone" />
+                                <input required onChange={this.handleChange} value={this.state.telefone} type="text" class="form-control" name="telefone" id="telefone" placeholder="Número De telefone" />
                             </div>
                             <div class="col-6">
-                                <input onChange={this.handleChange} value={this.state.email} type="text" class="form-control" name="email" id="email" placeholder="E-mail" />
+                                <input required onChange={this.handleChange} value={this.state.email} type="text" class="form-control" name="email" id="email" placeholder="E-mail" />
                             </div>
                         </div>
 

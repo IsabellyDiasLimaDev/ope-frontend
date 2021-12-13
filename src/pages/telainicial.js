@@ -41,19 +41,19 @@ class TelaInicial extends Component {
                                     <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
                                     
                                         <li class="nav-item">
-                                            <a class="nav-link nav-link active" href="/materiais/novo" role="tab" data-toggle="tab">
+                                            <a class="nav-link nav-link active" href="/listarmateriais" role="tab" data-toggle="tab">
                                                 <i class="material-icons">inventory_2</i>
                                                 Materiais
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link nav-link active" href="/servicos/novo" role="tab" data-toggle="tab">
+                                            <a class="nav-link nav-link active" href="/listarservicos" role="tab" data-toggle="tab">
                                                 <i class="material-icons">home_repair_service</i>
                                                 Serviços
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link nav-link active" href="/auxiliares/novo" role="tab" data-toggle="tab">
+                                            <a class="nav-link nav-link active" href="/listarauxiliar" role="tab" data-toggle="tab">
                                                 <i class="material-icons">person</i>
                                                 Auxiliares
                                             </a>
@@ -66,7 +66,7 @@ class TelaInicial extends Component {
                                         </li>
 
                                         <li class="nav-item">
-                                            <a class="nav-link nav-link active" href="/orcamento/novo" role="tab" data-toggle="tab">
+                                            <a class="nav-link nav-link active" href="/listarorcamento" role="tab" data-toggle="tab">
                                                 <i class="material-icons">paid</i>
                                                 Orçamento
                                             </a>

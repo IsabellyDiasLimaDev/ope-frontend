@@ -43,9 +43,6 @@ class ListarCliente extends Component {
                 <div class="main main-raised">
                     <div class="profile-content">
                         <div class="name">
-                            <a class="button butaobn col-12" href="/orcamento" role="tab" data-toggle="tab">
-                                <i class="material-icons">keyboard_return</i>
-                            </a>
                             <h3 class="titleservices">Clientes </h3>
                         </div>
 
@@ -78,7 +75,11 @@ class ListarCliente extends Component {
                                 })}
                             </tbody>
                         </table>
-                        <a class="nav-link nav-link active btn btn-primary butao" href="/cadastrocliente/novo" role="tab" data-toggle="tab"><i class="material-icons">add</i></a>
+                        <div class="form-row col-12">
+                            <div class="col-5">
+                                <a class="nav-link nav-link active btn btn-primary " href="/cadastrocliente/novo" role="tab" data-toggle="tab">Adicionar<i class="material-icons">app_registration</i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <Footer />

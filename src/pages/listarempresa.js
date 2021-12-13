@@ -43,9 +43,6 @@ class ListarEmpresa extends Component {
                 <div class="main main-raised">
                     <div class="profile-content">
                         <div class="name">
-                            <a class="button butaobn col-12" href="/empresa" role="tab" data-toggle="tab">
-                                <i class="material-icons">keyboard_return</i>
-                            </a>
                             <h3 class="titleservices">Empresas</h3>
                         </div>
 
