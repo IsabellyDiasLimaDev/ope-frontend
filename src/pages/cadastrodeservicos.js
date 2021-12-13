@@ -14,8 +14,8 @@ class CadastroDeServico extends Component {
             valor_mao_de_obra: 0,
             valor_total: 0,
             descricao: '',
-            dt_inicial: '',
-            dt_final: '',
+            data_inicial: '',
+            data_final: '',
             material_servico: [],
             auxiliares: [],
             materiaisRender: [],
@@ -47,12 +47,14 @@ class CadastroDeServico extends Component {
             valor_mao_de_obra: this.state.valor_mao_de_obra,
             valor_total: this.state.valor_total,
             descricao: this.state.descricao,
-            dt_inicial: this.state.dt_inicial,
-            dt_final: this.state.dt_final,
+            data_inicial: this.state.data_inicial,
+            data_final: this.state.data_final,
             material_servico: this.state.material_servico,
             auxiliares: this.state.auxiliares
         }
 
+        servico.material_servico["servico"] = []
+        console.log(servico)
         axios({
             method: 'post',
             url: 'https://gerenciador-orcamento-backend.herokuapp.com/servicos',
@@ -138,16 +140,16 @@ class CadastroDeServico extends Component {
                         <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">
                             <div class="form-row col-12">
                                 <div class="col-3">
-                                    <input onChange={this.handleChange} type="text" class="form-control" name="valor_mao_de_obra" id="valor_mao_de_obra" placeholder="Valor Mão de Obra" />
+                                    <input required onChange={this.handleChange} type="text" class="form-control" name="valor_mao_de_obra" id="valor_mao_de_obra" placeholder="Valor Mão de Obra" />
                                 </div>
                                 <div class="col-3">
-                                    <input onChange={this.handleChange} type="text" class="form-control" name="dt_inicial" id="dt_inicial" placeholder="Data Inicial" />
+                                    <input required onChange={this.handleChange} type="text" class="form-control" name="data_inicial" id="data_inicial" placeholder="Data Inicial" />
                                 </div>
                                 <div class="col-3">
-                                    <input onChange={this.handleChange} type="text" class="form-control" name="dt_final" id="dt_final" placeholder="Data Final" />
+                                    <input required onChange={this.handleChange} type="text" class="form-control" name="data_final" id="data_final" placeholder="Data Final" />
                                 </div>
                                 <div class="col-3">
-                                    <input onChange={this.handleChange} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
+                                    <input required onChange={this.handleChange} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
                                 </div>
                             </div>
                             <div class="form-row col-12">
@@ -159,11 +161,13 @@ class CadastroDeServico extends Component {
                             <div class="form-row col-14">
 
                                 <button type="submit" class="btn btn-primary">Cadastrar  <i class="material-icons">add_task</i></button>
-                                <button onClick={this.handleChangeValor} type="submit" class="btn btn-primary">Atualizar valor <i class="material-icons">autorenew</i></button>
                             </div>
-                           
-        
                         </form>
+                        <div className='form-row col-14'>
+                        <button onClick={this.handleChangeValor} type="button" class="btn btn-primary">Atualizar valor <i class="material-icons">autorenew</i></button>
+                        </div>
+
+                        <h5 className='form-row col-12'>Adicionar Prestador</h5>
 
                       
 
@@ -187,12 +191,14 @@ class CadastroDeServico extends Component {
                                             <td>{email}</td>
                                             <td>{tipo_servico}</td>
                                             <td>{disponibilidade === true ? 'sim' : 'não'}</td>
-                                            <td><button type="submit" class="btn btn-primary butao" onClick={this.adicionarAuxiliar.bind(this, auxiliar, disponibilidade)}><i class="material-icons">add_circle</i></button></td>
+                                            <td><button class="btn btn-primary butao" onClick={this.adicionarAuxiliar.bind(this, auxiliar, disponibilidade)}><i class="material-icons">add_circle</i></button></td>
                                         </tr>
                                     )
                                 })}
                             </tbody>
                         </table>
+
+                        <h5 className='form-row col-12'>Adicionar Material</h5>
 
                         <table className="table col-12">
                             <thead>
@@ -220,7 +226,7 @@ class CadastroDeServico extends Component {
                                             <td>{descricao}</td>
                                             <td>{cor}</td>
                                             <td><input onChange={this.handleChange} type="text" class="form-control" name="quantidade_material " id="quantidade_material" placeholder="quantidade" /></td>
-                                            <td><button type="submit" class="btn btn-primary butao" onClick={this.adicionarMaterial.bind(this, material, preco, quantidade_disponivel)}><i class="material-icons">add_circle</i></button></td>
+                                            <td><button class="btn btn-primary butao" onClick={this.adicionarMaterial.bind(this, material, preco, quantidade_disponivel)}><i class="material-icons">add_circle</i></button></td>
                                             <td><a class="nav-link nav-link active btn btn-primary butao" href="/materiais/{id}" role="tab" data-toggle="tab"><i class="material-icons">edit</i></a></td>
                                         </tr>
                                     )

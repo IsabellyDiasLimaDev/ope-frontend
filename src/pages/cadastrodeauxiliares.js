@@ -31,23 +31,70 @@ class cadastroDeAuxiliares extends React.Component {
             telefone: this.state.telefone,
             nome: this.state.nome,
             tipo_servico: this.state.tipo_servico,
-            disponibilidade: this.state.disponibilidade === 'sim' ? true : false,
+            disponibilidade: this.state.disponibilidade === 'Sim' ? true : false,
             email: this.state.email
         }
-        axios({
-            method: 'post',
-            url: 'https://gerenciador-orcamento-backend.herokuapp.com/auxiliares',
-            data: auxiliar
-        }).then(function (response) {
-            alert("Auxiliar cadastrado com sucesso!")
-            window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/inicio'
-            console.log(response.data)
-        })
 
-
+        const idAuxiliar = this.state === null ? "novo" : this.props.match.params.idauxiliar;
+        if (idAuxiliar === "novo") {
+            axios({
+                method: 'post',
+                url: 'https://gerenciador-orcamento-backend.herokuapp.com/auxiliares',
+                data: auxiliar
+            }).then(function (response) {
+                alert("Auxiliar cadastrado com sucesso!")
+                window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/listarauxiliar'
+                console.log(response.data)
+            })
+        }
+        else {
+            console.log(idAuxiliar)
+            auxiliar["id"] = parseInt(idAuxiliar)
+            console.log(auxiliar)
+            axios({
+                method: 'put',
+                url: 'https://gerenciador-orcamento-backend.herokuapp.com/auxiliares',
+                data: auxiliar
+            }).then(function (response) {
+                alert("Auxiliar alterado com sucesso!")
+                window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/listarauxiliar'
+            })
+        }
     }
 
-   
+
+    async getAuxiliar() {
+        const idAuxiliar = this.state === null ? "novo" : this.props.match.params.idauxiliar;
+        if (idAuxiliar === "novo") {
+            this.setState({
+                telefone: '',
+                nome: '',
+                tipo_servico: '',
+                disponibilidade: '',
+                email: ''
+            })
+        } else {
+            try {
+                await axios.get(`https://gerenciador-orcamento-backend.herokuapp.com/auxiliares/${idAuxiliar}`).then((response) => {
+                    console.log("auxiliar", response.data)
+                    this.setState({
+                        tipo_servico: response.data.tipo_servico,
+                        email: response.data.email,
+                        nome: response.data.nome,
+                        telefone: response.data.telefone,
+                        disponibilidade: response.data.disponibilidade
+                    })
+                });
+
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    }
+
+    async componentDidMount() {
+        this.getAuxiliar()
+    }
 
 
     render() {
@@ -69,21 +116,21 @@ class cadastroDeAuxiliares extends React.Component {
                         <div class="form-row col-12">
 
                             <div class="col-3">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="nome" id="nome" placeholder="Nome" required/>
+                                <input required onChange={this.handleChange} value={this.state.nome} type="text" class="form-control" name="nome" id="nome" placeholder="Nome" required/>
                             </div>
 
                             <div class="col-3">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="tipo_servico" id="tipo_servico" placeholder="Tipo de serviço" required/>
-                            </div>
-
-
-                            <div class="col-3">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" />
+                                <input required onChange={this.handleChange} value={this.state.tipo_servico} type="text" class="form-control" name="tipo_servico" id="tipo_servico" placeholder="Tipo de serviço" required/>
                             </div>
 
 
                             <div class="col-3">
-                                <input onChange={this.handleChange} type="text" class="form-control" name="email" id="email" placeholder="E-mail" required/>
+                                <input required onChange={this.handleChange} value={this.state.telefone} type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" />
+                            </div>
+
+
+                            <div class="col-3">
+                                <input required onChange={this.handleChange} value={this.state.email} type="text" class="form-control" name="email" id="email" placeholder="E-mail" required/>
                             </div>
 
                         </div>
@@ -92,8 +139,8 @@ class cadastroDeAuxiliares extends React.Component {
                             <div class="dropdown col-6">
                                 <select onChange={this.handleChange} id="disponibilidade" value={this.state.value} class="form-control form-control-lg ">
                                     <option>Disponibilidade</option>
-                                    <option value="sim">Sim</option>
-                                    <option value="não">Não</option>
+                                    <option value="Sim" {...(this.state.disponibilidade === true ? { selected: 'selected' } : {})} >Sim</option>
+                                    <option value="Não" {...(this.state.disponibilidade === false ? { selected: 'selected' } : {})} >Não</option>
                                 </select>
                             </div>
                         </div>
