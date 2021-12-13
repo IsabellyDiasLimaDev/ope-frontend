@@ -165,11 +165,6 @@ class cadastroDemateriais extends React.Component {
                                 <input onChange={this.handleChange} value={this.state.quantidade_disponivel} type="number" class="form-control" name="quantidade_disponivel" id="quantidade_disponivel" placeholder="Quantidade" />
                             </div>
 
-                            <div class="col-3">
-                                <label for="descricao">Descrição</label>
-                                <input onChange={this.handleChange} value={this.state.descricao} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
-                            </div>
-
                         </div>
 
                         <div class="form-row dropdown col-12">
@@ -183,6 +178,11 @@ class cadastroDemateriais extends React.Component {
                                 <label for="tipo">Tipo</label>
                                 <input onChange={this.handleChange} type="text" class="form-control" value={this.state.tipo} name="tipo" id="tipo" placeholder="Tipo" />
                             </div>
+                            <div class="col-3">
+                                <label for="descricao">Descrição</label>
+                                <input onChange={this.handleChange} value={this.state.descricao} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
+                            </div>
+
                         </div>
 
                         <div class="form-row col-12">

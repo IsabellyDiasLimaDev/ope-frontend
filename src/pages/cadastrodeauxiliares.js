@@ -113,30 +113,37 @@ class cadastroDeAuxiliares extends React.Component {
                     
 
                     <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">
-                        <div class="form-row col-12">
-
-                            <div class="col-3">
+                    <div class="form-row dropdown col-12">
+                        <div class="col-6">
+                            <label for="nome">Nome</label>
                                 <input required onChange={this.handleChange} value={this.state.nome} type="text" class="form-control" name="nome" id="nome" placeholder="Nome" required/>
                             </div>
+                    </div>
 
-                            <div class="col-3">
+                    <div class="form-row dropdown col-12">
+                        <div class="col-6">
+                                <label for="tipo_servico">Tipo Serviço</label>
                                 <input required onChange={this.handleChange} value={this.state.tipo_servico} type="text" class="form-control" name="tipo_servico" id="tipo_servico" placeholder="Tipo de serviço" required/>
                             </div>
+                    </div>
 
-
-                            <div class="col-3">
+                    <div class="form-row dropdown col-12">
+                        <div class="col-6">
+                                <label for="telefone">Telefone</label>
                                 <input required onChange={this.handleChange} value={this.state.telefone} type="text" class="form-control" name="telefone" id="telefone"  placeholder="Telefone" />
                             </div>
+                    </div>
 
-
-                            <div class="col-3">
+                    <div class="form-row dropdown col-12">
+                        <div class="col-6">
+                                <label for="email">E-mail</label>
                                 <input required onChange={this.handleChange} value={this.state.email} type="text" class="form-control" name="email" id="email" placeholder="E-mail" required/>
                             </div>
-
-                        </div>
+                    </div>
 
                         <div class="form-row dropdown col-12">
-                            <div class="dropdown col-6">
+                            <div class="dropdown col-2">
+                            <label for="disponibilidade">Disponibilidade</label>
                                 <select required onChange={this.handleChange} id="disponibilidade" value={this.state.value} class="form-control form-control-lg ">
                                     <option>Disponibilidade</option>
                                     <option value="Sim" {...(this.state.disponibilidade === true ? { selected: 'selected' } : {})} >Sim</option>
