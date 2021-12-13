@@ -7,21 +7,21 @@ import { Component } from 'react';
 
 
 
-class ListarOrcamento extends Component {
+class ListarServico extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            orcamentosRender: []
+            servicoRender: []
         }
 
-        this.getOrcamento = this.getOrcamento.bind(this)
+        this.getServico = this.getServico.bind(this)
     }
 
-    async getOrcamento() {
+    async getServico() {
         try {
-            await axios.get('https://gerenciador-orcamento-backend.herokuapp.com/orcamentos').then((response) => {
-                this.setState({ orcamentosRender: response.data })
+            await axios.get('https://gerenciador-orcamento-backend.herokuapp.com/servicos').then((response) => {
+                this.setState({ servicoRender: response.data })
             });
 
         } catch (error) {
@@ -30,7 +30,7 @@ class ListarOrcamento extends Component {
     }
 
     async componentDidMount() {
-        this.getOrcamento()
+        this.getServico()
     }
 
     render() {
@@ -43,28 +43,34 @@ class ListarOrcamento extends Component {
                 <div class="main main-raised">
                     <div class="profile-content">
                         <div class="name">
-                            <h3 class="titleservices">Orçamentos </h3>
+                            <h3 class="titleservices">Servicos </h3>
                         </div>
 
                         <table className="table col-9">
                             <thead>
                                 <tr>
-                                    <th scope="col">id</th>
-                                    <th scope="col">Observações</th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Valor Mão de Obra</th>
+                                    <th scope="col">Data Inicial</th>
+                                    <th scope="col">Data Final</th>
+                                    <th scope="col">Descrição</th>
                                     <th scope="col">valor total</th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.state.orcamentosRender.map((orcamento, index) => {
-                                    const { id, observacoes, valor_total } = orcamento
-                                    console.log(orcamento)
+                                {this.state.servicoRender.map((servico, index) => {
+                                    const { id, valor_mao_de_obra, data_inicial, data_final, descricao, valor_total, materiais } = servico
+                                    console.log(servico)
                                     return (
                                         <tr class="form " key={id}>
                                             <td>{id}</td>
-                                            <td>{observacoes}</td>
+                                            <td>{valor_mao_de_obra}</td>
+                                            <td>{data_final}</td>
+                                            <td>{data_inicial}</td>
+                                            <td>{descricao}</td>
                                             <td>{valor_total}</td>
-                                            <td><a class="nav-link nav-link active btn btn-primary butao" href={`/cadastroorcamento/${id}`} role="tab" data-toggle="tab"><i class="material-icons">edit</i></a></td>
+                                            <td><a class="nav-link nav-link active btn btn-primary butao" href={`/cadastroservicos/${id}`} role="tab" data-toggle="tab"><i class="material-icons">edit</i></a></td>
                                         </tr>
                                     )
                                 })}
@@ -72,7 +78,7 @@ class ListarOrcamento extends Component {
                         </table>
                         <div class="form-row col-12">
                             <div class="col-5">
-                                <a class="nav-link nav-link active btn btn-primary " href="/cadastroorcamento/novo" role="tab" data-toggle="tab">Adicionar<i class="material-icons">app_registration</i></a>
+                                <a class="nav-link nav-link active btn btn-primary " href="/cadastroservicos/novo" role="tab" data-toggle="tab">Adicionar<i class="material-icons">app_registration</i></a>
                             </div>
                         </div>
                     </div>
@@ -83,4 +89,4 @@ class ListarOrcamento extends Component {
     }
 }
 
-export default ListarOrcamento;
+export default ListarServico;

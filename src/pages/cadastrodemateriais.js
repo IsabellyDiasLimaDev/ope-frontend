@@ -52,7 +52,7 @@ class cadastroDemateriais extends React.Component {
                 data: materiais
             }).then(function (response) {
                 alert("Material cadastrado com sucesso!")
-                window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/inicio'
+                window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/listarmateriais'
                 console.log(response.data)
             })
 
@@ -65,6 +65,7 @@ class cadastroDemateriais extends React.Component {
                 data: materiais
             }).then(function (response) {
                 alert("Material alterado com sucesso!")
+                window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/listarmateriais'
                 console.log(response.data)
             })
         }
@@ -150,39 +151,40 @@ class cadastroDemateriais extends React.Component {
                         <div class="form-row formu col-12">
 
                             <div class="col-3">
-                                <input onChange={this.handleChange} value={this.state.categoria} type="text" class="form-control" name="categoria" id="categoria" placeholder="Categoria" />
+                                <input required onChange={this.handleChange} value={this.state.categoria} type="text" class="form-control" name="categoria" id="categoria" placeholder="Categoria" />
                             </div>
 
                             <div class="col-3">
-                                <input onChange={this.handleChange} value={this.state.preco} type="number" class="form-control" name="preco" id="preco" placeholder="Preço" />
+                                <input required onChange={this.handleChange} value={this.state.preco} type="number" class="form-control" name="preco" id="preco" placeholder="Preço" />
                             </div>
 
                             <div class="col-3">
-                                <input onChange={this.handleChange} value={this.state.quantidade_disponivel} type="number" class="form-control" name="quantidade_disponivel" id="quantidade_disponivel" placeholder="Quantidade" />
+                                <input required onChange={this.handleChange} value={this.state.quantidade_disponivel} type="number" class="form-control" name="quantidade_disponivel" id="quantidade_disponivel" placeholder="Quantidade" />
                             </div>
 
                             <div class="col-3">
-                                <input onChange={this.handleChange} value={this.state.descricao} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
+                                <input required onChange={this.handleChange} value={this.state.descricao} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
                             </div>
 
                         </div>
 
                         <div class="form-row dropdown col-12">
 
-                            <div class="col-3">
+                            <div required class="col-3">
                                 <input onChange={this.handleChange} type="text" class="form-control" value={this.state.cor} name="cor" id="cor" placeholder="Cor" />
                             </div>
 
-                            <div class="col-3">
+                            <div required class="col-3">
                                 <input onChange={this.handleChange} type="text" class="form-control" value={this.state.tipo} name="tipo" id="tipo" placeholder="Tipo" />
                             </div>
                         </div>
 
-                        <div class="form-row col-12">
+                        <div required class="form-row col-12">
                             <button type="submit" class="btn btn-primary">Cadastrar Materiais</button>
                         </div>
 
                     </form>
+                    <h5 className='form-row col-12'>Adicionar Empresa</h5>
                     <table className="table col-12">
                         <thead>
                             <tr>

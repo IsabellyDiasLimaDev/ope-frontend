@@ -14,24 +14,28 @@ import login from  '../pages/login';
 import telainicial from  '../pages/telainicial';
 import ListarCliente from "../pages/listarcliente";
 import ListarEmpresa from "../pages/listarempresa";
-
+import ListarMateriais from "../pages/listarmateriais";
+import ListarServico from "../pages/listarservico";
+import ListarAuxiliar from "../pages/listarauxiliar";
 
 export default function routes() {
 
     return (
         <Switch>
             <Route path="/cadastrocliente/:idcliente" component={cadastrocliente} />
+            <Route path="/cadastromateriais/:idmaterial" component={cadastrodemateriais} />
             <Route path="/cadastrofornecedor/:idfornecedor" component={cadastrodefornecedor}/>
             <Route path="/cadastroempresa/:idempresa" component={cadastrodeempresa}/>
-            <Route path="/materiais/:idmaterial" component={cadastrodemateriais}/>
-            <Route path="/servicos/:idservico" component={cadastrodeservicos}/>
-            <Route path="/auxiliares/:idauxiliar" component={cadastrodeauxiliares}/>
+            <Route path="/cadastroservicos/:idservico" component={cadastrodeservicos}/>
+            <Route path="/cadastroauxiliares/:idauxiliar" component={cadastrodeauxiliares}/>
             <Route path="/cadastroorcamento/:idorcamento" component={cadastroorcamentos}/>
             <Route path="/listarorcamento" component={ListarOrcamento}/>
+            <Route path="/listarmateriais" component={ListarMateriais}/>
             <Route path="/listarempresa" component={ListarEmpresa}/>
             <Route path="/listarfornecedor" component={ListarFornecedor}/>
             <Route path="/listarcliente" component={ListarCliente}/>
-            <Route path="/orcamento" component={menuorcamento}/>
+            <Route path="/listarauxiliar" component={ListarAuxiliar}/>
+            <Route path="/listarservicos" component={ListarServico}/>
             <Route path="/" exact={true} component={login}/>
             <Route path="/inicio" component={telainicial}/>
 

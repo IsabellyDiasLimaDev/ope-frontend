@@ -7,21 +7,21 @@ import { Component } from 'react';
 
 
 
-class ListarCliente extends Component {
+class ListarAuxiliar extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            clienteRender: []
+            auxiliarRender: []
         }
 
-        this.getCliente = this.getCliente.bind(this)
+        this.getAuxiliar = this.getAuxiliar.bind(this)
     }
 
-    async getCliente() {
+    async getAuxiliar() {
         try {
-            await axios.get('https://gerenciador-orcamento-backend.herokuapp.com/clientes').then((response) => {
-                this.setState({ clienteRender: response.data })
+            await axios.get('https://gerenciador-orcamento-backend.herokuapp.com/auxiliares').then((response) => {
+                this.setState({ auxiliarRender: response.data })
             });
 
         } catch (error) {
@@ -30,7 +30,7 @@ class ListarCliente extends Component {
     }
 
     async componentDidMount() {
-        this.getCliente()
+        this.getAuxiliar()
     }
 
     render() {
@@ -43,7 +43,7 @@ class ListarCliente extends Component {
                 <div class="main main-raised">
                     <div class="profile-content">
                         <div class="name">
-                            <h3 class="titleservices">Clientes </h3>
+                            <h3 class="titleservices">Auxiliares </h3>
                         </div>
 
                         <table className="table col-9">
@@ -51,25 +51,27 @@ class ListarCliente extends Component {
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Nome</th>
-                                    <th scope="col">E-mail</th>
+                                    <th scope="col">Tipo de Serviço</th>
                                     <th scope="col">Telefone</th>
-                                    <th scope="col">Tipo Cliente</th>
+                                    <th scope="col">E-mail</th>
+                                    <th scope="col">Disponibilidade</th>
                                     <th scope="col">Alterar</th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.state.clienteRender.map((cliente, index) => {
-                                    const { id, nome, email, telefone, tipo_cliente } = cliente
-                                    console.log(cliente)
+                                {this.state.auxiliarRender.map((auxiliar, index) => {
+                                    const { id, nome, tipo_servico, telefone, email, disponibilidade } = auxiliar
+                                    console.log(auxiliar)
                                     return (
                                         <tr class="form " key={id}>
                                             <td>{id}</td>
                                             <td>{nome}</td>
-                                            <td>{email}</td>
+                                            <td>{tipo_servico}</td>
                                             <td>{telefone}</td>
-                                            <td>{tipo_cliente}</td>
-                                            <td><a class="nav-link nav-link active btn btn-primary butao" href={`/cadastrocliente/${id}`} role="tab" data-toggle="tab"><i class="material-icons">edit</i></a></td>
+                                            <td>{email}</td>
+                                            <td>{disponibilidade === true ? 'Sim' : 'Não'}</td>
+                                            <td><a class="nav-link nav-link active btn btn-primary butao" href={`/cadastroauxiliares/${id}`} role="tab" data-toggle="tab"><i class="material-icons">edit</i></a></td>
                                         </tr>
                                     )
                                 })}
@@ -77,7 +79,7 @@ class ListarCliente extends Component {
                         </table>
                         <div class="form-row col-12">
                             <div class="col-5">
-                                <a class="nav-link nav-link active btn btn-primary " href="/cadastrocliente/novo" role="tab" data-toggle="tab">Adicionar<i class="material-icons">app_registration</i></a>
+                                <a class="nav-link nav-link active btn btn-primary " href="/cadastroauxiliares/novo" role="tab" data-toggle="tab">Adicionar<i class="material-icons">app_registration</i></a>
                             </div>
                         </div>
                     </div>
@@ -88,4 +90,4 @@ class ListarCliente extends Component {
     }
 }
 
-export default ListarCliente;
+export default ListarAuxiliar;

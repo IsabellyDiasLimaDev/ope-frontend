@@ -106,19 +106,19 @@ export default class CadastroDeFornecedor extends Component {
 
                     <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">
 
-                        <div class="form-row col-14">
-                            <input onChange={this.handleChange} value={this.state.nome} type="text" class="form-control" name="nome" id="nome" placeholder="Nome" />
+                        <div  class="form-row col-14">
+                            <input required onChange={this.handleChange} value={this.state.nome} type="text" class="form-control" name="nome" id="nome" placeholder="Nome" />
                         </div>
 
                         <div class="form-row col-14">
-                            <input onChange={this.handleChange} value={this.state.email} type="text" class="form-control" name="email" id="email" placeholder="E-mail" />
+                            <input required onChange={this.handleChange} value={this.state.email} type="text" class="form-control" name="email" id="email" placeholder="E-mail" />
                         </div>
 
                         <div class="form-row col-14">
-                            <input onChange={this.handleChange} value={this.state.telefone} type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" />
+                            <input required  onChange={this.handleChange} value={this.state.telefone} type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" />
                         </div>
 
-                        <div class="form-row col-14">
+                        <div  class="form-row col-14">
                             <button type="submit" class="btn btn-primary">Cadastrar</button>
                         </div>
 
