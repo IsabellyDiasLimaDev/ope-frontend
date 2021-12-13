@@ -43,9 +43,6 @@ class ListarEmpresa extends Component {
                 <div class="main main-raised">
                     <div class="profile-content">
                         <div class="name">
-                            <a class="button butaobn col-12" href="/empresa" role="tab" data-toggle="tab">
-                                <i class="material-icons">keyboard_return</i>
-                            </a>
                             <h3 class="titleservices">Empresas</h3>
                         </div>
 
@@ -54,9 +51,9 @@ class ListarEmpresa extends Component {
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Nome Fantasia</th>
-                                    <th scope="col">email</th>
-                                    <th scope="col">telefone</th>
-                                    <th scope="col">alterar</th>
+                                    <th scope="col">E-mail</th>
+                                    <th scope="col">Telefone</th>
+                                    <th scope="col">Alterar</th>
 
                                 </tr>
                             </thead>

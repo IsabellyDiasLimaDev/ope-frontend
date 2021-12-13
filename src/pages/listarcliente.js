@@ -43,21 +43,18 @@ class ListarCliente extends Component {
                 <div class="main main-raised">
                     <div class="profile-content">
                         <div class="name">
-                            <a class="button butaobn col-12" href="/orcamento" role="tab" data-toggle="tab">
-                                <i class="material-icons">keyboard_return</i>
-                            </a>
                             <h3 class="titleservices">Clientes </h3>
                         </div>
 
                         <table className="table col-9">
                             <thead>
                                 <tr>
-                                    <th scope="col">id</th>
-                                    <th scope="col">nome</th>
-                                    <th scope="col">email</th>
-                                    <th scope="col">telefone</th>
-                                    <th scope="col">tipo de cliente</th>
-                                    <th scope="col">alterar</th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">E-mail</th>
+                                    <th scope="col">Telefone</th>
+                                    <th scope="col">Tipo Cliente</th>
+                                    <th scope="col">Alterar</th>
 
                                 </tr>
                             </thead>
@@ -78,7 +75,11 @@ class ListarCliente extends Component {
                                 })}
                             </tbody>
                         </table>
-                        <a class="nav-link nav-link active btn btn-primary butao" href="/cadastrocliente/novo" role="tab" data-toggle="tab"><i class="material-icons">add</i></a>
+                        <div class="form-row col-12">
+                            <div class="col-5">
+                                <a class="nav-link nav-link active btn btn-primary " href="/cadastroempresa/novo" role="tab" data-toggle="tab">Adicionar<i class="material-icons">app_registration</i></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <Footer />
