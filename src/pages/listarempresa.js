@@ -51,9 +51,9 @@ class ListarEmpresa extends Component {
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Nome Fantasia</th>
-                                    <th scope="col">email</th>
-                                    <th scope="col">telefone</th>
-                                    <th scope="col">alterar</th>
+                                    <th scope="col">E-mail</th>
+                                    <th scope="col">Telefone</th>
+                                    <th scope="col">Alterar</th>
 
                                 </tr>
                             </thead>

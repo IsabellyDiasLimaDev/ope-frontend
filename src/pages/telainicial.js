@@ -4,7 +4,6 @@ import Navbar from '../components/navbar/navlogin';
 import PageHeader from '../components/page-header/PageHeader';
 import axios from 'axios';
 import { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 class TelaInicial extends Component {
