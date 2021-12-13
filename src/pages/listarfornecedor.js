@@ -7,21 +7,21 @@ import { Component } from 'react';
 
 
 
-class ListarOrcamento extends Component {
+class ListarFornecedor extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            orcamentosRender: []
+            fornecedorRender: []
         }
 
-        this.getOrcamento = this.getOrcamento.bind(this)
+        this.getFornecedor = this.getFornecedor.bind(this)
     }
 
-    async getOrcamento() {
+    async getFornecedor() {
         try {
-            await axios.get('https://gerenciador-orcamento-backend.herokuapp.com/orcamentos').then((response) => {
-                this.setState({ orcamentosRender: response.data })
+            await axios.get('https://gerenciador-orcamento-backend.herokuapp.com/fornecedores').then((response) => {
+                this.setState({ fornecedorRender: response.data })
             });
 
         } catch (error) {
@@ -30,7 +30,7 @@ class ListarOrcamento extends Component {
     }
 
     async componentDidMount() {
-        this.getOrcamento()
+        this.getFornecedor()
     }
 
     render() {
@@ -46,33 +46,37 @@ class ListarOrcamento extends Component {
                             <a class="button butaobn col-12" href="/orcamento" role="tab" data-toggle="tab">
                                 <i class="material-icons">keyboard_return</i>
                             </a>
-                            <h3 class="titleservices">Orçamentos </h3>
+                            <h3 class="titleservices">Fornecedores </h3>
                         </div>
 
                         <table className="table col-9">
                             <thead>
                                 <tr>
                                     <th scope="col">id</th>
-                                    <th scope="col">Observações</th>
-                                    <th scope="col">valor total</th>
+                                    <th scope="col">nome</th>
+                                    <th scope="col">email</th>
+                                    <th scope="col">telefone</th>
+                                    <th scope="col">alterar</th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.state.orcamentosRender.map((orcamento, index) => {
-                                    const { id, observacoes, valor_total } = orcamento
-                                    console.log(orcamento)
+                                {this.state.fornecedorRender.map((fornecedor, index) => {
+                                    const { id, nome, email, telefone } = fornecedor
+                                    console.log(fornecedor)
                                     return (
                                         <tr class="form " key={id}>
                                             <td>{id}</td>
-                                            <td>{observacoes}</td>
-                                            <td>{valor_total}</td>
-                                            <td><a class="nav-link nav-link active btn btn-primary butao" href={`/cadastroorcamento/${id}`} role="tab" data-toggle="tab"><i class="material-icons">edit</i></a></td>
+                                            <td>{nome}</td>
+                                            <td>{email}</td>
+                                            <td>{telefone}</td>
+                                            <td><a class="nav-link nav-link active btn btn-primary butao" href={`/cadastrofornecedor/${id}`} role="tab" data-toggle="tab"><i class="material-icons">edit</i></a></td>
                                         </tr>
                                     )
                                 })}
                             </tbody>
                         </table>
+                        <a class="nav-link nav-link active btn btn-primary butao" href="/cadastrofornecedor/novo" role="tab" data-toggle="tab"><i class="material-icons">add</i></a>
                     </div>
                 </div>
                 <Footer />
@@ -81,4 +85,4 @@ class ListarOrcamento extends Component {
     }
 }
 
-export default ListarOrcamento;
+export default ListarFornecedor;

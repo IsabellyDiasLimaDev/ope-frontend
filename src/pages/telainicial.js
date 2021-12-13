@@ -59,7 +59,7 @@ class TelaInicial extends Component {
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link nav-link active" href="/empresa/novo" role="tab" data-toggle="tab">
+                                            <a class="nav-link nav-link active" href="/listarempresa" role="tab" data-toggle="tab">
                                                 <i class="material-icons">business</i>
                                                 Empresa
                                             </a>
@@ -73,14 +73,14 @@ class TelaInicial extends Component {
                                         </li>
 
                                         <li class="nav-item">
-                                            <a class="nav-link nav-link active" href="/cliente/novo" role="tab" data-toggle="tab">
+                                            <a class="nav-link nav-link active" href="/listarcliente" role="tab" data-toggle="tab">
                                                 <i class="material-icons">people</i>
                                                 Cliente
                                             </a>
                                         </li>
 
                                         <li class="nav-item">
-                                            <a class="nav-link nav-link active" href="/fornecedor/novo" role="tab" data-toggle="tab">
+                                            <a class="nav-link nav-link active" href="listarfornecedor" role="tab" data-toggle="tab">
                                                 <i class="material-icons">add_business</i>
                                                 Fornecedor
                                             </a>

@@ -88,7 +88,7 @@ class cadastroDemateriais extends React.Component {
     }
 
     async getMaterial() {
-        const idMaterial = this.state === null ? "novo" : this.props.match.params.idMaterial;
+        const idMaterial = this.state === null ? "novo" : this.props.match.params.idmaterial;
         if (idMaterial === "novo") {
             this.setState({
                 descricao: "",
@@ -108,6 +108,7 @@ class cadastroDemateriais extends React.Component {
                         tipo: response.data.tipo,
                         cor: response.data.cor,
                         fornecedores: response.data.fornecedores,
+                        categoria: response.data.categoria
                     })
                 });
 
@@ -146,7 +147,7 @@ class cadastroDemateriais extends React.Component {
 
 
                     <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">
-                        <div class="form-row formu col-14">
+                        <div class="form-row formu col-12">
 
                             <div class="col-3">
                                 <input onChange={this.handleChange} value={this.state.categoria} type="text" class="form-control" name="categoria" id="categoria" placeholder="Categoria" />
@@ -177,12 +178,12 @@ class cadastroDemateriais extends React.Component {
                             </div>
                         </div>
 
-                        <div class="form-row col-14">
+                        <div class="form-row col-12">
                             <button type="submit" class="btn btn-primary">Cadastrar Materiais</button>
                         </div>
 
                     </form>
-                    <table className="table col-9">
+                    <table className="table col-12">
                         <thead>
                             <tr>
                                 <th scope="col">id</th>

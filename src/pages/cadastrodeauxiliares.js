@@ -34,7 +34,6 @@ class cadastroDeAuxiliares extends React.Component {
             disponibilidade: this.state.disponibilidade === 'sim' ? true : false,
             email: this.state.email
         }
-
         axios({
             method: 'post',
             url: 'https://gerenciador-orcamento-backend.herokuapp.com/auxiliares',

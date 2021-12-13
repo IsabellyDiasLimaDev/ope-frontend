@@ -116,13 +116,14 @@ a .material-icons {
   transform: translate3d(0,-50%,0);
 }
 
-.img-raised {
-  box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 3px 0px 60px rgba(0,0,0,.2);
+@media only screen and (max-width: 500px) {
+  .img-raised {
+    box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 3px 0px 60px rgba(0,0,0,.2);
+  }
 }
 
 .rounded-circle {
   border-radius: 50%!important;
-  margin-top: 50px;
 }
 
 .img-fluid, .img-thumbnail {
@@ -706,9 +707,11 @@ li{
   margin-top: 15px;
 }
 
-
-.avatar{
-  width: 230px;
+@media only screen and (max-width: 480px) {
+  .avatar{
+    width: 230px;
+    display: none;
+  }
 }
 
 .navbar-light{

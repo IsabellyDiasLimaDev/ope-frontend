@@ -57,7 +57,7 @@ class cadastroDeClientes extends React.Component {
                 data: cliente
             }).then(function (response) {
                 alert("Cliente cadastrado com sucesso!")
-                window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/inicio'
+                window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/listarcliente'
                 console.log(response.data)
             })
         }
@@ -71,7 +71,7 @@ class cadastroDeClientes extends React.Component {
                 data: cliente
             }).then(function (response) {
                 alert("Cliente alterado com sucesso!")
-                window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/inicio'
+                window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/listarcliente'
             })
         }
 

@@ -20,6 +20,8 @@ class CadastroDeOrcamento extends Component {
             servicos: []
         }
 
+        this.getOrcamento = this.getOrcamento.bind(this)
+
 
     }
 
@@ -32,23 +34,43 @@ class CadastroDeOrcamento extends Component {
     handleSubmit = async e => {
 
         e.preventDefault()
-
+        let id_servicos = []
+        this.state.servicos.forEach(servico => {
+            id_servicos.push(servico.id)
+        });
         let orcamento = {
             observacoes: this.state.observacoes,
-            valor_total: this.state.valor_total,
-            cliente: this.state.cliente,
-            servicos: this.state.servicos
+            id_cliente: this.state.cliente.id,
+            idservicos: id_servicos
         }
 
-        axios({
-            method: 'post',
-            url: 'https://gerenciador-orcamento-backend.herokuapp.com/orcamentos',
-            data: orcamento
-        }).then(function (response) {
-            alert("Orçamento cadastrado com sucesso!")
-            window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/inicio'
-            console.log(response.data)
-        })
+        const idOrcamento = this.state === null ? "novo" : this.props.match.params.idorcamento;
+        if (idOrcamento === "novo") {
+            axios({
+                method: 'post',
+                url: 'https://gerenciador-orcamento-backend.herokuapp.com/orcamentos',
+                data: orcamento
+            }).then(function (response) {
+                alert("Orçamento cadastrado com sucesso!")
+                window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/inicio'
+                console.log(response.data)
+            })
+        } else {
+            console.log(idOrcamento)
+            orcamento["id"] = parseInt(idOrcamento)
+            console.log(JSON.stringify(orcamento))
+
+            axios({
+                method: 'put',
+                url: 'https://gerenciador-orcamento-backend.herokuapp.com/orcamentos',
+                data: orcamento
+            }).then(function (response) {
+                alert("Orçamento alterado com sucesso!")
+                window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/inicio'
+                console.log(response.data)
+            })
+        }
+
     }
 
     adicionarCliente(cliente) {
@@ -83,10 +105,38 @@ class CadastroDeOrcamento extends Component {
         }
     }
 
+    async getOrcamento() {
+        const idOrcamento = this.state === null ? "novo" : this.props.match.params.idorcamento;
+        if (idOrcamento === "novo") {
+            this.setState({
+                observacoes: '',
+                valor_total: 0,
+                cliente: {},
+                servicos: []
+            })
+        } else {
+            try {
+                await axios.get(`https://gerenciador-orcamento-backend.herokuapp.com/orcamentos/${idOrcamento}`).then((response) => {
+                    console.log("orcamento", response.data)
+                    this.setState({
+                        observacoes: response.data.observacoes,
+                        valor_total: response.data.valor_total,
+                        cliente: response.data.cliente,
+                        servicos: response.data.servicos
+                    })
+                });
+
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    }
+
 
     async componentDidMount() {
         this.getCliente()
         this.getServico()
+        this.getOrcamento()
     }
 
 
@@ -119,12 +169,12 @@ class CadastroDeOrcamento extends Component {
                             </thead>
                             <tbody>
                                 {this.state.servicosRender.map((servico, index) => {
-                                    const { valor_mao_de_obra, data_inicial, data_final, descricao, valor_total, materiais } = servico
+                                    const { valor_mao_de_obra, datainicial, datafinal, descricao, valor_total, materiais } = servico
                                     return (
                                         <tr key={index}>
                                             <td>{valor_mao_de_obra}</td>
-                                            <td>{data_final}</td>
-                                            <td>{data_inicial}</td>
+                                            <td>{datafinal}</td>
+                                            <td>{datainicial}</td>
                                             <td>{descricao}</td>
                                             <td>{valor_total}</td>
                                             <td><button type="submit" class="btn btn-primary butao" onClick={this.adicionarServico.bind(this, servico, valor_total)}><i class="material-icons">add_circle</i></button></td>
@@ -173,7 +223,7 @@ class CadastroDeOrcamento extends Component {
                                 </div>
 
                                 <div class="col-3">
-                                    <input type="text" onChange={this.handleChange} class="form-control" name="observacoes" id="observacoes" placeholder="Observações" />
+                                    <input type="text" value={this.state.observacoes} onChange={this.handleChange} class="form-control" name="observacoes" id="observacoes" placeholder="Observações" />
                                 </div>
                             </div>
 
