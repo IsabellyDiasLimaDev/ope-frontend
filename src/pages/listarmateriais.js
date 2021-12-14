@@ -50,11 +50,13 @@ class ListarMateriais extends Component {
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
+                                    <th scope="col">Categoria</th>
                                     <th scope="col">Preço</th>
-                                    <th scope="col">Quantidade</th>
-                                    <th scope="col">Descrição</th>
+                                    <th scope="col">Qtd</th>
+                                    <th scope="col">descrição</th>
                                     <th scope="col">Cor</th>
                                     <th scope="col">Tipo</th>
+                                    <th scope="col">Alterar</th>
 
                                 </tr>
                             </thead>

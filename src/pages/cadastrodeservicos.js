@@ -79,6 +79,7 @@ class CadastroDeServico extends Component {
                 materiais: [...prevState.materiais, materiais]
             }));
             this.setState({ valor_total: this.state.valor_total + (preco * this.state.quantidade_material) })
+            alert("Material adicionado!")
         }
         else {
             alert("Quantidade selecionada é maior que a disponível")
@@ -91,6 +92,7 @@ class CadastroDeServico extends Component {
             this.setState(prevState => ({
                 auxiliares: [...prevState.auxiliares, auxiliar]
             }));
+            alert("Auxiliar adicionado!")
         } else {
             alert('Auxiliar não está disponível')
         }
@@ -168,7 +170,7 @@ class CadastroDeServico extends Component {
                 <div class="main main-raised">
                     <div class="profile-content">
                         <div class="name">
-                            <h3 class="titleservices">Cadastro de Serviços </h3>
+                            <h3 class="titleservices">Serviços </h3>
                         </div>
 
                         <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">

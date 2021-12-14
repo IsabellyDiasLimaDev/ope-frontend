@@ -76,7 +76,7 @@ class CadastroDeOrcamento extends Component {
                 data: orcamento
             }).then(function (response) {
                 alert("Orçamento alterado com sucesso!")
-                window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/listarservicos'
+                window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/listarorcamento'
                 console.log(response.data)
             })
         }
@@ -85,6 +85,7 @@ class CadastroDeOrcamento extends Component {
 
     adicionarCliente(cliente) {
         this.setState({ cliente: cliente });
+        alert('Cliente adicionado!')
     }
 
     adicionarServico(servico, valor_total) {
@@ -92,6 +93,7 @@ class CadastroDeOrcamento extends Component {
             servicos: [...prevState.servicos, servico]
         }));
         this.setState({ valor_total: this.state.valor_total + parseInt(valor_total) })
+        alert('Servico adicionado!')
     }
 
     async getServico() {
@@ -193,7 +195,7 @@ class CadastroDeOrcamento extends Component {
                             </tbody>
                         </table>
 
-                        <h5 className='form-row col-12'>Adicionar Auxiliar</h5>
+                        <h5 className='form-row col-12'>Adicionar Cliente</h5>
 
                         <table className="table col-9">
                             <thead>

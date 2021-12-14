@@ -75,6 +75,7 @@ class cadastroDemateriais extends React.Component {
         this.setState(prevState => ({
             fornecedores: [...prevState.fornecedores, fornecedor]
         }));
+        alert("Fornecedor adicionado!")
     }
 
     async getFornecedor() {
@@ -186,10 +187,11 @@ class cadastroDemateriais extends React.Component {
                         </div>
 
                         <div class="form-row col-12">
-                            <button type="submit" class="btn btn-primary">Cadastrar Materiais</button>
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
                         </div>
 
                     </form>
+                    <h5 className='form-row col-12'>Adicionar Fornecedores</h5>
                     <table className="table col-12">
                         <thead>
                             <tr>
@@ -209,7 +211,7 @@ class cadastroDemateriais extends React.Component {
                                         <td>{nome}</td>
                                         <td>{telefone}</td>
                                         <td>{email}</td>
-                                        <td><button onClick={this.adicionarFornecedor.bind(this, fornecedor)}>Adicionar</button></td>
+                                        <td><button type="submit" class="btn btn-primary butao" onClick={this.adicionarFornecedor.bind(this, fornecedor)}><i class="material-icons">add_circle</i></button></td>
                                     </tr>
                                 )
                             })}
