@@ -16,7 +16,7 @@ class CadastroDeServico extends Component {
             descricao: '',
             data_inicial: '',
             data_final: '',
-            material_servico: [],
+            materiais: [],
             auxiliares: [],
             materiaisRender: [],
             auxiliaresRender: [],
@@ -44,23 +44,26 @@ class CadastroDeServico extends Component {
         e.preventDefault();
 
         let servico = {
+            descricao: this.state.descricao,
+            materiais: this.state.materiais,
+            auxiliares: this.state.auxiliares,
             valor_mao_de_obra: this.state.valor_mao_de_obra,
             valor_total: this.state.valor_total,
-            descricao: this.state.descricao,
             data_inicial: this.state.data_inicial,
             data_final: this.state.data_final,
-            material_servico: this.state.material_servico,
-            auxiliares: this.state.auxiliares
-        }
 
-        servico.material_servico["servico"] = []
+        }
         console.log(servico)
+
+        const idServico = this.state === null ? "novo" : this.props.match.params.idservico;
+        let method = idServico === 'novo' ? 'post' : 'put';
+        let message = idServico === 'novo' ? 'Serviço cadastrado com sucesso!' : 'Serviço alterado com sucesso!';
         axios({
-            method: 'post',
-            url: 'https://gerenciador-orcamento-backend.herokuapp.com/lisarservicos',
+            method: method,
+            url: 'https://gerenciador-orcamento-backend.herokuapp.com/servicos',
             data: servico
         }).then(function (response) {
-            alert("Serviço cadastrado com sucesso!")
+            alert(message)
             window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/listarservicos'
             console.log(response.data)
         })
@@ -68,12 +71,12 @@ class CadastroDeServico extends Component {
 
     adicionarMaterial(material, preco, quantidade_disponivel) {
         if (this.state.quantidade_material <= quantidade_disponivel) {
-            let material_servico = {
+            let materiais = {
                 material: material,
                 quantidade_material: this.state.quantidade_material
             }
             this.setState(prevState => ({
-                material_servico: [...prevState.material_servico, material_servico]
+                materiais: [...prevState.materiais, materiais]
             }));
             this.setState({ valor_total: this.state.valor_total + (preco * this.state.quantidade_material) })
         }
@@ -124,20 +127,21 @@ class CadastroDeServico extends Component {
                 descricao: '',
                 data_inicial: '',
                 data_final: '',
-                material_servico: [],
+                materiais: [],
                 auxiliares: [],
                 quantidade_material: 0
             })
         } else {
             try {
                 await axios.get(`https://gerenciador-orcamento-backend.herokuapp.com/servicos/${idServico}`).then((response) => {
+                    console.log(response.data)
                     this.setState({
                         valor_mao_de_obra: response.data.valor_mao_de_obra,
                         valor_total: response.data.valor_total,
                         descricao: response.data.descricao,
                         data_inicial: response.data.data_inicial,
                         data_final: response.data.data_final,
-                        material_servico: response.data.material_servico,
+                        materiais: response.data.materiais,
                         auxiliares: response.data.auxiliares,
                     })
                 });
@@ -168,43 +172,43 @@ class CadastroDeServico extends Component {
                         </div>
 
                         <form class="formu" onSubmit={this.handleSubmit.bind(this)} method="post">
-                        <div class="form-row dropdown col-12">
+                            <div class="form-row dropdown col-12">
                                 <div class="col">
-                                <label for="valor_mao_de_obra">Valor Mão de Obra</label>
+                                    <label for="valor_mao_de_obra">Valor Mão de Obra</label>
                                     <input required onChange={this.handleChange} value={this.state.valor_mao_de_obra} type="text" class="form-control" name="valor_mao_de_obra" id="valor_mao_de_obra" placeholder="Valor Mão de Obra" />
                                 </div>
                                 <div class="col">
-                                <label for="data_inicial">Data Inicial</label>
+                                    <label for="data_inicial">Data Inicial</label>
                                     <input required onChange={this.handleChange} value={this.state.data_inicial} type="text" class="form-control" name="data_inicial" id="data_inicial" placeholder="Data Inicial" />
                                 </div>
                                 <div class="col">
-                                <label for="data_final">Data Final</label>
+                                    <label for="data_final">Data Final</label>
                                     <input required onChange={this.handleChange} value={this.state.data_final} type="text" class="form-control" name="data_final" id="data_final" placeholder="Data Final" />
                                 </div>
                                 <div class="col">
-                                <label for="descricao">Descrição</label>
+                                    <label for="descricao">Descrição</label>
                                     <input required onChange={this.handleChange} value={this.state.descricao} type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" />
                                 </div>
                                 <div class="col">
-                                <label for="valor_total">Valor Total</label>
-                                <input readOnly value={this.state.valor_total} type="text" className="form-control" name="valor_total" id="valor_total" placeholder="Valor Total" />
+                                    <label for="valor_total">Valor Total</label>
+                                    <input readOnly value={this.state.valor_total} type="text" className="form-control" name="valor_total" id="valor_total" placeholder="Valor Total" />
                                 </div>
                             </div>
                             <div class="form-row col-6">
-                                
-                                </div>
+
+                            </div>
                             <div class="form-row col-14">
 
                                 <button type="submit" class="btn btn-primary">Cadastrar  <i class="material-icons">add_task</i></button>
                             </div>
                         </form>
                         <div className='form-row col-14'>
-                        <button onClick={this.handleChangeValor} type="button" class="btn btn-primary">Atualizar valor <i class="material-icons">autorenew</i></button>
+                            <button onClick={this.handleChangeValor} type="button" class="btn btn-primary">Atualizar valor <i class="material-icons">autorenew</i></button>
                         </div>
 
                         <h5 className='form-row col-12'>Adicionar Prestador</h5>
 
-                      
+
 
                         <table className="table col-12">
                             <thead>

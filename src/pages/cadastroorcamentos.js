@@ -34,32 +34,42 @@ class CadastroDeOrcamento extends Component {
     handleSubmit = async e => {
 
         e.preventDefault()
-        let id_servicos = []
-        this.state.servicos.forEach(servico => {
-            id_servicos.push(servico.id)
-        });
-        let orcamento = {
-            observacoes: this.state.observacoes,
-            id_cliente: this.state.cliente.id,
-            idservicos: id_servicos
-        }
+
 
         const idOrcamento = this.state === null ? "novo" : this.props.match.params.idorcamento;
         if (idOrcamento === "novo") {
+            let orcamento = {
+                id: parseInt(idOrcamento),
+                observacoes: this.state.observacoes,
+                cliente: this.state.cliente,
+                servicos: this.state.servicos,
+                valor_total: this.state.valor_total
+            }
+
+            console.log(idOrcamento)
+            
+            console.log(JSON.stringify(orcamento))
+
             axios({
                 method: 'post',
                 url: 'https://gerenciador-orcamento-backend.herokuapp.com/orcamentos',
                 data: orcamento
             }).then(function (response) {
                 alert("Orçamento cadastrado com sucesso!")
-                window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/listarservicos'
+                window.location.href = 'https://gerenciador-orcamento-frontend.herokuapp.com/listarorcamento'
                 console.log(response.data)
             })
         } else {
-            console.log(idOrcamento)
-            orcamento["id"] = parseInt(idOrcamento)
-            console.log(JSON.stringify(orcamento))
-
+            let id_servicos = []
+            this.state.servicos.forEach(servico => {
+                id_servicos.push(servico.id)
+            });
+            let orcamento = {
+                id: parseInt(idOrcamento),
+                observacoes: this.state.observacoes,
+                id_cliente: this.state.cliente.id,
+                idservicos: id_servicos
+            }
             axios({
                 method: 'put',
                 url: 'https://gerenciador-orcamento-backend.herokuapp.com/orcamentos',
